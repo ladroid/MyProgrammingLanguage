@@ -1,0 +1,17 @@
+func example {
+    print "First"
+}
+
+func main() {
+    let a = 5
+    let b = 10
+    let k = 12
+
+    add 3 to b
+    multiply 2 to a
+
+    print k
+    print b
+    print a
+    print "Hello"
+}
