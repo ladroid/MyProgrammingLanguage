@@ -87,6 +87,36 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitDivide(JulesVerneParser.DivideContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#mod}.
+	 * @param ctx the parse tree
+	 */
+	void enterMod(JulesVerneParser.ModContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#mod}.
+	 * @param ctx the parse tree
+	 */
+	void exitMod(JulesVerneParser.ModContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#increment}.
+	 * @param ctx the parse tree
+	 */
+	void enterIncrement(JulesVerneParser.IncrementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#increment}.
+	 * @param ctx the parse tree
+	 */
+	void exitIncrement(JulesVerneParser.IncrementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#decrement}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#decrement}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 */

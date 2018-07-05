@@ -78,6 +78,36 @@ public class MyListener extends JulesVerneBaseListener {
     }
 
     @Override
+    public void exitMod(JulesVerneParser.ModContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.NUMBER().getText());
+
+        variables.put(variableName, variables.get(variableName) % value);
+    }
+
+    @Override
+    public void exitIncrement(JulesVerneParser.IncrementContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, ++value);
+    }
+
+    @Override
+    public void exitDecrement(JulesVerneParser.DecrementContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, --value);
+    }
+
+    @Override
     public void exitPrint(JulesVerneParser.PrintContext ctx) {
         // This method is called when the parser has finished
         // parsing the print statement

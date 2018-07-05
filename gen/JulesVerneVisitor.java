@@ -58,6 +58,24 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDivide(JulesVerneParser.DivideContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#mod}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMod(JulesVerneParser.ModContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#increment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncrement(JulesVerneParser.IncrementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#decrement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
