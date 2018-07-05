@@ -15,6 +15,8 @@ decrement : '--' (ID) 'to' ID ;
 string    : '"' (~('\n' | '"'))* '"';
 function  : 'func' ID '{' (assign | print)* '}';
 
+COMMENT: '/*' .*? '*/' -> skip;
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
 ID     : [a-zA-Z]+ ;
 CYRILLIC : '\u0400'..'\u04FF' ;
 FLOAT: [0-9]+ '.' [0-9]* | '.' [0-9]+ ;
