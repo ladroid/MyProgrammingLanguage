@@ -17,8 +17,8 @@ public class JulesVerneParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, ID=15, FLOAT=16, NUMBER=17, 
-		WS=18;
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, ID=15, CYRILLIC=16, FLOAT=17, 
+		NUMBER=18, WS=19;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_assign = 2, RULE_print = 3, 
 		RULE_add = 4, RULE_minus = 5, RULE_multiply = 6, RULE_divide = 7, RULE_string = 8, 
@@ -34,7 +34,7 @@ public class JulesVerneParser extends Parser {
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, "ID", "FLOAT", "NUMBER", "WS"
+		null, null, null, "ID", "CYRILLIC", "FLOAT", "NUMBER", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -352,6 +352,7 @@ public class JulesVerneParser extends Parser {
 		public StringContext string() {
 			return getRuleContext(StringContext.class,0);
 		}
+		public TerminalNode CYRILLIC() { return getToken(JulesVerneParser.CYRILLIC, 0); }
 		public PrintContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -379,7 +380,7 @@ public class JulesVerneParser extends Parser {
 			{
 			setState(46);
 			match(T__4);
-			setState(51);
+			setState(52);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
@@ -404,6 +405,12 @@ public class JulesVerneParser extends Parser {
 				{
 				setState(50);
 				string();
+				}
+				break;
+			case CYRILLIC:
+				{
+				setState(51);
+				match(CYRILLIC);
 				}
 				break;
 			default:
@@ -457,41 +464,41 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53);
+			setState(54);
 			match(T__5);
-			setState(58);
+			setState(59);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
 				{
-				setState(54);
+				setState(55);
 				match(NUMBER);
 				}
 				break;
 			case ID:
 				{
-				setState(55);
+				setState(56);
 				match(ID);
 				}
 				break;
 			case FLOAT:
 				{
-				setState(56);
+				setState(57);
 				match(FLOAT);
 				}
 				break;
 			case T__10:
 				{
-				setState(57);
+				setState(58);
 				string();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(60);
-			match(T__6);
 			setState(61);
+			match(T__6);
+			setState(62);
 			match(ID);
 			}
 		}
@@ -539,9 +546,9 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(63);
-			match(T__7);
 			setState(64);
+			match(T__7);
+			setState(65);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ID) | (1L << FLOAT) | (1L << NUMBER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -551,9 +558,9 @@ public class JulesVerneParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(65);
-			match(T__6);
 			setState(66);
+			match(T__6);
+			setState(67);
 			match(ID);
 			}
 		}
@@ -601,9 +608,9 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(68);
-			match(T__8);
 			setState(69);
+			match(T__8);
+			setState(70);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ID) | (1L << FLOAT) | (1L << NUMBER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -613,9 +620,9 @@ public class JulesVerneParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(70);
-			match(T__6);
 			setState(71);
+			match(T__6);
+			setState(72);
 			match(ID);
 			}
 		}
@@ -663,9 +670,9 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
-			match(T__9);
 			setState(74);
+			match(T__9);
+			setState(75);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ID) | (1L << FLOAT) | (1L << NUMBER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -675,9 +682,9 @@ public class JulesVerneParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(75);
-			match(T__6);
 			setState(76);
+			match(T__6);
+			setState(77);
 			match(ID);
 			}
 		}
@@ -719,15 +726,15 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(78);
+			setState(79);
 			match(T__10);
-			setState(82);
+			setState(83);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__12) | (1L << T__13) | (1L << ID) | (1L << FLOAT) | (1L << NUMBER) | (1L << WS))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__12) | (1L << T__13) | (1L << ID) | (1L << CYRILLIC) | (1L << FLOAT) | (1L << NUMBER) | (1L << WS))) != 0)) {
 				{
 				{
-				setState(79);
+				setState(80);
 				_la = _input.LA(1);
 				if ( _la <= 0 || (_la==T__10 || _la==T__11) ) {
 				_errHandler.recoverInline(this);
@@ -739,11 +746,11 @@ public class JulesVerneParser extends Parser {
 				}
 				}
 				}
-				setState(84);
+				setState(85);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(85);
+			setState(86);
 			match(T__10);
 			}
 		}
@@ -798,29 +805,29 @@ public class JulesVerneParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(87);
-			match(T__12);
 			setState(88);
-			match(ID);
+			match(T__12);
 			setState(89);
+			match(ID);
+			setState(90);
 			match(T__13);
-			setState(94);
+			setState(95);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__2 || _la==T__4) {
 				{
-				setState(92);
+				setState(93);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case T__2:
 					{
-					setState(90);
+					setState(91);
 					assign();
 					}
 					break;
 				case T__4:
 					{
-					setState(91);
+					setState(92);
 					print();
 					}
 					break;
@@ -828,11 +835,11 @@ public class JulesVerneParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(96);
+				setState(97);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(97);
+			setState(98);
 			match(T__1);
 			}
 		}
@@ -848,32 +855,33 @@ public class JulesVerneParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24f\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25g\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
 		"\2\3\2\6\2\31\n\2\r\2\16\2\32\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3"+
-		"&\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4/\n\4\3\5\3\5\3\5\3\5\3\5\5\5\66"+
-		"\n\5\3\6\3\6\3\6\3\6\3\6\5\6=\n\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\b"+
-		"\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\7\nS\n\n\f\n\16\nV\13\n\3"+
-		"\n\3\n\3\13\3\13\3\13\3\13\3\13\7\13_\n\13\f\13\16\13b\13\13\3\13\3\13"+
-		"\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\21\23\3\2\r\16\2n\2\26\3\2"+
-		"\2\2\4%\3\2\2\2\6\'\3\2\2\2\b\60\3\2\2\2\n\67\3\2\2\2\fA\3\2\2\2\16F\3"+
-		"\2\2\2\20K\3\2\2\2\22P\3\2\2\2\24Y\3\2\2\2\26\30\7\3\2\2\27\31\5\4\3\2"+
-		"\30\27\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\34\3\2\2\2"+
-		"\34\35\7\4\2\2\35\3\3\2\2\2\36&\5\6\4\2\37&\5\n\6\2 &\5\b\5\2!&\5\f\7"+
-		"\2\"&\5\16\b\2#&\5\20\t\2$&\5\24\13\2%\36\3\2\2\2%\37\3\2\2\2% \3\2\2"+
-		"\2%!\3\2\2\2%\"\3\2\2\2%#\3\2\2\2%$\3\2\2\2&\5\3\2\2\2\'(\7\5\2\2()\7"+
-		"\21\2\2).\7\6\2\2*/\7\23\2\2+/\7\21\2\2,/\7\22\2\2-/\5\22\n\2.*\3\2\2"+
-		"\2.+\3\2\2\2.,\3\2\2\2.-\3\2\2\2/\7\3\2\2\2\60\65\7\7\2\2\61\66\7\23\2"+
-		"\2\62\66\7\21\2\2\63\66\7\22\2\2\64\66\5\22\n\2\65\61\3\2\2\2\65\62\3"+
-		"\2\2\2\65\63\3\2\2\2\65\64\3\2\2\2\66\t\3\2\2\2\67<\7\b\2\28=\7\23\2\2"+
-		"9=\7\21\2\2:=\7\22\2\2;=\5\22\n\2<8\3\2\2\2<9\3\2\2\2<:\3\2\2\2<;\3\2"+
-		"\2\2=>\3\2\2\2>?\7\t\2\2?@\7\21\2\2@\13\3\2\2\2AB\7\n\2\2BC\t\2\2\2CD"+
-		"\7\t\2\2DE\7\21\2\2E\r\3\2\2\2FG\7\13\2\2GH\t\2\2\2HI\7\t\2\2IJ\7\21\2"+
-		"\2J\17\3\2\2\2KL\7\f\2\2LM\t\2\2\2MN\7\t\2\2NO\7\21\2\2O\21\3\2\2\2PT"+
-		"\7\r\2\2QS\n\3\2\2RQ\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3\2\2\2UW\3\2\2\2V"+
-		"T\3\2\2\2WX\7\r\2\2X\23\3\2\2\2YZ\7\17\2\2Z[\7\21\2\2[`\7\20\2\2\\_\5"+
-		"\6\4\2]_\5\b\5\2^\\\3\2\2\2^]\3\2\2\2_b\3\2\2\2`^\3\2\2\2`a\3\2\2\2ac"+
-		"\3\2\2\2b`\3\2\2\2cd\7\4\2\2d\25\3\2\2\2\n\32%.\65<T^`";
+		"&\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4/\n\4\3\5\3\5\3\5\3\5\3\5\3\5\5\5"+
+		"\67\n\5\3\6\3\6\3\6\3\6\3\6\5\6>\n\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3"+
+		"\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\n\3\n\7\nT\n\n\f\n\16\nW\13\n"+
+		"\3\n\3\n\3\13\3\13\3\13\3\13\3\13\7\13`\n\13\f\13\16\13c\13\13\3\13\3"+
+		"\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24\2\4\4\2\21\21\23\24\3\2\r\16\2"+
+		"p\2\26\3\2\2\2\4%\3\2\2\2\6\'\3\2\2\2\b\60\3\2\2\2\n8\3\2\2\2\fB\3\2\2"+
+		"\2\16G\3\2\2\2\20L\3\2\2\2\22Q\3\2\2\2\24Z\3\2\2\2\26\30\7\3\2\2\27\31"+
+		"\5\4\3\2\30\27\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\34"+
+		"\3\2\2\2\34\35\7\4\2\2\35\3\3\2\2\2\36&\5\6\4\2\37&\5\n\6\2 &\5\b\5\2"+
+		"!&\5\f\7\2\"&\5\16\b\2#&\5\20\t\2$&\5\24\13\2%\36\3\2\2\2%\37\3\2\2\2"+
+		"% \3\2\2\2%!\3\2\2\2%\"\3\2\2\2%#\3\2\2\2%$\3\2\2\2&\5\3\2\2\2\'(\7\5"+
+		"\2\2()\7\21\2\2).\7\6\2\2*/\7\24\2\2+/\7\21\2\2,/\7\23\2\2-/\5\22\n\2"+
+		".*\3\2\2\2.+\3\2\2\2.,\3\2\2\2.-\3\2\2\2/\7\3\2\2\2\60\66\7\7\2\2\61\67"+
+		"\7\24\2\2\62\67\7\21\2\2\63\67\7\23\2\2\64\67\5\22\n\2\65\67\7\22\2\2"+
+		"\66\61\3\2\2\2\66\62\3\2\2\2\66\63\3\2\2\2\66\64\3\2\2\2\66\65\3\2\2\2"+
+		"\67\t\3\2\2\28=\7\b\2\29>\7\24\2\2:>\7\21\2\2;>\7\23\2\2<>\5\22\n\2=9"+
+		"\3\2\2\2=:\3\2\2\2=;\3\2\2\2=<\3\2\2\2>?\3\2\2\2?@\7\t\2\2@A\7\21\2\2"+
+		"A\13\3\2\2\2BC\7\n\2\2CD\t\2\2\2DE\7\t\2\2EF\7\21\2\2F\r\3\2\2\2GH\7\13"+
+		"\2\2HI\t\2\2\2IJ\7\t\2\2JK\7\21\2\2K\17\3\2\2\2LM\7\f\2\2MN\t\2\2\2NO"+
+		"\7\t\2\2OP\7\21\2\2P\21\3\2\2\2QU\7\r\2\2RT\n\3\2\2SR\3\2\2\2TW\3\2\2"+
+		"\2US\3\2\2\2UV\3\2\2\2VX\3\2\2\2WU\3\2\2\2XY\7\r\2\2Y\23\3\2\2\2Z[\7\17"+
+		"\2\2[\\\7\21\2\2\\a\7\20\2\2]`\5\6\4\2^`\5\b\5\2_]\3\2\2\2_^\3\2\2\2`"+
+		"c\3\2\2\2a_\3\2\2\2ab\3\2\2\2bd\3\2\2\2ca\3\2\2\2de\7\4\2\2e\25\3\2\2"+
+		"\2\n\32%.\66=U_a";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
