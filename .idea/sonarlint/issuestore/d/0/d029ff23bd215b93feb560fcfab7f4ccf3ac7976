@@ -1,14 +1,16 @@
 
-Jsquid:S1068".Remove this unused "Fvariables" private field.(¿€Ú—8À½†´Æ,
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö©ê—
+gsquid:UselessImportCheck">Remove this unused import 'org.antlr.v4.runtime.misc.NotNull'.(ï¿Ê÷8Í¿ƒŸÊ,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(úÞ›µ8¶¼øÛÆ,
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8×äø³Æ,
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8×äø³Æ,
-fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«œ‡8×äø³Æ,
+squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8¶¼øÛÆ,
+]squid:S1858"A"getText" returns a string, there's no need to call "toString()".(Ö­Ï¼8¯ïñ Ê,
+Zsquid:UselessImportCheck",Remove this unused import 'java.util.Stack'.(ÞÈ†üúÿÿÿÿ8ˆÊÂÚÆ,
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8×äø³Æ,
+squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8¶¼øÛÆ,
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«œ‡8¶¼øÛÆ,
 1squid:S1220""Move this file to a named package.
-]squid:S1858"A"getText" returns a string, there's no need to call "toString()".(Ö­Ï¼8×äø³Æ,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(úÞ›µ8×äø³Æ,
-rsquid:S00116"URename this field "Fvariables" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿€Ú—8‡ýÊ³Æ,
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8¶¼øÛÆ,
+msquid:UselessImportCheck"DRemove this unused import 'org.antlr.v4.runtime.ANTLRErrorStrategy'.(¼Èî­8Í¿ƒŸÊ,
+Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í¿ƒŸÊ,
+`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö©ê—

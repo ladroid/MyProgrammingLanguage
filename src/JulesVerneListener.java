@@ -136,4 +136,84 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction(JulesVerneParser.FunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#smth}.
+	 * @param ctx the parse tree
+	 */
+	void enterSmth(JulesVerneParser.SmthContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#smth}.
+	 * @param ctx the parse tree
+	 */
+	void exitSmth(JulesVerneParser.SmthContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr(JulesVerneParser.ExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr(JulesVerneParser.ExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#exprtr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprtr(JulesVerneParser.ExprtrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#exprtr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprtr(JulesVerneParser.ExprtrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#exprsmth}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprsmth(JulesVerneParser.ExprsmthContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#exprsmth}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprsmth(JulesVerneParser.ExprsmthContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#if_stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterIf_stat(JulesVerneParser.If_statContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#if_stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitIf_stat(JulesVerneParser.If_statContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#condition_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition_block(JulesVerneParser.Condition_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#condition_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition_block(JulesVerneParser.Condition_blockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#stat_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterStat_block(JulesVerneParser.Stat_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#stat_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitStat_block(JulesVerneParser.Stat_blockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(JulesVerneParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(JulesVerneParser.BlockContext ctx);
 }

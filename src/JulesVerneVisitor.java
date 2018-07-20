@@ -87,4 +87,52 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunction(JulesVerneParser.FunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#smth}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSmth(JulesVerneParser.SmthContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr(JulesVerneParser.ExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#exprtr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprtr(JulesVerneParser.ExprtrContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#exprsmth}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprsmth(JulesVerneParser.ExprsmthContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#if_stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIf_stat(JulesVerneParser.If_statContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#condition_block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondition_block(JulesVerneParser.Condition_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#stat_block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStat_block(JulesVerneParser.Stat_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(JulesVerneParser.BlockContext ctx);
 }

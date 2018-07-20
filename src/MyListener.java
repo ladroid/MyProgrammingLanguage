@@ -1,10 +1,14 @@
+import org.antlr.v4.runtime.ANTLRErrorStrategy;
+import org.antlr.v4.runtime.misc.NotNull;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class MyListener extends JulesVerneBaseListener {
 
     private Map<String, Integer> variables;
-    private Map<String, Float> Fvariables;
 
     public MyListener() {
         variables = new HashMap<>();
@@ -107,6 +111,22 @@ public class MyListener extends JulesVerneBaseListener {
         variables.put(variableName, --value);
     }
 
+//    @Override
+//    public void exitIf_stat(JulesVerneParser.If_statContext ctx) {
+//        IfStatement ifStatement = new IfStatement();
+//        ifStatement.visitIf_stat(ctx);
+//    }
+
+    @Override
+    public void exitSmth(JulesVerneParser.SmthContext ctx) {
+        if(ctx.expr(0) == ctx.expr(0)) {
+            System.out.println("true!");
+        }
+        else {
+            System.out.println("false!");
+        }
+    }
+
     @Override
     public void exitPrint(JulesVerneParser.PrintContext ctx) {
         // This method is called when the parser has finished
@@ -116,7 +136,8 @@ public class MyListener extends JulesVerneBaseListener {
             if(ctx.NUMBER() != null) {
                 String outputNum = ctx.NUMBER().getText();
                 System.out.println(outputNum);
-            } else {
+            }
+            else {
                 String outputStr = ctx.string().getText();
                 System.out.println(outputStr);
             }
