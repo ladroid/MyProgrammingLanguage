@@ -220,17 +220,29 @@ func example {
 }
 
 func main() {
+
     let a = 5
     let b = 10
-    let k = 12
+    let k = 10
+    let c = 3
 
-    add 3 to b
-    multiply 2 to a
+    + 3 to b
+    * 2 to a
+    % 3 to k
+    ++ c to c
 
+    print c
     print k
     print b
     print a
     print "Hello"
+    print "Привет"
+
+    if(a) {
+        print "true"
+    } else(a) {
+        print "false"
+    }
 }
 ```
 
