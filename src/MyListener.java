@@ -131,6 +131,46 @@ public class MyListener extends JulesVerneBaseListener {
         variables.put(variableName, variables.get(variableName) >> value);
     }
 
+    @Override
+    public void exitXorV(JulesVerneParser.XorVContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, variables.get(variableName) ^ value);
+    }
+
+    @Override
+    public void exitOrV(JulesVerneParser.OrVContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, variables.get(variableName) | value);
+    }
+
+    @Override
+    public void exitAndV(JulesVerneParser.AndVContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, variables.get(variableName) & value);
+    }
+
+    @Override
+    public void exitNotV(JulesVerneParser.NotVContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, ~value);
+    }
+
     //    @Override
 //    public void exitIf_stat(JulesVerneParser.If_statContext ctx) {
 //        IfStatement ifStatement = new IfStatement();

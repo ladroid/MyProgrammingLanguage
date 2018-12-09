@@ -88,6 +88,30 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitShr(JulesVerneParser.ShrContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNotV(JulesVerneParser.NotVContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

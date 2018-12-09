@@ -137,6 +137,46 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitShr(JulesVerneParser.ShrContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 */
+	void enterXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 */
+	void exitXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotV(JulesVerneParser.NotVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotV(JulesVerneParser.NotVContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 */
