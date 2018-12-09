@@ -1,7 +1,7 @@
 grammar JulesVerne;
 program   : 'func main() {' statement+ '}';
           
-statement : assign| add | print | minus | multiply | divide | mod | increment | decrement | shl | shr | xorV | orV | andV | notV | function | smth | if_stat;
+statement : assign| add | print | minus | multiply | divide | mod | increment | incrementPostfix | decrement | decrementPostfix | shl | shr | xorV | orV | andV | notV | function | smth | if_stat;
 
 assign    : 'let' ID '=' (NUMBER | ID | FLOAT |string) ;
 print     : 'print' (NUMBER | ID | FLOAT | string | CYRILLIC) ;
@@ -11,7 +11,9 @@ multiply  : '*' (NUMBER | ID | FLOAT) 'to' ID ;
 divide    : '/' (NUMBER | ID | FLOAT) 'to' ID ;
 mod       : '%' (NUMBER | ID | FLOAT) 'to' ID ;
 increment : '++' (ID) 'to' ID ;
+incrementPostfix : (ID) 'to' ID '++';
 decrement : '--' (ID) 'to' ID ;
+decrementPostfix : (ID) 'to' ID '++';
 shl       : '<<' (NUMBER | ID | FLOAT) 'to' (NUMBER | ID | FLOAT) ;
 shr       : '>>' (NUMBER | ID | FLOAT) 'to' (NUMBER | ID | FLOAT) ;
 xorV      : '^'  (NUMBER | ID | FLOAT) 'to' (NUMBER | ID | FLOAT) ;

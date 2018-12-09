@@ -135,6 +135,18 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDecrement(JulesVerneParser.DecrementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -142,6 +154,18 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDecrement(JulesVerneParser.DecrementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

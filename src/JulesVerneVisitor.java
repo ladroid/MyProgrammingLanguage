@@ -70,11 +70,23 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIncrement(JulesVerneParser.IncrementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#decrement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#shl}.
 	 * @param ctx the parse tree

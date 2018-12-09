@@ -107,6 +107,16 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitIncrement(JulesVerneParser.IncrementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void enterIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void exitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#decrement}.
 	 * @param ctx the parse tree
 	 */
@@ -116,6 +126,16 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#shl}.
 	 * @param ctx the parse tree

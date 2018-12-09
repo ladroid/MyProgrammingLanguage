@@ -102,6 +102,16 @@ public class MyListener extends JulesVerneBaseListener {
     }
 
     @Override
+    public void exitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, value++);
+    }
+
+    @Override
     public void exitDecrement(JulesVerneParser.DecrementContext ctx) {
         String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
                 : ctx.ID(0).getText();
@@ -109,6 +119,16 @@ public class MyListener extends JulesVerneBaseListener {
                 : Integer.parseInt(ctx.ID(1).getText());
 
         variables.put(variableName, --value);
+    }
+
+    @Override
+    public void exitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, value--);
     }
 
     @Override
