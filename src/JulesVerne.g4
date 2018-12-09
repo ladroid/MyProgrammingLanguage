@@ -1,7 +1,7 @@
 grammar JulesVerne;
 program   : 'func main() {' statement+ '}';
           
-statement : assign| add | print | minus | multiply | divide | mod | increment | decrement | function | smth | if_stat;
+statement : assign| add | print | minus | multiply | divide | mod | increment | decrement | shl | shr | function | smth | if_stat;
 
 assign    : 'let' ID '=' (NUMBER | ID | FLOAT |string) ;
 print     : 'print' (NUMBER | ID | FLOAT | string | CYRILLIC) ;
@@ -12,9 +12,11 @@ divide    : '/' (NUMBER | ID | FLOAT) 'to' ID ;
 mod       : '%' (NUMBER | ID | FLOAT) 'to' ID ;
 increment : '++' (ID) 'to' ID ;
 decrement : '--' (ID) 'to' ID ;
+shl       : '<<' (NUMBER | ID | FLOAT) 'to' (NUMBER | ID | FLOAT) ;
+shr       : '>>' (NUMBER | ID | FLOAT) 'to' (NUMBER | ID | FLOAT) ;
 string    : '"' (~('\n' | '"'))* '"';
 function  : 'func' ID '{' (assign | print)* '}';
-smth      : IF expr ELSE expr;
+smth      : IF (expr | stat_block) ELSE (expr | stat_block);
 expr      : '(' (exprtr | exprsmth) ')';
 exprtr    : ID 'is' (TRUE | FALSE);
 exprsmth  : (add | minus | multiply | divide | mod | increment | decrement);

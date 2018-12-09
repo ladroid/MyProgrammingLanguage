@@ -1,16 +1,22 @@
 
-gsquid:UselessImportCheck">Remove this unused import 'org.antlr.v4.runtime.misc.NotNull'.(ï¿Ê÷8Í¿ƒŸÊ,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(úÞ›µ8¶¼øÛÆ,
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8¶¼øÛÆ,
-]squid:S1858"A"getText" returns a string, there's no need to call "toString()".(Ö­Ï¼8¯ïñ Ê,
-Zsquid:UselessImportCheck",Remove this unused import 'java.util.Stack'.(ÞÈ†üúÿÿÿÿ8ˆÊÂÚÆ,
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ôã›š8¶¼øÛÆ,
-fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«œ‡8¶¼øÛÆ,
+W
+squid:S106’"9Replace this use of System.out or System.err by a logger.(ôã›š8–•ÃÌË,
+bsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö©ê—
+nsquid:CommentedOutCodeLines"<This block of commented-out lines of code should be removed.(œŽ‚¸ÿÿÿÿÿ8ßÿ…ËË,
+isquid:CommentedOutCodeLine•"<This block of commented-out lines of code should be removed.(«œ‡8–•ÃÌË,
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í¿ƒŸÊ,
+osquid:UselessImportCheck"DRemove this unused import 'org.antlr.v4.runtime.ANTLRErrorStrategy'.(¼Èî­8Í¿ƒŸÊ,
+\
+squid:S106Ž"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8–•ÃÌË,
+[
+squid:S106~"9Replace this use of System.out or System.err by a logger.(ðÙùÿÿÿÿ8åàúÊË,
+isquid:UselessImportCheck">Remove this unused import 'org.antlr.v4.runtime.misc.NotNull'.(ï¿Ê÷8Í¿ƒŸÊ,
+`squid:S1858‘"A"getText" returns a string, there's no need to call "toString()".(Ö­Ï¼8–•ÃÌË,
 1squid:S1220""Move this file to a named package.
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8¶¼øÛÆ,
-msquid:UselessImportCheck"DRemove this unused import 'org.antlr.v4.runtime.ANTLRErrorStrategy'.(¼Èî­8Í¿ƒŸÊ,
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í¿ƒŸÊ,
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö©ê—
+\squid:UselessImportCheck",Remove this unused import 'java.util.Stack'.(ÞÈ†üúÿÿÿÿ8ˆÊÂÚÆ,
+V
+squid:S106{"9Replace this use of System.out or System.err by a logger.(¥¡ùÓ8µÖëÊË,
+jsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(úÞ›µ8–•ÃÌË,
+W
+squid:S106Š"9Replace this use of System.out or System.err by a logger.(ôã›š8–•ÃÌË,
+nsquid:S1764z"KCorrect one of the identical sub-expressions on both sides of operator "=="(ÎŸœäþÿÿÿÿ8Öþ¹ÌË,

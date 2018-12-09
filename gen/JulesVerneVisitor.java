@@ -76,6 +76,18 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecrement(JulesVerneParser.DecrementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#shl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShl(JulesVerneParser.ShlContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#shr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShr(JulesVerneParser.ShrContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -117,6 +117,26 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitDecrement(JulesVerneParser.DecrementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#shl}.
+	 * @param ctx the parse tree
+	 */
+	void enterShl(JulesVerneParser.ShlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#shl}.
+	 * @param ctx the parse tree
+	 */
+	void exitShl(JulesVerneParser.ShlContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#shr}.
+	 * @param ctx the parse tree
+	 */
+	void enterShr(JulesVerneParser.ShrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#shr}.
+	 * @param ctx the parse tree
+	 */
+	void exitShr(JulesVerneParser.ShrContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree
 	 */

@@ -111,7 +111,27 @@ public class MyListener extends JulesVerneBaseListener {
         variables.put(variableName, --value);
     }
 
-//    @Override
+    @Override
+    public void exitShl(JulesVerneParser.ShlContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, variables.get(variableName) << value);
+    }
+
+    @Override
+    public void exitShr(JulesVerneParser.ShrContext ctx) {
+        String variableName = ctx.ID().size() > 1 ? ctx.ID(1).getText()
+                : ctx.ID(0).getText();
+        int value = ctx.ID().size() > 1 ? variables.get(ctx.ID(0).getText())
+                : Integer.parseInt(ctx.ID(1).getText());
+
+        variables.put(variableName, variables.get(variableName) >> value);
+    }
+
+    //    @Override
 //    public void exitIf_stat(JulesVerneParser.If_statContext ctx) {
 //        IfStatement ifStatement = new IfStatement();
 //        ifStatement.visitIf_stat(ctx);
@@ -119,11 +139,11 @@ public class MyListener extends JulesVerneBaseListener {
 
     @Override
     public void exitSmth(JulesVerneParser.SmthContext ctx) {
-        if(ctx.expr(0) == ctx.expr(0)) {
-            System.out.println("true!");
+        if(ctx.expr(0).getText() == ctx.expr(0).getText()) {
+            System.out.println(ctx.expr(1).exprtr().TRUE().getText());
         }
         else {
-            System.out.println("false!");
+            System.out.println(ctx.expr(1).exprtr().FALSE().getText());
         }
     }
 
