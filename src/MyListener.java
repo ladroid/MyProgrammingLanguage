@@ -1,3 +1,9 @@
+
+/*
+ * Deveoped by Volodymyr Kadzhaia on 2018
+ * Copyright (c) 2018.
+ */
+
 import org.antlr.v4.runtime.ANTLRErrorStrategy;
 import org.antlr.v4.runtime.misc.NotNull;
 

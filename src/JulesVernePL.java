@@ -1,3 +1,9 @@
+
+/*
+ * Deveoped by Volodymyr Kadzhaia on 2018
+ * Copyright (c) 2018.
+ */
+
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.CommonTokenStream;
