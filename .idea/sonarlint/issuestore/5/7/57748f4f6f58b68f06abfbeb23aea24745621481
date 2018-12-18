@@ -1,0 +1,15 @@
+
+^squid:S2123ª":Remove this increment or correct the code not to waste it.(­ŸÇÍøÿÿÿÿ8£è¤Ÿû,
+1squid:S1220""Move this file to a named package.
+Xsquid:S1854–"9Remove this useless assignment to local variable "value".(¹¼Ó8¾¢Ÿû,
+nsquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(…ÇÙÿÿÿÿÿ8óÙŸû,
+[
+squid:S106""9Replace this use of System.out or System.err by a logger.(¹üœøÿÿÿÿ8•§û,
+V
+squid:S106D"9Replace this use of System.out or System.err by a logger.(ôã›š8„âû,
+V
+squid:S106N"9Replace this use of System.out or System.err by a logger.(ôã›š8„âû,
+]squid:S1854ª"9Remove this useless assignment to local variable "value".(­ŸÇÍøÿÿÿÿ8£è¤Ÿû,
+Ysquid:S2123–":Remove this increment or correct the code not to waste it.(¹¼Ó8ÅÙ¢Ÿû,
+[
+squid:S106I"9Replace this use of System.out or System.err by a logger.(àç„Ñşÿÿÿÿ8„âû,

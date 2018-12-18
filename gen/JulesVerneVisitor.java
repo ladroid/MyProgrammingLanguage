@@ -1,4 +1,4 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/JulesVerne.g4 by ANTLR 4.7
+// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -22,11 +22,35 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(JulesVerneParser.StatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JulesVerneParser#assign}.
+	 * Visit a parse tree produced by {@link JulesVerneParser#arr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssign(JulesVerneParser.AssignContext ctx);
+	T visitArr(JulesVerneParser.ArrContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValue(JulesVerneParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#let}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLet(JulesVerneParser.LetContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#varInt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarInt(JulesVerneParser.VarIntContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#varFloat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarFloat(JulesVerneParser.VarFloatContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#print}.
 	 * @param ctx the parse tree
@@ -70,11 +94,23 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIncrement(JulesVerneParser.IncrementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#decrement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#shl}.
 	 * @param ctx the parse tree
@@ -87,6 +123,30 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitShr(JulesVerneParser.ShrContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNotV(JulesVerneParser.NotVContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree

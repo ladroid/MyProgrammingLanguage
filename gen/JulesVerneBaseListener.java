@@ -1,4 +1,4 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/JulesVerne.g4 by ANTLR 4.7
+// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -39,13 +39,61 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssign(JulesVerneParser.AssignContext ctx) { }
+	@Override public void enterArr(JulesVerneParser.ArrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssign(JulesVerneParser.AssignContext ctx) { }
+	@Override public void exitArr(JulesVerneParser.ArrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValue(JulesVerneParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValue(JulesVerneParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLet(JulesVerneParser.LetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLet(JulesVerneParser.LetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarInt(JulesVerneParser.VarIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarInt(JulesVerneParser.VarIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarFloat(JulesVerneParser.VarFloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarFloat(JulesVerneParser.VarFloatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -135,6 +183,18 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDecrement(JulesVerneParser.DecrementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -142,6 +202,18 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDecrement(JulesVerneParser.DecrementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -166,6 +238,54 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitShr(JulesVerneParser.ShrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterXorV(JulesVerneParser.XorVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitXorV(JulesVerneParser.XorVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOrV(JulesVerneParser.OrVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrV(JulesVerneParser.OrVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAndV(JulesVerneParser.AndVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAndV(JulesVerneParser.AndVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNotV(JulesVerneParser.NotVContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNotV(JulesVerneParser.NotVContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

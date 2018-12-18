@@ -1,24 +1,0 @@
-
-W
-squid:S106Ú"9Replace this use of System.out or System.err by a logger.(ôã›š8–•ÃÌË,
-`squid:S1858á"A"getText" returns a string, there's no need to call "toString()".(Ö­Ï¼8–•ÃÌË,
-osquid:UselessImportCheck"DRemove this unused import 'org.antlr.v4.runtime.ANTLRErrorStrategy'.(¼Èî­8Í¿ƒŸÊ,
-jsquid:CommentedOutCodeLineğ"<This block of commented-out lines of code should be removed.(úŞ›µ8–•ÃÌË,
-bsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö©ê—
-W
-squid:S106Ë"9Replace this use of System.out or System.err by a logger.(¥¡ùÓ8µÖëÊË,
-\squid:S1854o"9Remove this useless assignment to local variable "value".(†Ğœíüÿÿÿÿ8ÆĞº¨ù,
-\squid:UselessImportCheck",Remove this unused import 'java.util.Stack'.(ŞÈ†üúÿÿÿÿ8ˆÊÂÚÆ,
-1squid:S1220""Move this file to a named package.
-isquid:CommentedOutCodeLineå"<This block of commented-out lines of code should be removed.(«œ‡8–•ÃÌË,
-\
-squid:S106Ş"9Replace this use of System.out or System.err by a logger.(àç„Ñşÿÿÿÿ8–•ÃÌË,
-Xsquid:S1854ƒ"9Remove this useless assignment to local variable "value".(Õœ­8¨©»¨ù,
-osquid:CommentedOutCodeLineÃ"<This block of commented-out lines of code should be removed.(œ‚¸ÿÿÿÿÿ8ßÿ…ËË,
-\
-squid:S106Î"9Replace this use of System.out or System.err by a logger.(ğÙùÿÿÿÿ8åàúÊË,
-W
-squid:S106â"9Replace this use of System.out or System.err by a logger.(ôã›š8–•ÃÌË,
-[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í¿ƒŸÊ,
-isquid:UselessImportCheck">Remove this unused import 'org.antlr.v4.runtime.misc.NotNull'.(ï¿Ê÷8Í¿ƒŸÊ,
-osquid:S1764Ê"KCorrect one of the identical sub-expressions on both sides of operator "=="(ÎŸœäşÿÿÿÿ8Öş¹ÌË,

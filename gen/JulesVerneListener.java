@@ -1,4 +1,4 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/JulesVerne.g4 by ANTLR 4.7
+// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -27,15 +27,55 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitStatement(JulesVerneParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JulesVerneParser#assign}.
+	 * Enter a parse tree produced by {@link JulesVerneParser#arr}.
 	 * @param ctx the parse tree
 	 */
-	void enterAssign(JulesVerneParser.AssignContext ctx);
+	void enterArr(JulesVerneParser.ArrContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JulesVerneParser#assign}.
+	 * Exit a parse tree produced by {@link JulesVerneParser#arr}.
 	 * @param ctx the parse tree
 	 */
-	void exitAssign(JulesVerneParser.AssignContext ctx);
+	void exitArr(JulesVerneParser.ArrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(JulesVerneParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(JulesVerneParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#let}.
+	 * @param ctx the parse tree
+	 */
+	void enterLet(JulesVerneParser.LetContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#let}.
+	 * @param ctx the parse tree
+	 */
+	void exitLet(JulesVerneParser.LetContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#varInt}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarInt(JulesVerneParser.VarIntContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#varInt}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarInt(JulesVerneParser.VarIntContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#varFloat}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarFloat(JulesVerneParser.VarFloatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#varFloat}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarFloat(JulesVerneParser.VarFloatContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#print}.
 	 * @param ctx the parse tree
@@ -107,6 +147,16 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitIncrement(JulesVerneParser.IncrementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void enterIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#incrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void exitIncrementPostfix(JulesVerneParser.IncrementPostfixContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#decrement}.
 	 * @param ctx the parse tree
 	 */
@@ -116,6 +166,16 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDecrement(JulesVerneParser.DecrementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#decrementPostfix}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecrementPostfix(JulesVerneParser.DecrementPostfixContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#shl}.
 	 * @param ctx the parse tree
@@ -136,6 +196,46 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitShr(JulesVerneParser.ShrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 */
+	void enterXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#xorV}.
+	 * @param ctx the parse tree
+	 */
+	void exitXorV(JulesVerneParser.XorVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#orV}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrV(JulesVerneParser.OrVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#andV}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndV(JulesVerneParser.AndVContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotV(JulesVerneParser.NotVContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#notV}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotV(JulesVerneParser.NotVContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#string}.
 	 * @param ctx the parse tree

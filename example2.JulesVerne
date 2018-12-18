@@ -1,0 +1,48 @@
+func main() {
+
+    var: Int a = 5
+    var: Int b = 10
+    var: Int k = 10
+    var: Int c = 3
+
+    var: Int n = 2
+    var: Int p = 4
+
+
+    var: Int h = 3
+    var: Int g = 5
+
+    var: Int m = 6
+    var: Int x = 9
+
+    var: Int v = 7
+
+    + 3 to b
+    * 2 to a
+    % 3 to k
+    ++ c to c
+
+    << p to n
+
+    ^ h to g
+    | m to x
+    ~v to v
+
+    print n
+
+    print g
+    print x
+    print v
+
+    print c
+    print k
+    print b
+    print a
+    print "Hello"
+    print "Привет"
+
+    int array[] = {1, 2, 3, 5, 6, 8, 10, 100}
+    let axel = 120
+    print axel
+    print array
+}
