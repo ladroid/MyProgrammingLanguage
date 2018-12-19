@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import java.util.*;
 
 //TODO: rename project from JulesVernePL to Komorebi
+//TODO: make function
 
 public class MyListener extends JulesVerneBaseListener {
 
