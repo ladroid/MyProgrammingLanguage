@@ -1,24 +1,24 @@
 
-osquid:CommentedOutCodeLineÿ"<This block of commented-out lines of code should be removed.(œŽ‚¸ÿÿÿÿÿ8ÅÁÜŸû,
-nsquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(Ýáûœúÿÿÿÿ8²¤ÿŸû,
-jsquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(ÓáˆŸ8ÅÁÜŸû,
-W
-squid:S106‡"9Replace this use of System.out or System.err by a logger.(¥¡ùÓ8ÅÁÜŸû,
-\
-squid:S106š"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8ÅÁÜŸû,
-osquid:CommentedOutCodeLinež"<This block of commented-out lines of code should be removed.(»áÄšùÿÿÿÿ8ÅÁÜŸû,
-W
-squid:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
-8squid:S1700§"Rename field "value"(‚ëÌ§ýÿÿÿÿ8ÅÁÜŸû,
-W
-squid:S106–"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
 W
 squid:S106 "9Replace this use of System.out or System.err by a logger.(—«Ê„8—¯øŸû,
-8squid:S1220""Move this file to a named package.8éÍÁàú,
-Vsquid:S1854"8Remove this useless assignment to local variable "name".(µŠ–¯8¾»Š û,
+W
+squid:S106–"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
 \
 squid:S106Š"9Replace this use of System.out or System.err by a logger.(ðÙùÿÿÿÿ8ÅÁÜŸû,
-osquid:S1764†"KCorrect one of the identical sub-expressions on both sides of operator "=="(ÎŸœäþÿÿÿÿ8ÅÁÜŸû,
-Xsquid:S1854¿"9Remove this useless assignment to local variable "value".(Õžœ­8ÅÁÜŸû,
-]squid:S1854«"9Remove this useless assignment to local variable "value".(†Ðœíüÿÿÿÿ8ÅÁÜŸû,
+osquid:CommentedOutCodeLinež"<This block of commented-out lines of code should be removed.(»áÄšùÿÿÿÿ8ÅÁÜŸû,
 Gsquid:S1481")Remove this unused "name" local variable.(µŠ–¯8¾»Š û,
+Vsquid:S1854"8Remove this useless assignment to local variable "name".(µŠ–¯8¾»Š û,
+W
+squid:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
+osquid:S1764†"KCorrect one of the identical sub-expressions on both sides of operator "=="(ÎŸœäþÿÿÿÿ8ÅÁÜŸû,
+]squid:S1854«"9Remove this useless assignment to local variable "value".(†Ðœíüÿÿÿÿ8ÅÁÜŸû,
+W
+squid:S106‡"9Replace this use of System.out or System.err by a logger.(¥¡ùÓ8ÅÁÜŸû,
+Xsquid:S1854¿"9Remove this useless assignment to local variable "value".(Õžœ­8ÅÁÜŸû,
+8squid:S1700§"Rename field "value"(‚ëÌ§ýÿÿÿÿ8ÅÁÜŸû,
+osquid:CommentedOutCodeLineÿ"<This block of commented-out lines of code should be removed.(œŽ‚¸ÿÿÿÿÿ8ÅÁÜŸû,
+nsquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(Ýáûœúÿÿÿÿ8²¤ÿŸû,
+8squid:S1220""Move this file to a named package.8éÍÁàú,
+jsquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(ÓáˆŸ8ÅÁÜŸû,
+\
+squid:S106š"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8ÅÁÜŸû,

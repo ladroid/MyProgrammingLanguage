@@ -1,10 +1,10 @@
 
+~squid:UselessImportCheck"SRemove this unused import 'com.sun.xml.internal.ws.policy.privateutil.PolicyUtils'.(Û•‚€8§‰¦àú,
+gsquid:CallToDeprecatedMethod"8Remove this use of "ANTLRInputStream"; it is deprecated.(²¹Ñû8Ý–©àú,
+Ssquid:S1191"5Use classes from the Java API instead of Sun classes.(Û•‚€8§‰¦àú,
+_squid:UselessImportCheck"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8§‰¦àú,
 [
 squid:S106"9Replace this use of System.out or System.err by a logger.(øª½ñüÿÿÿÿ8Ý–©àú,
 gsquid:CallToDeprecatedMethod"8Remove this use of "ANTLRInputStream"; it is deprecated.(²¹Ñû8Ý–©àú,
-~squid:UselessImportCheck"SRemove this unused import 'com.sun.xml.internal.ws.policy.privateutil.PolicyUtils'.(Û•‚€8§‰¦àú,
 nsquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(‚¶öúÿÿÿÿ8èê±Ÿû,
 8squid:S1220""Move this file to a named package.8§‰¦àú,
-Ssquid:S1191"5Use classes from the Java API instead of Sun classes.(Û•‚€8§‰¦àú,
-gsquid:CallToDeprecatedMethod"8Remove this use of "ANTLRInputStream"; it is deprecated.(²¹Ñû8Ý–©àú,
-_squid:UselessImportCheck"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8§‰¦àú,
