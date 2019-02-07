@@ -1,12 +1,36 @@
-func main() {
+//func a (x: Int, y: Int) -> Int {
+    //var: Int ak = 5
+    //+ 3 to ak
+    //print ak
+//}
 
+func main() {
+    
     var: Int a = 5
     var: Int b = 10
     var: Int k = 10
     var: Int c = 3
 
+    var: String str = "Hello World"
+    print str
+
     var: Int n = 2
     var: Int p = 4
+    var: Int nu = 4
+
+    nu == p
+    "Hello" concat "World"
+
+    var: Int df = 10
+    var: Int ads = 23
+    var: Int afd = 34
+    while(df < 20) {
+        print df
+        + 3 to ads
+        print ads
+        - 43 to afd
+        print afd
+    }
 
 
     var: Int h = 3
@@ -38,11 +62,50 @@ func main() {
     print k
     print b
     print a
-    print "Hello"
+    print "Hello World"
     print "Привет"
 
     int array[] = {1, 2, 3, 5, 6, 8, 10, 100}
-    let axel = 120
-    print axel
     print array
+
+    if(c == k) {
+        print "trueee"
+    } else {
+        print "falseee"
+    }
+
+    let lo = 12
+    var: Int dfg = 1
+    for(dfg in lo) {
+        print dfg
+    }
+
+    var: Int cvb = 0
+    let www = 12
+    for(cvb in reversed(www)) {
+        print cvb
+    }
+
+    print "Japanese -> こんにちは"
+    print "Korean -> 여보세요"
+    print "Emoji -> 😀"
+    print "Arabic -> مرحبا"
+
+    let nup = 12
+    let pup = 14
+    nup = pup
+    print nup
+
+    var: Float akman = 12.1234
+    print akman
+
+    let artsd = 0
+    int arrss[] = {1, 2, 3}
+    for(artsd in arrss.length()) {
+        print artsd
+    }
+
+    //open ("/Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/LICENSE.txt")
 }
+
+

@@ -3,6 +3,8 @@
  * Copyright (c) 2018.
  */
 
+package com.ladroid.julesvernepl;
+
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
@@ -69,7 +71,7 @@ public class MyListenerVisitor extends JulesVerneBaseVisitor<Object> {
                 return outputNum;
             }
             else {
-                String outputStr = ctx.string().getText();
+                String outputStr = ctx.STRING().getText();
                 System.out.println(outputStr);
                 return outputStr;
             }

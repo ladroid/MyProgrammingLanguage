@@ -2,7 +2,9 @@
  * Deveoped by Volodymyr Kadzhaia on 2018
  * Copyright (c) 2018.
  */
-import org.antlr.v4.runtime.*;
+
+package com.ladroid.julesvernepl;
+
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;

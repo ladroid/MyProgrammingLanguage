@@ -1,4 +1,4 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
+// Generated from /Users/lado/Documents/MyProgrammingLanguage/com.ladroid.julesvernepl.JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -91,7 +91,7 @@ public class JulesVerneLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "JulesVerne.g4"; }
+	public String getGrammarFileName() { return "com/ladroid/julesvernepl/JulesVerne.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

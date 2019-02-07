@@ -1,4 +1,10 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
+/*
+ * Deveoped by Volodymyr Kadzhaia on 2018
+ * Copyright (c) 2018.
+ */
+
+package com.ladroid.julesvernepl;// Generated from /Users/lado/Documents/MyProgrammingLanguage/com.ladroid.julesvernepl.JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
+import com.ladroid.julesvernepl.JulesVerneParser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -148,17 +154,29 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNotV(JulesVerneParser.NotVContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JulesVerneParser#string}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitString(JulesVerneParser.StringContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#function}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFunction(JulesVerneParser.FunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#params}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParams(JulesVerneParser.ParamsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#param}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParam(JulesVerneParser.ParamContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JulesVerneParser#typ}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTyp(JulesVerneParser.TypContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#smth}.
 	 * @param ctx the parse tree
@@ -176,13 +194,13 @@ public interface JulesVerneVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprtr(JulesVerneParser.ExprtrContext ctx);
+	//T visitExprtr(JulesVerneParser.ExprtrContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JulesVerneParser#exprsmth}.
+	 * Visit a parse tree produced by {@link JulesVerneParser#//exprsmth}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExprsmth(JulesVerneParser.ExprsmthContext ctx);
+	//T visitExprsmth(JulesVerneParser.ExprsmthContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JulesVerneParser#if_stat}.
 	 * @param ctx the parse tree

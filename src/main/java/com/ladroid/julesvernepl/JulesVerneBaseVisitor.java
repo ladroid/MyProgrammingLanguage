@@ -1,4 +1,9 @@
-// Generated from /Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
+/*
+ * Deveoped by Volodymyr Kadzhaia on 2018
+ * Copyright (c) 2018.
+ */
+
+package com.ladroid.julesvernepl;// Generated from /Users/lado/Documents/MyProgrammingLanguage/com.ladroid.julesvernepl.JulesVernePL/src/main/java/JulesVerne.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -177,14 +182,28 @@ public class JulesVerneBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitString(JulesVerneParser.StringContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction(JulesVerneParser.FunctionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunction(JulesVerneParser.FunctionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParams(JulesVerneParser.ParamsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitParam(JulesVerneParser.ParamContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitTyp(JulesVerneParser.TypContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -205,14 +224,14 @@ public class JulesVerneBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExprtr(JulesVerneParser.ExprtrContext ctx) { return visitChildren(ctx); }
+	//@Override public T visitExprtr(JulesVerneParser.ExprtrContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExprsmth(JulesVerneParser.ExprsmthContext ctx) { return visitChildren(ctx); }
+	//@Override public T visitExprsmth(JulesVerneParser.ExprsmthContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

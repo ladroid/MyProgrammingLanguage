@@ -1,8 +1,8 @@
 
-fsquid:S3008
-"ORename this field "VOID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á£³Æ
-Asquid:S1444
-"*Make this "public static VOID" field final(Á£³Æ
-0squid:S1700"Rename field "value"(‚ëÌ§ýÿÿÿÿ
 ~"squid:ClassVariableVisibilityCheck
 "PMake VOID a static final constant or non-public and provide accessors if needed.(Á£³Æ
+fsquid:S3008
+"ORename this field "VOID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á£³Æ
+0squid:S1700"Rename field "value"(‚ëÌ§ýÿÿÿÿ
+Asquid:S1444
+"*Make this "public static VOID" field final(Á£³Æ

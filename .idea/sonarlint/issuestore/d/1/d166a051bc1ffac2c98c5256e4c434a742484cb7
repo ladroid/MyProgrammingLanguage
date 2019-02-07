@@ -1,26 +1,0 @@
-
-osquid:S1764ˆ"KCorrect one of the identical sub-expressions on both sides of operator "=="(ÎŸœäþÿÿÿÿ8ÅÁÜŸû,
-nsquid:CommentedOutCodeLine%"<This block of commented-out lines of code should be removed.(Ýáûœúÿÿÿÿ8²¤ÿŸû,
-Xsquid:S1854Á"9Remove this useless assignment to local variable "value".(Õžœ­8ÅÁÜŸû,
-\
-squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ðÙùÿÿÿÿ8ÅÁÜŸû,
-W
-squid:S106¢"9Replace this use of System.out or System.err by a logger.(—«Ê„8—¯øŸû,
-jsquid:CommentedOutCodeLine£"<This block of commented-out lines of code should be removed.(ÓáˆŸ8ÅÁÜŸû,
-Psquid:S1135
-"2Complete the task associated to this TODO comment.(¤øóè8ŠÈÌ¸ü,
-Vsquid:S1854"8Remove this useless assignment to local variable "name".(µŠ–¯8¾»Š û,
-\
-squid:S106œ"9Replace this use of System.out or System.err by a logger.(àç„Ñþÿÿÿÿ8ÅÁÜŸû,
-8squid:S1220""Move this file to a named package.8éÍÁàú,
-]squid:S1854­"9Remove this useless assignment to local variable "value".(†Ðœíüÿÿÿÿ8ÅÁÜŸû,
-osquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(»áÄšùÿÿÿÿ8ÅÁÜŸû,
-osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(œŽ‚¸ÿÿÿÿÿ8ÅÁÜŸû,
-W
-squid:S106˜"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
-W
-squid:S106‰"9Replace this use of System.out or System.err by a logger.(¥¡ùÓ8ÅÁÜŸû,
-Gsquid:S1481")Remove this unused "name" local variable.(µŠ–¯8¾»Š û,
-W
-squid:S106¡"9Replace this use of System.out or System.err by a logger.(ôã›š8ÅÁÜŸû,
-8squid:S1700©"Rename field "value"(‚ëÌ§ýÿÿÿÿ8ÅÁÜŸû,
