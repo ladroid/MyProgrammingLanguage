@@ -1,0 +1,3601 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ARROW
+    ASYNC
+    CALLBACK
+    COMMA
+    FLOAT
+    INT
+    LSQRBRACK
+    POW
+    RETURN
+    RSQRBRACK
+    SEMICOLON
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression PLUS term
+Rule 2     expression -> expression MINUS term
+Rule 3     expression -> MINUS term
+Rule 4     expression -> term
+Rule 5     term -> FUNC LPAREN RPAREN LBRACES expression RBRACES
+Rule 6     term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+Rule 7     term -> IF LPAREN comparison RPAREN term
+Rule 8     term -> IF LPAREN comparison RPAREN term ELSE term
+Rule 9     comparison -> expression EQUAL term
+Rule 10    comparison -> expression NOTEQ term
+Rule 11    comparison -> expression LARGE term
+Rule 12    comparison -> expression SMALL term
+Rule 13    comparison -> expression LRGEQ term
+Rule 14    comparison -> expression SMLEQ term
+Rule 15    comparison -> term EQUAL term
+Rule 16    comparison -> term NOTEQ term
+Rule 17    comparison -> term LARGE term
+Rule 18    comparison -> term SMALL term
+Rule 19    term -> WHILE LPAREN comparison RPAREN term
+Rule 20    term -> FOR LPAREN ID IN factor RPAREN term
+Rule 21    term -> term TIMES factor
+Rule 22    term -> term DIVIDE factor
+Rule 23    term -> ID EQUALS factor
+Rule 24    term -> term SHL factor
+Rule 25    term -> term SHR factor
+Rule 26    term -> term MOD factor
+Rule 27    term -> term ANDLOGIC factor
+Rule 28    term -> term ORLOGIC factor
+Rule 29    term -> term XORLOGIC factor
+Rule 30    term -> OPEN LPAREN factor RPAREN
+Rule 31    term -> VAR COLON TYPINT ID EQUALS factor
+Rule 32    term -> VAR COLON TYPSTRING ID EQUALS factor
+Rule 33    term -> LET ID EQUALS factor
+Rule 34    term -> PRINT term
+Rule 35    term -> factor
+Rule 36    factor -> NUMBER
+Rule 37    factor -> DECIMAL
+Rule 38    factor -> STRING
+Rule 39    factor -> EXIT
+Rule 40    factor -> HELP
+Rule 41    factor -> COPYRIGHT
+Rule 42    factor -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+ANDLOGIC             : 27
+ARROW                : 
+ASYNC                : 
+CALLBACK             : 
+CASE                 : 6
+COLON                : 6 6 31 32
+COMMA                : 
+COPYRIGHT            : 41
+DECIMAL              : 37
+DEFAULT              : 6
+DIVIDE               : 22
+ELSE                 : 8
+EQUAL                : 9 15
+EQUALS               : 23 31 32 33
+EXIT                 : 39
+FLOAT                : 
+FOR                  : 20
+FUNC                 : 5
+HELP                 : 40
+ID                   : 20 23 31 32 33
+IF                   : 7 8
+IN                   : 20
+INT                  : 
+LARGE                : 11 17
+LBRACES              : 5 6
+LET                  : 33
+LPAREN               : 5 7 8 19 20 30 42
+LRGEQ                : 13
+LSQRBRACK            : 
+MINUS                : 2 3
+MOD                  : 26
+NOTEQ                : 10 16
+NUMBER               : 36
+OPEN                 : 30
+ORLOGIC              : 28
+PLUS                 : 1
+POW                  : 
+PRINT                : 34
+RBRACES              : 5 6
+RETURN               : 
+RPAREN               : 5 7 8 19 20 30 42
+RSQRBRACK            : 
+SEMICOLON            : 
+SHL                  : 24
+SHR                  : 25
+SMALL                : 12 18
+SMLEQ                : 14
+STRING               : 38
+SWITCH               : 6
+TIMES                : 21
+TYPINT               : 31
+TYPSTRING            : 32
+VAR                  : 31 32
+WHILE                : 19
+XORLOGIC             : 29
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparison           : 7 8 19
+expression           : 1 2 5 6 6 6 6 9 10 11 12 13 14 42 0
+factor               : 20 21 22 23 24 25 26 27 28 29 30 31 32 33 35
+term                 : 1 2 3 4 7 8 8 9 10 11 12 13 14 15 15 16 16 17 17 18 18 19 20 21 22 24 25 26 27 28 29 34
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 1
+
+    (0) S' -> expression .
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 2
+
+    (4) expression -> term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    PLUS            reduce using rule 4 (expression -> term .)
+    MINUS           reduce using rule 4 (expression -> term .)
+    $end            reduce using rule 4 (expression -> term .)
+    RPAREN          reduce using rule 4 (expression -> term .)
+    LBRACES         reduce using rule 4 (expression -> term .)
+    RBRACES         reduce using rule 4 (expression -> term .)
+    COLON           reduce using rule 4 (expression -> term .)
+    DEFAULT         reduce using rule 4 (expression -> term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 3
+
+    (3) expression -> MINUS . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 32
+    factor                         shift and go to state 11
+
+state 4
+
+    (5) term -> FUNC . LPAREN RPAREN LBRACES expression RBRACES
+
+    LPAREN          shift and go to state 33
+
+
+state 5
+
+    (42) factor -> LPAREN . expression RPAREN
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 34
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 6
+
+    (6) term -> SWITCH . expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 35
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 7
+
+    (7) term -> IF . LPAREN comparison RPAREN term
+    (8) term -> IF . LPAREN comparison RPAREN term ELSE term
+
+    LPAREN          shift and go to state 36
+
+
+state 8
+
+    (19) term -> WHILE . LPAREN comparison RPAREN term
+
+    LPAREN          shift and go to state 37
+
+
+state 9
+
+    (20) term -> FOR . LPAREN ID IN factor RPAREN term
+
+    LPAREN          shift and go to state 38
+
+
+state 10
+
+    (23) term -> ID . EQUALS factor
+
+    EQUALS          shift and go to state 39
+
+
+state 11
+
+    (35) term -> factor .
+
+    TIMES           reduce using rule 35 (term -> factor .)
+    DIVIDE          reduce using rule 35 (term -> factor .)
+    SHL             reduce using rule 35 (term -> factor .)
+    SHR             reduce using rule 35 (term -> factor .)
+    MOD             reduce using rule 35 (term -> factor .)
+    ANDLOGIC        reduce using rule 35 (term -> factor .)
+    ORLOGIC         reduce using rule 35 (term -> factor .)
+    XORLOGIC        reduce using rule 35 (term -> factor .)
+    PLUS            reduce using rule 35 (term -> factor .)
+    MINUS           reduce using rule 35 (term -> factor .)
+    $end            reduce using rule 35 (term -> factor .)
+    RPAREN          reduce using rule 35 (term -> factor .)
+    LBRACES         reduce using rule 35 (term -> factor .)
+    EQUAL           reduce using rule 35 (term -> factor .)
+    NOTEQ           reduce using rule 35 (term -> factor .)
+    LARGE           reduce using rule 35 (term -> factor .)
+    SMALL           reduce using rule 35 (term -> factor .)
+    LRGEQ           reduce using rule 35 (term -> factor .)
+    SMLEQ           reduce using rule 35 (term -> factor .)
+    RBRACES         reduce using rule 35 (term -> factor .)
+    COLON           reduce using rule 35 (term -> factor .)
+    DEFAULT         reduce using rule 35 (term -> factor .)
+    ELSE            reduce using rule 35 (term -> factor .)
+
+
+state 12
+
+    (30) term -> OPEN . LPAREN factor RPAREN
+
+    LPAREN          shift and go to state 40
+
+
+state 13
+
+    (31) term -> VAR . COLON TYPINT ID EQUALS factor
+    (32) term -> VAR . COLON TYPSTRING ID EQUALS factor
+
+    COLON           shift and go to state 41
+
+
+state 14
+
+    (33) term -> LET . ID EQUALS factor
+
+    ID              shift and go to state 42
+
+
+state 15
+
+    (34) term -> PRINT . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 43
+    factor                         shift and go to state 11
+
+state 16
+
+    (36) factor -> NUMBER .
+
+    TIMES           reduce using rule 36 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 36 (factor -> NUMBER .)
+    SHL             reduce using rule 36 (factor -> NUMBER .)
+    SHR             reduce using rule 36 (factor -> NUMBER .)
+    MOD             reduce using rule 36 (factor -> NUMBER .)
+    ANDLOGIC        reduce using rule 36 (factor -> NUMBER .)
+    ORLOGIC         reduce using rule 36 (factor -> NUMBER .)
+    XORLOGIC        reduce using rule 36 (factor -> NUMBER .)
+    PLUS            reduce using rule 36 (factor -> NUMBER .)
+    MINUS           reduce using rule 36 (factor -> NUMBER .)
+    $end            reduce using rule 36 (factor -> NUMBER .)
+    RPAREN          reduce using rule 36 (factor -> NUMBER .)
+    LBRACES         reduce using rule 36 (factor -> NUMBER .)
+    EQUAL           reduce using rule 36 (factor -> NUMBER .)
+    NOTEQ           reduce using rule 36 (factor -> NUMBER .)
+    LARGE           reduce using rule 36 (factor -> NUMBER .)
+    SMALL           reduce using rule 36 (factor -> NUMBER .)
+    LRGEQ           reduce using rule 36 (factor -> NUMBER .)
+    SMLEQ           reduce using rule 36 (factor -> NUMBER .)
+    RBRACES         reduce using rule 36 (factor -> NUMBER .)
+    COLON           reduce using rule 36 (factor -> NUMBER .)
+    DEFAULT         reduce using rule 36 (factor -> NUMBER .)
+    ELSE            reduce using rule 36 (factor -> NUMBER .)
+
+
+state 17
+
+    (37) factor -> DECIMAL .
+
+    TIMES           reduce using rule 37 (factor -> DECIMAL .)
+    DIVIDE          reduce using rule 37 (factor -> DECIMAL .)
+    SHL             reduce using rule 37 (factor -> DECIMAL .)
+    SHR             reduce using rule 37 (factor -> DECIMAL .)
+    MOD             reduce using rule 37 (factor -> DECIMAL .)
+    ANDLOGIC        reduce using rule 37 (factor -> DECIMAL .)
+    ORLOGIC         reduce using rule 37 (factor -> DECIMAL .)
+    XORLOGIC        reduce using rule 37 (factor -> DECIMAL .)
+    PLUS            reduce using rule 37 (factor -> DECIMAL .)
+    MINUS           reduce using rule 37 (factor -> DECIMAL .)
+    $end            reduce using rule 37 (factor -> DECIMAL .)
+    RPAREN          reduce using rule 37 (factor -> DECIMAL .)
+    LBRACES         reduce using rule 37 (factor -> DECIMAL .)
+    EQUAL           reduce using rule 37 (factor -> DECIMAL .)
+    NOTEQ           reduce using rule 37 (factor -> DECIMAL .)
+    LARGE           reduce using rule 37 (factor -> DECIMAL .)
+    SMALL           reduce using rule 37 (factor -> DECIMAL .)
+    LRGEQ           reduce using rule 37 (factor -> DECIMAL .)
+    SMLEQ           reduce using rule 37 (factor -> DECIMAL .)
+    RBRACES         reduce using rule 37 (factor -> DECIMAL .)
+    COLON           reduce using rule 37 (factor -> DECIMAL .)
+    DEFAULT         reduce using rule 37 (factor -> DECIMAL .)
+    ELSE            reduce using rule 37 (factor -> DECIMAL .)
+
+
+state 18
+
+    (38) factor -> STRING .
+
+    TIMES           reduce using rule 38 (factor -> STRING .)
+    DIVIDE          reduce using rule 38 (factor -> STRING .)
+    SHL             reduce using rule 38 (factor -> STRING .)
+    SHR             reduce using rule 38 (factor -> STRING .)
+    MOD             reduce using rule 38 (factor -> STRING .)
+    ANDLOGIC        reduce using rule 38 (factor -> STRING .)
+    ORLOGIC         reduce using rule 38 (factor -> STRING .)
+    XORLOGIC        reduce using rule 38 (factor -> STRING .)
+    PLUS            reduce using rule 38 (factor -> STRING .)
+    MINUS           reduce using rule 38 (factor -> STRING .)
+    $end            reduce using rule 38 (factor -> STRING .)
+    RPAREN          reduce using rule 38 (factor -> STRING .)
+    LBRACES         reduce using rule 38 (factor -> STRING .)
+    EQUAL           reduce using rule 38 (factor -> STRING .)
+    NOTEQ           reduce using rule 38 (factor -> STRING .)
+    LARGE           reduce using rule 38 (factor -> STRING .)
+    SMALL           reduce using rule 38 (factor -> STRING .)
+    LRGEQ           reduce using rule 38 (factor -> STRING .)
+    SMLEQ           reduce using rule 38 (factor -> STRING .)
+    RBRACES         reduce using rule 38 (factor -> STRING .)
+    COLON           reduce using rule 38 (factor -> STRING .)
+    DEFAULT         reduce using rule 38 (factor -> STRING .)
+    ELSE            reduce using rule 38 (factor -> STRING .)
+
+
+state 19
+
+    (39) factor -> EXIT .
+
+    TIMES           reduce using rule 39 (factor -> EXIT .)
+    DIVIDE          reduce using rule 39 (factor -> EXIT .)
+    SHL             reduce using rule 39 (factor -> EXIT .)
+    SHR             reduce using rule 39 (factor -> EXIT .)
+    MOD             reduce using rule 39 (factor -> EXIT .)
+    ANDLOGIC        reduce using rule 39 (factor -> EXIT .)
+    ORLOGIC         reduce using rule 39 (factor -> EXIT .)
+    XORLOGIC        reduce using rule 39 (factor -> EXIT .)
+    PLUS            reduce using rule 39 (factor -> EXIT .)
+    MINUS           reduce using rule 39 (factor -> EXIT .)
+    $end            reduce using rule 39 (factor -> EXIT .)
+    RPAREN          reduce using rule 39 (factor -> EXIT .)
+    LBRACES         reduce using rule 39 (factor -> EXIT .)
+    EQUAL           reduce using rule 39 (factor -> EXIT .)
+    NOTEQ           reduce using rule 39 (factor -> EXIT .)
+    LARGE           reduce using rule 39 (factor -> EXIT .)
+    SMALL           reduce using rule 39 (factor -> EXIT .)
+    LRGEQ           reduce using rule 39 (factor -> EXIT .)
+    SMLEQ           reduce using rule 39 (factor -> EXIT .)
+    RBRACES         reduce using rule 39 (factor -> EXIT .)
+    COLON           reduce using rule 39 (factor -> EXIT .)
+    DEFAULT         reduce using rule 39 (factor -> EXIT .)
+    ELSE            reduce using rule 39 (factor -> EXIT .)
+
+
+state 20
+
+    (40) factor -> HELP .
+
+    TIMES           reduce using rule 40 (factor -> HELP .)
+    DIVIDE          reduce using rule 40 (factor -> HELP .)
+    SHL             reduce using rule 40 (factor -> HELP .)
+    SHR             reduce using rule 40 (factor -> HELP .)
+    MOD             reduce using rule 40 (factor -> HELP .)
+    ANDLOGIC        reduce using rule 40 (factor -> HELP .)
+    ORLOGIC         reduce using rule 40 (factor -> HELP .)
+    XORLOGIC        reduce using rule 40 (factor -> HELP .)
+    PLUS            reduce using rule 40 (factor -> HELP .)
+    MINUS           reduce using rule 40 (factor -> HELP .)
+    $end            reduce using rule 40 (factor -> HELP .)
+    RPAREN          reduce using rule 40 (factor -> HELP .)
+    LBRACES         reduce using rule 40 (factor -> HELP .)
+    EQUAL           reduce using rule 40 (factor -> HELP .)
+    NOTEQ           reduce using rule 40 (factor -> HELP .)
+    LARGE           reduce using rule 40 (factor -> HELP .)
+    SMALL           reduce using rule 40 (factor -> HELP .)
+    LRGEQ           reduce using rule 40 (factor -> HELP .)
+    SMLEQ           reduce using rule 40 (factor -> HELP .)
+    RBRACES         reduce using rule 40 (factor -> HELP .)
+    COLON           reduce using rule 40 (factor -> HELP .)
+    DEFAULT         reduce using rule 40 (factor -> HELP .)
+    ELSE            reduce using rule 40 (factor -> HELP .)
+
+
+state 21
+
+    (41) factor -> COPYRIGHT .
+
+    TIMES           reduce using rule 41 (factor -> COPYRIGHT .)
+    DIVIDE          reduce using rule 41 (factor -> COPYRIGHT .)
+    SHL             reduce using rule 41 (factor -> COPYRIGHT .)
+    SHR             reduce using rule 41 (factor -> COPYRIGHT .)
+    MOD             reduce using rule 41 (factor -> COPYRIGHT .)
+    ANDLOGIC        reduce using rule 41 (factor -> COPYRIGHT .)
+    ORLOGIC         reduce using rule 41 (factor -> COPYRIGHT .)
+    XORLOGIC        reduce using rule 41 (factor -> COPYRIGHT .)
+    PLUS            reduce using rule 41 (factor -> COPYRIGHT .)
+    MINUS           reduce using rule 41 (factor -> COPYRIGHT .)
+    $end            reduce using rule 41 (factor -> COPYRIGHT .)
+    RPAREN          reduce using rule 41 (factor -> COPYRIGHT .)
+    LBRACES         reduce using rule 41 (factor -> COPYRIGHT .)
+    EQUAL           reduce using rule 41 (factor -> COPYRIGHT .)
+    NOTEQ           reduce using rule 41 (factor -> COPYRIGHT .)
+    LARGE           reduce using rule 41 (factor -> COPYRIGHT .)
+    SMALL           reduce using rule 41 (factor -> COPYRIGHT .)
+    LRGEQ           reduce using rule 41 (factor -> COPYRIGHT .)
+    SMLEQ           reduce using rule 41 (factor -> COPYRIGHT .)
+    RBRACES         reduce using rule 41 (factor -> COPYRIGHT .)
+    COLON           reduce using rule 41 (factor -> COPYRIGHT .)
+    DEFAULT         reduce using rule 41 (factor -> COPYRIGHT .)
+    ELSE            reduce using rule 41 (factor -> COPYRIGHT .)
+
+
+state 22
+
+    (1) expression -> expression PLUS . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 44
+    factor                         shift and go to state 11
+
+state 23
+
+    (2) expression -> expression MINUS . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 45
+    factor                         shift and go to state 11
+
+state 24
+
+    (21) term -> term TIMES . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 46
+
+state 25
+
+    (22) term -> term DIVIDE . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 47
+
+state 26
+
+    (24) term -> term SHL . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 48
+
+state 27
+
+    (25) term -> term SHR . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 49
+
+state 28
+
+    (26) term -> term MOD . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 50
+
+state 29
+
+    (27) term -> term ANDLOGIC . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 51
+
+state 30
+
+    (28) term -> term ORLOGIC . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 52
+
+state 31
+
+    (29) term -> term XORLOGIC . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 53
+
+state 32
+
+    (3) expression -> MINUS term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    PLUS            reduce using rule 3 (expression -> MINUS term .)
+    MINUS           reduce using rule 3 (expression -> MINUS term .)
+    $end            reduce using rule 3 (expression -> MINUS term .)
+    RPAREN          reduce using rule 3 (expression -> MINUS term .)
+    LBRACES         reduce using rule 3 (expression -> MINUS term .)
+    EQUAL           reduce using rule 3 (expression -> MINUS term .)
+    NOTEQ           reduce using rule 3 (expression -> MINUS term .)
+    LARGE           reduce using rule 3 (expression -> MINUS term .)
+    SMALL           reduce using rule 3 (expression -> MINUS term .)
+    LRGEQ           reduce using rule 3 (expression -> MINUS term .)
+    SMLEQ           reduce using rule 3 (expression -> MINUS term .)
+    RBRACES         reduce using rule 3 (expression -> MINUS term .)
+    COLON           reduce using rule 3 (expression -> MINUS term .)
+    DEFAULT         reduce using rule 3 (expression -> MINUS term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 33
+
+    (5) term -> FUNC LPAREN . RPAREN LBRACES expression RBRACES
+
+    RPAREN          shift and go to state 54
+
+
+state 34
+
+    (42) factor -> LPAREN expression . RPAREN
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 55
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 35
+
+    (6) term -> SWITCH expression . LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    LBRACES         shift and go to state 56
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 36
+
+    (7) term -> IF LPAREN . comparison RPAREN term
+    (8) term -> IF LPAREN . comparison RPAREN term ELSE term
+    (9) comparison -> . expression EQUAL term
+    (10) comparison -> . expression NOTEQ term
+    (11) comparison -> . expression LARGE term
+    (12) comparison -> . expression SMALL term
+    (13) comparison -> . expression LRGEQ term
+    (14) comparison -> . expression SMLEQ term
+    (15) comparison -> . term EQUAL term
+    (16) comparison -> . term NOTEQ term
+    (17) comparison -> . term LARGE term
+    (18) comparison -> . term SMALL term
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    comparison                     shift and go to state 57
+    term                           shift and go to state 58
+    expression                     shift and go to state 59
+    factor                         shift and go to state 11
+
+state 37
+
+    (19) term -> WHILE LPAREN . comparison RPAREN term
+    (9) comparison -> . expression EQUAL term
+    (10) comparison -> . expression NOTEQ term
+    (11) comparison -> . expression LARGE term
+    (12) comparison -> . expression SMALL term
+    (13) comparison -> . expression LRGEQ term
+    (14) comparison -> . expression SMLEQ term
+    (15) comparison -> . term EQUAL term
+    (16) comparison -> . term NOTEQ term
+    (17) comparison -> . term LARGE term
+    (18) comparison -> . term SMALL term
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    comparison                     shift and go to state 60
+    term                           shift and go to state 58
+    expression                     shift and go to state 59
+    factor                         shift and go to state 11
+
+state 38
+
+    (20) term -> FOR LPAREN . ID IN factor RPAREN term
+
+    ID              shift and go to state 61
+
+
+state 39
+
+    (23) term -> ID EQUALS . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 62
+
+state 40
+
+    (30) term -> OPEN LPAREN . factor RPAREN
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 63
+
+state 41
+
+    (31) term -> VAR COLON . TYPINT ID EQUALS factor
+    (32) term -> VAR COLON . TYPSTRING ID EQUALS factor
+
+    TYPINT          shift and go to state 64
+    TYPSTRING       shift and go to state 65
+
+
+state 42
+
+    (33) term -> LET ID . EQUALS factor
+
+    EQUALS          shift and go to state 66
+
+
+state 43
+
+    (34) term -> PRINT term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for SHL resolved as shift
+  ! shift/reduce conflict for SHR resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for ANDLOGIC resolved as shift
+  ! shift/reduce conflict for ORLOGIC resolved as shift
+  ! shift/reduce conflict for XORLOGIC resolved as shift
+    PLUS            reduce using rule 34 (term -> PRINT term .)
+    MINUS           reduce using rule 34 (term -> PRINT term .)
+    $end            reduce using rule 34 (term -> PRINT term .)
+    RPAREN          reduce using rule 34 (term -> PRINT term .)
+    LBRACES         reduce using rule 34 (term -> PRINT term .)
+    EQUAL           reduce using rule 34 (term -> PRINT term .)
+    NOTEQ           reduce using rule 34 (term -> PRINT term .)
+    LARGE           reduce using rule 34 (term -> PRINT term .)
+    SMALL           reduce using rule 34 (term -> PRINT term .)
+    LRGEQ           reduce using rule 34 (term -> PRINT term .)
+    SMLEQ           reduce using rule 34 (term -> PRINT term .)
+    RBRACES         reduce using rule 34 (term -> PRINT term .)
+    COLON           reduce using rule 34 (term -> PRINT term .)
+    DEFAULT         reduce using rule 34 (term -> PRINT term .)
+    ELSE            reduce using rule 34 (term -> PRINT term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! TIMES           [ reduce using rule 34 (term -> PRINT term .) ]
+  ! DIVIDE          [ reduce using rule 34 (term -> PRINT term .) ]
+  ! SHL             [ reduce using rule 34 (term -> PRINT term .) ]
+  ! SHR             [ reduce using rule 34 (term -> PRINT term .) ]
+  ! MOD             [ reduce using rule 34 (term -> PRINT term .) ]
+  ! ANDLOGIC        [ reduce using rule 34 (term -> PRINT term .) ]
+  ! ORLOGIC         [ reduce using rule 34 (term -> PRINT term .) ]
+  ! XORLOGIC        [ reduce using rule 34 (term -> PRINT term .) ]
+
+
+state 44
+
+    (1) expression -> expression PLUS term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    PLUS            reduce using rule 1 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 1 (expression -> expression PLUS term .)
+    $end            reduce using rule 1 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 1 (expression -> expression PLUS term .)
+    LBRACES         reduce using rule 1 (expression -> expression PLUS term .)
+    EQUAL           reduce using rule 1 (expression -> expression PLUS term .)
+    NOTEQ           reduce using rule 1 (expression -> expression PLUS term .)
+    LARGE           reduce using rule 1 (expression -> expression PLUS term .)
+    SMALL           reduce using rule 1 (expression -> expression PLUS term .)
+    LRGEQ           reduce using rule 1 (expression -> expression PLUS term .)
+    SMLEQ           reduce using rule 1 (expression -> expression PLUS term .)
+    RBRACES         reduce using rule 1 (expression -> expression PLUS term .)
+    COLON           reduce using rule 1 (expression -> expression PLUS term .)
+    DEFAULT         reduce using rule 1 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 45
+
+    (2) expression -> expression MINUS term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    PLUS            reduce using rule 2 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 2 (expression -> expression MINUS term .)
+    $end            reduce using rule 2 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 2 (expression -> expression MINUS term .)
+    LBRACES         reduce using rule 2 (expression -> expression MINUS term .)
+    EQUAL           reduce using rule 2 (expression -> expression MINUS term .)
+    NOTEQ           reduce using rule 2 (expression -> expression MINUS term .)
+    LARGE           reduce using rule 2 (expression -> expression MINUS term .)
+    SMALL           reduce using rule 2 (expression -> expression MINUS term .)
+    LRGEQ           reduce using rule 2 (expression -> expression MINUS term .)
+    SMLEQ           reduce using rule 2 (expression -> expression MINUS term .)
+    RBRACES         reduce using rule 2 (expression -> expression MINUS term .)
+    COLON           reduce using rule 2 (expression -> expression MINUS term .)
+    DEFAULT         reduce using rule 2 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 46
+
+    (21) term -> term TIMES factor .
+
+    TIMES           reduce using rule 21 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 21 (term -> term TIMES factor .)
+    SHL             reduce using rule 21 (term -> term TIMES factor .)
+    SHR             reduce using rule 21 (term -> term TIMES factor .)
+    MOD             reduce using rule 21 (term -> term TIMES factor .)
+    ANDLOGIC        reduce using rule 21 (term -> term TIMES factor .)
+    ORLOGIC         reduce using rule 21 (term -> term TIMES factor .)
+    XORLOGIC        reduce using rule 21 (term -> term TIMES factor .)
+    PLUS            reduce using rule 21 (term -> term TIMES factor .)
+    MINUS           reduce using rule 21 (term -> term TIMES factor .)
+    $end            reduce using rule 21 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 21 (term -> term TIMES factor .)
+    LBRACES         reduce using rule 21 (term -> term TIMES factor .)
+    EQUAL           reduce using rule 21 (term -> term TIMES factor .)
+    NOTEQ           reduce using rule 21 (term -> term TIMES factor .)
+    LARGE           reduce using rule 21 (term -> term TIMES factor .)
+    SMALL           reduce using rule 21 (term -> term TIMES factor .)
+    LRGEQ           reduce using rule 21 (term -> term TIMES factor .)
+    SMLEQ           reduce using rule 21 (term -> term TIMES factor .)
+    RBRACES         reduce using rule 21 (term -> term TIMES factor .)
+    COLON           reduce using rule 21 (term -> term TIMES factor .)
+    DEFAULT         reduce using rule 21 (term -> term TIMES factor .)
+    ELSE            reduce using rule 21 (term -> term TIMES factor .)
+
+
+state 47
+
+    (22) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 22 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 22 (term -> term DIVIDE factor .)
+    SHL             reduce using rule 22 (term -> term DIVIDE factor .)
+    SHR             reduce using rule 22 (term -> term DIVIDE factor .)
+    MOD             reduce using rule 22 (term -> term DIVIDE factor .)
+    ANDLOGIC        reduce using rule 22 (term -> term DIVIDE factor .)
+    ORLOGIC         reduce using rule 22 (term -> term DIVIDE factor .)
+    XORLOGIC        reduce using rule 22 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 22 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 22 (term -> term DIVIDE factor .)
+    $end            reduce using rule 22 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 22 (term -> term DIVIDE factor .)
+    LBRACES         reduce using rule 22 (term -> term DIVIDE factor .)
+    EQUAL           reduce using rule 22 (term -> term DIVIDE factor .)
+    NOTEQ           reduce using rule 22 (term -> term DIVIDE factor .)
+    LARGE           reduce using rule 22 (term -> term DIVIDE factor .)
+    SMALL           reduce using rule 22 (term -> term DIVIDE factor .)
+    LRGEQ           reduce using rule 22 (term -> term DIVIDE factor .)
+    SMLEQ           reduce using rule 22 (term -> term DIVIDE factor .)
+    RBRACES         reduce using rule 22 (term -> term DIVIDE factor .)
+    COLON           reduce using rule 22 (term -> term DIVIDE factor .)
+    DEFAULT         reduce using rule 22 (term -> term DIVIDE factor .)
+    ELSE            reduce using rule 22 (term -> term DIVIDE factor .)
+
+
+state 48
+
+    (24) term -> term SHL factor .
+
+    TIMES           reduce using rule 24 (term -> term SHL factor .)
+    DIVIDE          reduce using rule 24 (term -> term SHL factor .)
+    SHL             reduce using rule 24 (term -> term SHL factor .)
+    SHR             reduce using rule 24 (term -> term SHL factor .)
+    MOD             reduce using rule 24 (term -> term SHL factor .)
+    ANDLOGIC        reduce using rule 24 (term -> term SHL factor .)
+    ORLOGIC         reduce using rule 24 (term -> term SHL factor .)
+    XORLOGIC        reduce using rule 24 (term -> term SHL factor .)
+    PLUS            reduce using rule 24 (term -> term SHL factor .)
+    MINUS           reduce using rule 24 (term -> term SHL factor .)
+    $end            reduce using rule 24 (term -> term SHL factor .)
+    RPAREN          reduce using rule 24 (term -> term SHL factor .)
+    LBRACES         reduce using rule 24 (term -> term SHL factor .)
+    EQUAL           reduce using rule 24 (term -> term SHL factor .)
+    NOTEQ           reduce using rule 24 (term -> term SHL factor .)
+    LARGE           reduce using rule 24 (term -> term SHL factor .)
+    SMALL           reduce using rule 24 (term -> term SHL factor .)
+    LRGEQ           reduce using rule 24 (term -> term SHL factor .)
+    SMLEQ           reduce using rule 24 (term -> term SHL factor .)
+    RBRACES         reduce using rule 24 (term -> term SHL factor .)
+    COLON           reduce using rule 24 (term -> term SHL factor .)
+    DEFAULT         reduce using rule 24 (term -> term SHL factor .)
+    ELSE            reduce using rule 24 (term -> term SHL factor .)
+
+
+state 49
+
+    (25) term -> term SHR factor .
+
+    TIMES           reduce using rule 25 (term -> term SHR factor .)
+    DIVIDE          reduce using rule 25 (term -> term SHR factor .)
+    SHL             reduce using rule 25 (term -> term SHR factor .)
+    SHR             reduce using rule 25 (term -> term SHR factor .)
+    MOD             reduce using rule 25 (term -> term SHR factor .)
+    ANDLOGIC        reduce using rule 25 (term -> term SHR factor .)
+    ORLOGIC         reduce using rule 25 (term -> term SHR factor .)
+    XORLOGIC        reduce using rule 25 (term -> term SHR factor .)
+    PLUS            reduce using rule 25 (term -> term SHR factor .)
+    MINUS           reduce using rule 25 (term -> term SHR factor .)
+    $end            reduce using rule 25 (term -> term SHR factor .)
+    RPAREN          reduce using rule 25 (term -> term SHR factor .)
+    LBRACES         reduce using rule 25 (term -> term SHR factor .)
+    EQUAL           reduce using rule 25 (term -> term SHR factor .)
+    NOTEQ           reduce using rule 25 (term -> term SHR factor .)
+    LARGE           reduce using rule 25 (term -> term SHR factor .)
+    SMALL           reduce using rule 25 (term -> term SHR factor .)
+    LRGEQ           reduce using rule 25 (term -> term SHR factor .)
+    SMLEQ           reduce using rule 25 (term -> term SHR factor .)
+    RBRACES         reduce using rule 25 (term -> term SHR factor .)
+    COLON           reduce using rule 25 (term -> term SHR factor .)
+    DEFAULT         reduce using rule 25 (term -> term SHR factor .)
+    ELSE            reduce using rule 25 (term -> term SHR factor .)
+
+
+state 50
+
+    (26) term -> term MOD factor .
+
+    TIMES           reduce using rule 26 (term -> term MOD factor .)
+    DIVIDE          reduce using rule 26 (term -> term MOD factor .)
+    SHL             reduce using rule 26 (term -> term MOD factor .)
+    SHR             reduce using rule 26 (term -> term MOD factor .)
+    MOD             reduce using rule 26 (term -> term MOD factor .)
+    ANDLOGIC        reduce using rule 26 (term -> term MOD factor .)
+    ORLOGIC         reduce using rule 26 (term -> term MOD factor .)
+    XORLOGIC        reduce using rule 26 (term -> term MOD factor .)
+    PLUS            reduce using rule 26 (term -> term MOD factor .)
+    MINUS           reduce using rule 26 (term -> term MOD factor .)
+    $end            reduce using rule 26 (term -> term MOD factor .)
+    RPAREN          reduce using rule 26 (term -> term MOD factor .)
+    LBRACES         reduce using rule 26 (term -> term MOD factor .)
+    EQUAL           reduce using rule 26 (term -> term MOD factor .)
+    NOTEQ           reduce using rule 26 (term -> term MOD factor .)
+    LARGE           reduce using rule 26 (term -> term MOD factor .)
+    SMALL           reduce using rule 26 (term -> term MOD factor .)
+    LRGEQ           reduce using rule 26 (term -> term MOD factor .)
+    SMLEQ           reduce using rule 26 (term -> term MOD factor .)
+    RBRACES         reduce using rule 26 (term -> term MOD factor .)
+    COLON           reduce using rule 26 (term -> term MOD factor .)
+    DEFAULT         reduce using rule 26 (term -> term MOD factor .)
+    ELSE            reduce using rule 26 (term -> term MOD factor .)
+
+
+state 51
+
+    (27) term -> term ANDLOGIC factor .
+
+    TIMES           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    DIVIDE          reduce using rule 27 (term -> term ANDLOGIC factor .)
+    SHL             reduce using rule 27 (term -> term ANDLOGIC factor .)
+    SHR             reduce using rule 27 (term -> term ANDLOGIC factor .)
+    MOD             reduce using rule 27 (term -> term ANDLOGIC factor .)
+    ANDLOGIC        reduce using rule 27 (term -> term ANDLOGIC factor .)
+    ORLOGIC         reduce using rule 27 (term -> term ANDLOGIC factor .)
+    XORLOGIC        reduce using rule 27 (term -> term ANDLOGIC factor .)
+    PLUS            reduce using rule 27 (term -> term ANDLOGIC factor .)
+    MINUS           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    $end            reduce using rule 27 (term -> term ANDLOGIC factor .)
+    RPAREN          reduce using rule 27 (term -> term ANDLOGIC factor .)
+    LBRACES         reduce using rule 27 (term -> term ANDLOGIC factor .)
+    EQUAL           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    NOTEQ           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    LARGE           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    SMALL           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    LRGEQ           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    SMLEQ           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    RBRACES         reduce using rule 27 (term -> term ANDLOGIC factor .)
+    COLON           reduce using rule 27 (term -> term ANDLOGIC factor .)
+    DEFAULT         reduce using rule 27 (term -> term ANDLOGIC factor .)
+    ELSE            reduce using rule 27 (term -> term ANDLOGIC factor .)
+
+
+state 52
+
+    (28) term -> term ORLOGIC factor .
+
+    TIMES           reduce using rule 28 (term -> term ORLOGIC factor .)
+    DIVIDE          reduce using rule 28 (term -> term ORLOGIC factor .)
+    SHL             reduce using rule 28 (term -> term ORLOGIC factor .)
+    SHR             reduce using rule 28 (term -> term ORLOGIC factor .)
+    MOD             reduce using rule 28 (term -> term ORLOGIC factor .)
+    ANDLOGIC        reduce using rule 28 (term -> term ORLOGIC factor .)
+    ORLOGIC         reduce using rule 28 (term -> term ORLOGIC factor .)
+    XORLOGIC        reduce using rule 28 (term -> term ORLOGIC factor .)
+    PLUS            reduce using rule 28 (term -> term ORLOGIC factor .)
+    MINUS           reduce using rule 28 (term -> term ORLOGIC factor .)
+    $end            reduce using rule 28 (term -> term ORLOGIC factor .)
+    RPAREN          reduce using rule 28 (term -> term ORLOGIC factor .)
+    LBRACES         reduce using rule 28 (term -> term ORLOGIC factor .)
+    EQUAL           reduce using rule 28 (term -> term ORLOGIC factor .)
+    NOTEQ           reduce using rule 28 (term -> term ORLOGIC factor .)
+    LARGE           reduce using rule 28 (term -> term ORLOGIC factor .)
+    SMALL           reduce using rule 28 (term -> term ORLOGIC factor .)
+    LRGEQ           reduce using rule 28 (term -> term ORLOGIC factor .)
+    SMLEQ           reduce using rule 28 (term -> term ORLOGIC factor .)
+    RBRACES         reduce using rule 28 (term -> term ORLOGIC factor .)
+    COLON           reduce using rule 28 (term -> term ORLOGIC factor .)
+    DEFAULT         reduce using rule 28 (term -> term ORLOGIC factor .)
+    ELSE            reduce using rule 28 (term -> term ORLOGIC factor .)
+
+
+state 53
+
+    (29) term -> term XORLOGIC factor .
+
+    TIMES           reduce using rule 29 (term -> term XORLOGIC factor .)
+    DIVIDE          reduce using rule 29 (term -> term XORLOGIC factor .)
+    SHL             reduce using rule 29 (term -> term XORLOGIC factor .)
+    SHR             reduce using rule 29 (term -> term XORLOGIC factor .)
+    MOD             reduce using rule 29 (term -> term XORLOGIC factor .)
+    ANDLOGIC        reduce using rule 29 (term -> term XORLOGIC factor .)
+    ORLOGIC         reduce using rule 29 (term -> term XORLOGIC factor .)
+    XORLOGIC        reduce using rule 29 (term -> term XORLOGIC factor .)
+    PLUS            reduce using rule 29 (term -> term XORLOGIC factor .)
+    MINUS           reduce using rule 29 (term -> term XORLOGIC factor .)
+    $end            reduce using rule 29 (term -> term XORLOGIC factor .)
+    RPAREN          reduce using rule 29 (term -> term XORLOGIC factor .)
+    LBRACES         reduce using rule 29 (term -> term XORLOGIC factor .)
+    EQUAL           reduce using rule 29 (term -> term XORLOGIC factor .)
+    NOTEQ           reduce using rule 29 (term -> term XORLOGIC factor .)
+    LARGE           reduce using rule 29 (term -> term XORLOGIC factor .)
+    SMALL           reduce using rule 29 (term -> term XORLOGIC factor .)
+    LRGEQ           reduce using rule 29 (term -> term XORLOGIC factor .)
+    SMLEQ           reduce using rule 29 (term -> term XORLOGIC factor .)
+    RBRACES         reduce using rule 29 (term -> term XORLOGIC factor .)
+    COLON           reduce using rule 29 (term -> term XORLOGIC factor .)
+    DEFAULT         reduce using rule 29 (term -> term XORLOGIC factor .)
+    ELSE            reduce using rule 29 (term -> term XORLOGIC factor .)
+
+
+state 54
+
+    (5) term -> FUNC LPAREN RPAREN . LBRACES expression RBRACES
+
+    LBRACES         shift and go to state 67
+
+
+state 55
+
+    (42) factor -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    SHL             reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    SHR             reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    MOD             reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    ANDLOGIC        reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    ORLOGIC         reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    XORLOGIC        reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    LBRACES         reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    NOTEQ           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    LARGE           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    SMALL           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    LRGEQ           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    SMLEQ           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    RBRACES         reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    COLON           reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    DEFAULT         reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+    ELSE            reduce using rule 42 (factor -> LPAREN expression RPAREN .)
+
+
+state 56
+
+    (6) term -> SWITCH expression LBRACES . CASE expression COLON expression DEFAULT COLON expression RBRACES
+
+    CASE            shift and go to state 68
+
+
+state 57
+
+    (7) term -> IF LPAREN comparison . RPAREN term
+    (8) term -> IF LPAREN comparison . RPAREN term ELSE term
+
+    RPAREN          shift and go to state 69
+
+
+state 58
+
+    (15) comparison -> term . EQUAL term
+    (16) comparison -> term . NOTEQ term
+    (17) comparison -> term . LARGE term
+    (18) comparison -> term . SMALL term
+    (4) expression -> term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOTEQ resolved as shift
+  ! shift/reduce conflict for LARGE resolved as shift
+  ! shift/reduce conflict for SMALL resolved as shift
+    EQUAL           shift and go to state 70
+    NOTEQ           shift and go to state 71
+    LARGE           shift and go to state 72
+    SMALL           shift and go to state 73
+    LRGEQ           reduce using rule 4 (expression -> term .)
+    SMLEQ           reduce using rule 4 (expression -> term .)
+    PLUS            reduce using rule 4 (expression -> term .)
+    MINUS           reduce using rule 4 (expression -> term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! EQUAL           [ reduce using rule 4 (expression -> term .) ]
+  ! NOTEQ           [ reduce using rule 4 (expression -> term .) ]
+  ! LARGE           [ reduce using rule 4 (expression -> term .) ]
+  ! SMALL           [ reduce using rule 4 (expression -> term .) ]
+
+
+state 59
+
+    (9) comparison -> expression . EQUAL term
+    (10) comparison -> expression . NOTEQ term
+    (11) comparison -> expression . LARGE term
+    (12) comparison -> expression . SMALL term
+    (13) comparison -> expression . LRGEQ term
+    (14) comparison -> expression . SMLEQ term
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    EQUAL           shift and go to state 74
+    NOTEQ           shift and go to state 75
+    LARGE           shift and go to state 76
+    SMALL           shift and go to state 77
+    LRGEQ           shift and go to state 78
+    SMLEQ           shift and go to state 79
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 60
+
+    (19) term -> WHILE LPAREN comparison . RPAREN term
+
+    RPAREN          shift and go to state 80
+
+
+state 61
+
+    (20) term -> FOR LPAREN ID . IN factor RPAREN term
+
+    IN              shift and go to state 81
+
+
+state 62
+
+    (23) term -> ID EQUALS factor .
+
+    TIMES           reduce using rule 23 (term -> ID EQUALS factor .)
+    DIVIDE          reduce using rule 23 (term -> ID EQUALS factor .)
+    SHL             reduce using rule 23 (term -> ID EQUALS factor .)
+    SHR             reduce using rule 23 (term -> ID EQUALS factor .)
+    MOD             reduce using rule 23 (term -> ID EQUALS factor .)
+    ANDLOGIC        reduce using rule 23 (term -> ID EQUALS factor .)
+    ORLOGIC         reduce using rule 23 (term -> ID EQUALS factor .)
+    XORLOGIC        reduce using rule 23 (term -> ID EQUALS factor .)
+    PLUS            reduce using rule 23 (term -> ID EQUALS factor .)
+    MINUS           reduce using rule 23 (term -> ID EQUALS factor .)
+    $end            reduce using rule 23 (term -> ID EQUALS factor .)
+    RPAREN          reduce using rule 23 (term -> ID EQUALS factor .)
+    LBRACES         reduce using rule 23 (term -> ID EQUALS factor .)
+    EQUAL           reduce using rule 23 (term -> ID EQUALS factor .)
+    NOTEQ           reduce using rule 23 (term -> ID EQUALS factor .)
+    LARGE           reduce using rule 23 (term -> ID EQUALS factor .)
+    SMALL           reduce using rule 23 (term -> ID EQUALS factor .)
+    LRGEQ           reduce using rule 23 (term -> ID EQUALS factor .)
+    SMLEQ           reduce using rule 23 (term -> ID EQUALS factor .)
+    RBRACES         reduce using rule 23 (term -> ID EQUALS factor .)
+    COLON           reduce using rule 23 (term -> ID EQUALS factor .)
+    DEFAULT         reduce using rule 23 (term -> ID EQUALS factor .)
+    ELSE            reduce using rule 23 (term -> ID EQUALS factor .)
+
+
+state 63
+
+    (30) term -> OPEN LPAREN factor . RPAREN
+
+    RPAREN          shift and go to state 82
+
+
+state 64
+
+    (31) term -> VAR COLON TYPINT . ID EQUALS factor
+
+    ID              shift and go to state 83
+
+
+state 65
+
+    (32) term -> VAR COLON TYPSTRING . ID EQUALS factor
+
+    ID              shift and go to state 84
+
+
+state 66
+
+    (33) term -> LET ID EQUALS . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 85
+
+state 67
+
+    (5) term -> FUNC LPAREN RPAREN LBRACES . expression RBRACES
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 86
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 68
+
+    (6) term -> SWITCH expression LBRACES CASE . expression COLON expression DEFAULT COLON expression RBRACES
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 87
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 69
+
+    (7) term -> IF LPAREN comparison RPAREN . term
+    (8) term -> IF LPAREN comparison RPAREN . term ELSE term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 88
+    factor                         shift and go to state 11
+
+state 70
+
+    (15) comparison -> term EQUAL . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 89
+    factor                         shift and go to state 11
+
+state 71
+
+    (16) comparison -> term NOTEQ . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 90
+    factor                         shift and go to state 11
+
+state 72
+
+    (17) comparison -> term LARGE . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 91
+    factor                         shift and go to state 11
+
+state 73
+
+    (18) comparison -> term SMALL . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 92
+    factor                         shift and go to state 11
+
+state 74
+
+    (9) comparison -> expression EQUAL . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 93
+    factor                         shift and go to state 11
+
+state 75
+
+    (10) comparison -> expression NOTEQ . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 94
+    factor                         shift and go to state 11
+
+state 76
+
+    (11) comparison -> expression LARGE . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 95
+    factor                         shift and go to state 11
+
+state 77
+
+    (12) comparison -> expression SMALL . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 96
+    factor                         shift and go to state 11
+
+state 78
+
+    (13) comparison -> expression LRGEQ . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 97
+    factor                         shift and go to state 11
+
+state 79
+
+    (14) comparison -> expression SMLEQ . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 98
+    factor                         shift and go to state 11
+
+state 80
+
+    (19) term -> WHILE LPAREN comparison RPAREN . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 99
+    factor                         shift and go to state 11
+
+state 81
+
+    (20) term -> FOR LPAREN ID IN . factor RPAREN term
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 100
+
+state 82
+
+    (30) term -> OPEN LPAREN factor RPAREN .
+
+    TIMES           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    DIVIDE          reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    SHL             reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    SHR             reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    MOD             reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    ANDLOGIC        reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    ORLOGIC         reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    XORLOGIC        reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    PLUS            reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    MINUS           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    $end            reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    RPAREN          reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    LBRACES         reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    EQUAL           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    NOTEQ           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    LARGE           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    SMALL           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    LRGEQ           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    SMLEQ           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    RBRACES         reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    COLON           reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+    ELSE            reduce using rule 30 (term -> OPEN LPAREN factor RPAREN .)
+
+
+state 83
+
+    (31) term -> VAR COLON TYPINT ID . EQUALS factor
+
+    EQUALS          shift and go to state 101
+
+
+state 84
+
+    (32) term -> VAR COLON TYPSTRING ID . EQUALS factor
+
+    EQUALS          shift and go to state 102
+
+
+state 85
+
+    (33) term -> LET ID EQUALS factor .
+
+    TIMES           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    DIVIDE          reduce using rule 33 (term -> LET ID EQUALS factor .)
+    SHL             reduce using rule 33 (term -> LET ID EQUALS factor .)
+    SHR             reduce using rule 33 (term -> LET ID EQUALS factor .)
+    MOD             reduce using rule 33 (term -> LET ID EQUALS factor .)
+    ANDLOGIC        reduce using rule 33 (term -> LET ID EQUALS factor .)
+    ORLOGIC         reduce using rule 33 (term -> LET ID EQUALS factor .)
+    XORLOGIC        reduce using rule 33 (term -> LET ID EQUALS factor .)
+    PLUS            reduce using rule 33 (term -> LET ID EQUALS factor .)
+    MINUS           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    $end            reduce using rule 33 (term -> LET ID EQUALS factor .)
+    RPAREN          reduce using rule 33 (term -> LET ID EQUALS factor .)
+    LBRACES         reduce using rule 33 (term -> LET ID EQUALS factor .)
+    EQUAL           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    NOTEQ           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    LARGE           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    SMALL           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    LRGEQ           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    SMLEQ           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    RBRACES         reduce using rule 33 (term -> LET ID EQUALS factor .)
+    COLON           reduce using rule 33 (term -> LET ID EQUALS factor .)
+    DEFAULT         reduce using rule 33 (term -> LET ID EQUALS factor .)
+    ELSE            reduce using rule 33 (term -> LET ID EQUALS factor .)
+
+
+state 86
+
+    (5) term -> FUNC LPAREN RPAREN LBRACES expression . RBRACES
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    RBRACES         shift and go to state 103
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 87
+
+    (6) term -> SWITCH expression LBRACES CASE expression . COLON expression DEFAULT COLON expression RBRACES
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    COLON           shift and go to state 104
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 88
+
+    (7) term -> IF LPAREN comparison RPAREN term .
+    (8) term -> IF LPAREN comparison RPAREN term . ELSE term
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for SHL resolved as shift
+  ! shift/reduce conflict for SHR resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for ANDLOGIC resolved as shift
+  ! shift/reduce conflict for ORLOGIC resolved as shift
+  ! shift/reduce conflict for XORLOGIC resolved as shift
+    PLUS            reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    MINUS           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    $end            reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    RPAREN          reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    LBRACES         reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    EQUAL           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    NOTEQ           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    LARGE           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    SMALL           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    LRGEQ           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    SMLEQ           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    RBRACES         reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    COLON           reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    DEFAULT         reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .)
+    ELSE            shift and go to state 105
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! TIMES           [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! DIVIDE          [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! SHL             [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! SHR             [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! MOD             [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! ANDLOGIC        [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! ORLOGIC         [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! XORLOGIC        [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+  ! ELSE            [ reduce using rule 7 (term -> IF LPAREN comparison RPAREN term .) ]
+
+
+state 89
+
+    (15) comparison -> term EQUAL term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 15 (comparison -> term EQUAL term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 90
+
+    (16) comparison -> term NOTEQ term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 16 (comparison -> term NOTEQ term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 91
+
+    (17) comparison -> term LARGE term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 17 (comparison -> term LARGE term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 92
+
+    (18) comparison -> term SMALL term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 18 (comparison -> term SMALL term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 93
+
+    (9) comparison -> expression EQUAL term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 9 (comparison -> expression EQUAL term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 94
+
+    (10) comparison -> expression NOTEQ term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 10 (comparison -> expression NOTEQ term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 95
+
+    (11) comparison -> expression LARGE term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 11 (comparison -> expression LARGE term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 96
+
+    (12) comparison -> expression SMALL term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 12 (comparison -> expression SMALL term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 97
+
+    (13) comparison -> expression LRGEQ term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 13 (comparison -> expression LRGEQ term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 98
+
+    (14) comparison -> expression SMLEQ term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+    RPAREN          reduce using rule 14 (comparison -> expression SMLEQ term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+
+state 99
+
+    (19) term -> WHILE LPAREN comparison RPAREN term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for SHL resolved as shift
+  ! shift/reduce conflict for SHR resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for ANDLOGIC resolved as shift
+  ! shift/reduce conflict for ORLOGIC resolved as shift
+  ! shift/reduce conflict for XORLOGIC resolved as shift
+    PLUS            reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    MINUS           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    $end            reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    RPAREN          reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    LBRACES         reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    EQUAL           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    NOTEQ           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    LARGE           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    SMALL           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    LRGEQ           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    SMLEQ           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    RBRACES         reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    COLON           reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    DEFAULT         reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    ELSE            reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! TIMES           [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! DIVIDE          [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! SHL             [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! SHR             [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! MOD             [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! ANDLOGIC        [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! ORLOGIC         [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+  ! XORLOGIC        [ reduce using rule 19 (term -> WHILE LPAREN comparison RPAREN term .) ]
+
+
+state 100
+
+    (20) term -> FOR LPAREN ID IN factor . RPAREN term
+
+    RPAREN          shift and go to state 106
+
+
+state 101
+
+    (31) term -> VAR COLON TYPINT ID EQUALS . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 107
+
+state 102
+
+    (32) term -> VAR COLON TYPSTRING ID EQUALS . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 108
+
+state 103
+
+    (5) term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .
+
+    TIMES           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    DIVIDE          reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    SHL             reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    SHR             reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    MOD             reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    ANDLOGIC        reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    ORLOGIC         reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    XORLOGIC        reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    PLUS            reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    MINUS           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    $end            reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    RPAREN          reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    LBRACES         reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    EQUAL           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    NOTEQ           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    LARGE           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    SMALL           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    LRGEQ           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    SMLEQ           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    RBRACES         reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    COLON           reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    DEFAULT         reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    ELSE            reduce using rule 5 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+
+
+state 104
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON . expression DEFAULT COLON expression RBRACES
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 109
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 105
+
+    (8) term -> IF LPAREN comparison RPAREN term ELSE . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    term                           shift and go to state 110
+    factor                         shift and go to state 11
+
+state 106
+
+    (20) term -> FOR LPAREN ID IN factor RPAREN . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    factor                         shift and go to state 11
+    term                           shift and go to state 111
+
+state 107
+
+    (31) term -> VAR COLON TYPINT ID EQUALS factor .
+
+    TIMES           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    DIVIDE          reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    SHL             reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    SHR             reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    MOD             reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    ANDLOGIC        reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    ORLOGIC         reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    XORLOGIC        reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    PLUS            reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    MINUS           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    $end            reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    RPAREN          reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    LBRACES         reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    EQUAL           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    NOTEQ           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    LARGE           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    SMALL           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    LRGEQ           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    SMLEQ           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    RBRACES         reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    COLON           reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    DEFAULT         reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    ELSE            reduce using rule 31 (term -> VAR COLON TYPINT ID EQUALS factor .)
+
+
+state 108
+
+    (32) term -> VAR COLON TYPSTRING ID EQUALS factor .
+
+    TIMES           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    DIVIDE          reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    SHL             reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    SHR             reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    MOD             reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    ANDLOGIC        reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    ORLOGIC         reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    XORLOGIC        reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    PLUS            reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    MINUS           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    $end            reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    RPAREN          reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    LBRACES         reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    EQUAL           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    NOTEQ           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    LARGE           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    SMALL           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    LRGEQ           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    SMLEQ           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    RBRACES         reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    COLON           reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    DEFAULT         reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    ELSE            reduce using rule 32 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+
+
+state 109
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON expression . DEFAULT COLON expression RBRACES
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    DEFAULT         shift and go to state 112
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 110
+
+    (8) term -> IF LPAREN comparison RPAREN term ELSE term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for SHL resolved as shift
+  ! shift/reduce conflict for SHR resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for ANDLOGIC resolved as shift
+  ! shift/reduce conflict for ORLOGIC resolved as shift
+  ! shift/reduce conflict for XORLOGIC resolved as shift
+    PLUS            reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    MINUS           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    $end            reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    RPAREN          reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    LBRACES         reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    EQUAL           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    NOTEQ           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    LARGE           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    SMALL           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    LRGEQ           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    SMLEQ           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    RBRACES         reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    COLON           reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    DEFAULT         reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    ELSE            reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! TIMES           [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! DIVIDE          [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! SHL             [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! SHR             [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! MOD             [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! ANDLOGIC        [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! ORLOGIC         [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+  ! XORLOGIC        [ reduce using rule 8 (term -> IF LPAREN comparison RPAREN term ELSE term .) ]
+
+
+state 111
+
+    (20) term -> FOR LPAREN ID IN factor RPAREN term .
+    (21) term -> term . TIMES factor
+    (22) term -> term . DIVIDE factor
+    (24) term -> term . SHL factor
+    (25) term -> term . SHR factor
+    (26) term -> term . MOD factor
+    (27) term -> term . ANDLOGIC factor
+    (28) term -> term . ORLOGIC factor
+    (29) term -> term . XORLOGIC factor
+
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for SHL resolved as shift
+  ! shift/reduce conflict for SHR resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for ANDLOGIC resolved as shift
+  ! shift/reduce conflict for ORLOGIC resolved as shift
+  ! shift/reduce conflict for XORLOGIC resolved as shift
+    PLUS            reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    MINUS           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    $end            reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    RPAREN          reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    LBRACES         reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    EQUAL           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    NOTEQ           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    LARGE           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    SMALL           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    LRGEQ           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    SMLEQ           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    RBRACES         reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    COLON           reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    DEFAULT         reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    ELSE            reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    TIMES           shift and go to state 24
+    DIVIDE          shift and go to state 25
+    SHL             shift and go to state 26
+    SHR             shift and go to state 27
+    MOD             shift and go to state 28
+    ANDLOGIC        shift and go to state 29
+    ORLOGIC         shift and go to state 30
+    XORLOGIC        shift and go to state 31
+
+  ! TIMES           [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! DIVIDE          [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! SHL             [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! SHR             [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! MOD             [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! ANDLOGIC        [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! ORLOGIC         [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+  ! XORLOGIC        [ reduce using rule 20 (term -> FOR LPAREN ID IN factor RPAREN term .) ]
+
+
+state 112
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT . COLON expression RBRACES
+
+    COLON           shift and go to state 113
+
+
+state 113
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON . expression RBRACES
+    (1) expression -> . expression PLUS term
+    (2) expression -> . expression MINUS term
+    (3) expression -> . MINUS term
+    (4) expression -> . term
+    (5) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
+    (6) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
+    (7) term -> . IF LPAREN comparison RPAREN term
+    (8) term -> . IF LPAREN comparison RPAREN term ELSE term
+    (19) term -> . WHILE LPAREN comparison RPAREN term
+    (20) term -> . FOR LPAREN ID IN factor RPAREN term
+    (21) term -> . term TIMES factor
+    (22) term -> . term DIVIDE factor
+    (23) term -> . ID EQUALS factor
+    (24) term -> . term SHL factor
+    (25) term -> . term SHR factor
+    (26) term -> . term MOD factor
+    (27) term -> . term ANDLOGIC factor
+    (28) term -> . term ORLOGIC factor
+    (29) term -> . term XORLOGIC factor
+    (30) term -> . OPEN LPAREN factor RPAREN
+    (31) term -> . VAR COLON TYPINT ID EQUALS factor
+    (32) term -> . VAR COLON TYPSTRING ID EQUALS factor
+    (33) term -> . LET ID EQUALS factor
+    (34) term -> . PRINT term
+    (35) term -> . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . DECIMAL
+    (38) factor -> . STRING
+    (39) factor -> . EXIT
+    (40) factor -> . HELP
+    (41) factor -> . COPYRIGHT
+    (42) factor -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 3
+    FUNC            shift and go to state 4
+    SWITCH          shift and go to state 6
+    IF              shift and go to state 7
+    WHILE           shift and go to state 8
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    OPEN            shift and go to state 12
+    VAR             shift and go to state 13
+    LET             shift and go to state 14
+    PRINT           shift and go to state 15
+    NUMBER          shift and go to state 16
+    DECIMAL         shift and go to state 17
+    STRING          shift and go to state 18
+    EXIT            shift and go to state 19
+    HELP            shift and go to state 20
+    COPYRIGHT       shift and go to state 21
+    LPAREN          shift and go to state 5
+
+    expression                     shift and go to state 114
+    term                           shift and go to state 2
+    factor                         shift and go to state 11
+
+state 114
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression . RBRACES
+    (1) expression -> expression . PLUS term
+    (2) expression -> expression . MINUS term
+
+    RBRACES         shift and go to state 115
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 115
+
+    (6) term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .
+
+    TIMES           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    DIVIDE          reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    SHL             reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    SHR             reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    MOD             reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    ANDLOGIC        reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    ORLOGIC         reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    XORLOGIC        reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    PLUS            reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    MINUS           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    $end            reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    RPAREN          reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    LBRACES         reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    EQUAL           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    NOTEQ           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    LARGE           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    SMALL           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    LRGEQ           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    SMLEQ           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    RBRACES         reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    COLON           reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    DEFAULT         reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    ELSE            reduce using rule 6 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for TIMES in state 43 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 43 resolved as shift
+WARNING: shift/reduce conflict for SHL in state 43 resolved as shift
+WARNING: shift/reduce conflict for SHR in state 43 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 43 resolved as shift
+WARNING: shift/reduce conflict for ANDLOGIC in state 43 resolved as shift
+WARNING: shift/reduce conflict for ORLOGIC in state 43 resolved as shift
+WARNING: shift/reduce conflict for XORLOGIC in state 43 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 58 resolved as shift
+WARNING: shift/reduce conflict for NOTEQ in state 58 resolved as shift
+WARNING: shift/reduce conflict for LARGE in state 58 resolved as shift
+WARNING: shift/reduce conflict for SMALL in state 58 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 88 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 88 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 88 resolved as shift
+WARNING: shift/reduce conflict for SHL in state 88 resolved as shift
+WARNING: shift/reduce conflict for SHR in state 88 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 88 resolved as shift
+WARNING: shift/reduce conflict for ANDLOGIC in state 88 resolved as shift
+WARNING: shift/reduce conflict for ORLOGIC in state 88 resolved as shift
+WARNING: shift/reduce conflict for XORLOGIC in state 88 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 99 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 99 resolved as shift
+WARNING: shift/reduce conflict for SHL in state 99 resolved as shift
+WARNING: shift/reduce conflict for SHR in state 99 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 99 resolved as shift
+WARNING: shift/reduce conflict for ANDLOGIC in state 99 resolved as shift
+WARNING: shift/reduce conflict for ORLOGIC in state 99 resolved as shift
+WARNING: shift/reduce conflict for XORLOGIC in state 99 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 110 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 110 resolved as shift
+WARNING: shift/reduce conflict for SHL in state 110 resolved as shift
+WARNING: shift/reduce conflict for SHR in state 110 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 110 resolved as shift
+WARNING: shift/reduce conflict for ANDLOGIC in state 110 resolved as shift
+WARNING: shift/reduce conflict for ORLOGIC in state 110 resolved as shift
+WARNING: shift/reduce conflict for XORLOGIC in state 110 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 111 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 111 resolved as shift
+WARNING: shift/reduce conflict for SHL in state 111 resolved as shift
+WARNING: shift/reduce conflict for SHR in state 111 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 111 resolved as shift
+WARNING: shift/reduce conflict for ANDLOGIC in state 111 resolved as shift
+WARNING: shift/reduce conflict for ORLOGIC in state 111 resolved as shift
+WARNING: shift/reduce conflict for XORLOGIC in state 111 resolved as shift
