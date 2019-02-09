@@ -1,0 +1,109 @@
+
+W
+squid:S106»"9Replace this use of System.out or System.err by a logger.(ÌŠïÖ8İÊ¾Ò‰-
+V
+squid:S106Ì"9Replace this use of System.out or System.err by a logger.(ÜÄ™g8¦ÉÙˆ-
+Vsquid:S1135Ï"2Complete the task associated to this TODO comment.(›¶Üˆüÿÿÿÿ8Òˆ½ˆ-
+X"squid:SwitchLastCaseIsDefaultCheckÑ""Add a default case to this switch.(¸­²•8İÊ¾Ò‰-
+\
+squid:S106º"9Replace this use of System.out or System.err by a logger.(²½åĞüÿÿÿÿ8Ééº†‡-
+jsquid:CommentedOutCodeLineÑ"<This block of commented-out lines of code should be removed.(ü×ÓÎ8Ñˆ½ˆ-
+Xsquid:S1854ğ"9Remove this useless assignment to local variable "value".(Õœ­8İÊ¾Ò‰-
+isquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(—§Ğî8Ñˆ½ˆ-
+osquid:CommentedOutCodeLineÁ"<This block of commented-out lines of code should be removed.(õœùÿÿÿÿ8Ñˆ½ˆ-
+W
+squid:S106•"9Replace this use of System.out or System.err by a logger.(ôã›š8İÊ¾Ò‰-
+vsquid:S3776ß"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ìí€Úûÿÿÿÿ8İÊ¾Ò‰-
+Ysquid:S1854œ":Remove this useless assignment to local variable "value1".(ãÖêª8Òˆ½ˆ-
+W
+squid:S106Ú"9Replace this use of System.out or System.err by a logger.(Óƒç8İÊ¾Ò‰-
+Lsquid:S1481¡"-Remove this unused "ret_type" local variable.(œÄ¬’8İÊ¾Ò‰-
+Gsquid:S1125Ë"(Remove the literal "true" boolean value.(Ìœò³8İÊ¾Ò‰-
+]squid:S1854³"9Remove this useless assignment to local variable "value".(Ğ¢›çûÿÿÿÿ8Òˆ½ˆ-
+qsquid:S00117¤"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëŞ¼¹8İÊ¾Ò‰-
+\
+squid:S106‰"9Replace this use of System.out or System.err by a logger.(‚é€Şûÿÿÿÿ8İÊ¾Ò‰-
+isquid:CommentedOutCodeLineP"<This block of commented-out lines of code should be removed.(Ü‰¨„8°œ‡‚‰-
+W
+squid:S106Ö"9Replace this use of System.out or System.err by a logger.(é‰å8ŒÅ‚Ó‰-
+W
+squid:S106ú"9Replace this use of System.out or System.err by a logger.(×•œ²8İÊ¾Ò‰-
+\
+squid:S106…"9Replace this use of System.out or System.err by a logger.(Ó«¡úÿÿÿÿ8ë¢âÖ‰-
+qsquid:S00117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Ïí¸8İÊ¾Ò‰-
+isquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(«œ‡8İÊ¾Ò‰-
+osquid:CommentedOutCodeLine¾"<This block of commented-out lines of code should be removed.(ÜŞäÿÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106Ğ"9Replace this use of System.out or System.err by a logger.(ŒéŒéûÿÿÿÿ8İÊ¾Ò‰-
+W
+squid:S106û"9Replace this use of System.out or System.err by a logger.(Óƒç8Ñˆ½ˆ-
+W
+squid:S106À"9Replace this use of System.out or System.err by a logger.(¥Šã§8İÊ¾Ò‰-
+\
+squid:S106¬"9Replace this use of System.out or System.err by a logger.(¸šñÙüÿÿÿÿ8Ñˆ½ˆ-
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(é‰å8¤Ô´Ó‰-
+\
+squid:S106˜"9Replace this use of System.out or System.err by a logger.(àç„Ñşÿÿÿÿ8İÊ¾Ò‰-
+Psquid:S1135"2Complete the task associated to this TODO comment.(ÓñàÍ8ØÔÁˆ-
+]squid:S1854Ü"9Remove this useless assignment to local variable "value".(†Ğœíüÿÿÿÿ8İÊ¾Ò‰-
+Gsquid:S1148´"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106ı"9Replace this use of System.out or System.err by a logger.(‚é€Şûÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106‡"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ8ë¢âÖ‰-
+osquid:CommentedOutCodeLine°"<This block of commented-out lines of code should be removed.(œ‚¸ÿÿÿÿÿ8İÊ¾Ò‰-
+8squid:S1700Ê"Rename field "value"(‚ëÌ§ıÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106’"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ8¤Ô´Ó‰-
+\
+squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(‚é€Şûÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106ª"9Replace this use of System.out or System.err by a logger.(‰Èà¨şÿÿÿÿ8İÊ¾Ò‰-
+\
+squid:S106Ø"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ8ŒÅ‚Ó‰-
+\
+squid:S106ğ"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ8£õ‚Ó‰-
+W
+squid:S106†"9Replace this use of System.out or System.err by a logger.(×•œ²8İÊ¾Ò‰-
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(×•œ²8İÊ¾Ò‰-
+\
+squid:S106Î"9Replace this use of System.out or System.err by a logger.(‘Ô¶Œúÿÿÿÿ8Ééº†‡-
+Usquid:S1135"2Complete the task associated to this TODO comment.(ëá¡¨ıÿÿÿÿ8Òˆ½ˆ-
+[squid:S1854¡"<Remove this useless assignment to local variable "ret_type".(œÄ¬’8İÊ¾Ò‰-
+vsquid:S00117ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š‰çùÿÿÿÿ8¬”¥Ó‰-
+\
+squid:S106Ï"9Replace this use of System.out or System.err by a logger.(¸¹µ¦şÿÿÿÿ8İÊ¾Ò‰-
+W
+squid:S106€"9Replace this use of System.out or System.err by a logger.(×•œ²8İÊ¾Ò‰-
+Ksquid:S1481Ÿ"'Remove this unused "id" local variable.(¡¡£‰úÿÿÿÿ8¦ÉÙˆ-
+\
+squid:S106²"9Replace this use of System.out or System.err by a logger.(ç¥ì´øÿÿÿÿ8İÊ¾Ò‰-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‰Ô¶8Ñˆ½ˆ-
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(×•œ²8¤Ô´Ó‰-
+W
+squid:S106¼"9Replace this use of System.out or System.err by a logger.(¡˜ªŞ8İÊ¾Ò‰-
+Psquid:S1135"2Complete the task associated to this TODO comment.(·‡ï8û–¿ˆ-
+Usquid:S1135"2Complete the task associated to this TODO comment.(š“ª£ùÿÿÿÿ8ŸÏ‹ˆ-
+nsquid:CommentedOutCodeLineT"<This block of commented-out lines of code should be removed.(õŞÄÂşÿÿÿÿ8°œ‡‚‰-
+|squid:S3923™"]This conditional operation returns the same value whether the condition is "true" or "false".(øù¦Ä8Ñˆ½ˆ-
+|squid:S3923¦"]This conditional operation returns the same value whether the condition is "true" or "false".(´Ÿ³8Ñˆ½ˆ-
+qsquid:S3776×"RRefactor this method to reduce its Cognitive Complexity from 58 to the 15 allowed.(ê‡ƒŠ8Òˆ½ˆ-
+Xsquid:S1854¿"9Remove this useless assignment to local variable "value".(ğïÚå8Òˆ½ˆ-
+Zsquid:S1854Ÿ"6Remove this useless assignment to local variable "id".(¡¡£‰úÿÿÿÿ8¦ÉÙˆ-
+Psquid:S1135"2Complete the task associated to this TODO comment.(Œ”ƒÃ8ŠÈÌ¸ü,
+\
+squid:S106¼"9Replace this use of System.out or System.err by a logger.(¥ã¯ÿûÿÿÿÿ8Ñˆ½ˆ-
+jsquid:S1301Ñ"KReplace this "switch" statement by "if" statements to increase readability.(¸­²•8İÊ¾Ò‰-
+\
+squid:S106Ì"9Replace this use of System.out or System.err by a logger.(¥ã¯ÿûÿÿÿÿ8Ñˆ½ˆ-
+qsquid:S00117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÄ¬’8İÊ¾Ò‰-
+squid:S3923¨"]This conditional operation returns the same value whether the condition is "true" or "false".(Ïñü¤ûÿÿÿÿ8Ñˆ½ˆ-
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(‚é€Şûÿÿÿÿ8İÊ¾Ò‰-
+isquid:CommentedOutCodeLineI"<This block of commented-out lines of code should be removed.(ş½¶¹8Ñˆ½ˆ-
+nsquid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(Æ›¶Æşÿÿÿÿ8µô†‚‰-
+W
+squid:S106î"9Replace this use of System.out or System.err by a logger.(é‰å8£õ‚Ó‰-

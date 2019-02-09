@@ -1,0 +1,29 @@
+
+V
+squid:S106:"9Replace this use of System.out or System.err by a logger.(³™„Ò8£§£À†-
+U
+squid:S106,"9Replace this use of System.out or System.err by a logger.(ƒÚáB8¦öÓÀ†-
+[
+squid:S106@"9Replace this use of System.out or System.err by a logger.(®©´…ûÿÿÿÿ8Ï¦¾À†-
+V
+squid:S106;"9Replace this use of System.out or System.err by a logger.(¨Íõì8£§£À†-
+[squid:UselessImportCheck"0Remove this unused import 'java.io.PrintWriter'.(ÓŞÏÛ8î›ËÀ†-
+bsquid:UselessImportCheck"2Remove this unused import 'jline.TerminalFactory'.(©Ô¨¯ÿÿÿÿÿ8ˆš‰À†-
+Fsquid:S11485"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8…Ì‹À†-
+U
+squid:S106B"9Replace this use of System.out or System.err by a logger.(ŞÄ“E8Ï¦¾À†-
+[
+squid:S106>"9Replace this use of System.out or System.err by a logger.(–‚Ôıÿÿÿÿ8Ï¦¾À†-
+[
+squid:S106A"9Replace this use of System.out or System.err by a logger.(ßÜÀ·şÿÿÿÿ8Ï¦¾À†-
+[
+squid:S106<"9Replace this use of System.out or System.err by a logger.(¶àñùüÿÿÿÿ8£§£À†-
+[
+squid:S106="9Replace this use of System.out or System.err by a logger.(ıé›Úşÿÿÿÿ8£§£À†-
+[
+squid:S106?"9Replace this use of System.out or System.err by a logger.(ü·Èùÿÿÿÿ8Ï¦¾À†-
+V
+squid:S106."9Replace this use of System.out or System.err by a logger.(ı³ÓÆ8ù˜ÖÀ†-
+|squid:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ÑŞÏøÿÿÿÿ8ÔşŒÀ†-
+V
+squid:S1061"9Replace this use of System.out or System.err by a logger.(Ê ÆÊ8€¥À†-

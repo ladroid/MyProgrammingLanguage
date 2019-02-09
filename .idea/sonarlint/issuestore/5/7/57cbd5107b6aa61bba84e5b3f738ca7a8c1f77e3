@@ -1,4 +1,4 @@
 
-1squid:S1220""Move this file to a named package.
-Ssquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ
 Tsquid:UselessImportCheck	"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+Ssquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ
+1squid:S1220""Move this file to a named package.

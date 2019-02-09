@@ -1,0 +1,8 @@
+
+gsquid:CallToDeprecatedMethod"8Remove this use of "ANTLRInputStream"; it is deprecated.(²¹Ñû8“÷ßúˆ-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(øª½ñüÿÿÿÿ8îÈÜúˆ-
+»%squid:RedundantThrowsDeclarationCheck"~Remove the declaration of thrown exception 'org.apache.commons.cli.ParseException', as it cannot be thrown from method's body.( äöÛùÿÿÿÿ8Ìï‹ûˆ-
+nsquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(‚¶öúÿÿÿÿ8îÈÜúˆ-
+gsquid:CallToDeprecatedMethod"8Remove this use of "ANTLRInputStream"; it is deprecated.(²¹Ñû8“÷ßúˆ-
+nsquid:CommentedOutCodeLine'"<This block of commented-out lines of code should be removed.(Ü³Šòûÿÿÿÿ8üñÛúˆ-
