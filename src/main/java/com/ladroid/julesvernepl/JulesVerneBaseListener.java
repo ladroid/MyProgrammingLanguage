@@ -235,6 +235,18 @@ public class JulesVerneBaseListener implements JulesVerneListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterArithmExpr(JulesVerneParser.ArithmExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArithmExpr(JulesVerneParser.ArithmExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAdd(JulesVerneParser.AddContext ctx) { }
 	/**
 	 * {@inheritDoc}

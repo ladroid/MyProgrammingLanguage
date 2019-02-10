@@ -169,7 +169,8 @@ public class MyListener extends JulesVerneBaseListener {
                 : ctx.STRING(1).getText();
 
         String res = str1.concat(str2);
-        System.out.println(res);
+        stringVariables.put(str1, res);
+        System.out.println(stringVariables.get(str1));
     }
 
     @Override

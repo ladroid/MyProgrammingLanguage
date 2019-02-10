@@ -38,6 +38,7 @@ varFloat  : 'var: Float' ID '=' (FLOAT | ID);
 varString : 'var: String' ID '=' (STRING | ID | concatenation);
 assignment: ID '=' ID;
 print     : 'print' (NUMBER | OCTAL | HEXADECIMAL | ID | FLOAT | declare_var | STRING | CYRILLIC | JAPANESE | KOREAN) ;
+
 add       : '+' (NUMBER | ID | FLOAT |STRING) 'to' ID ;
 minus     : '-' (NUMBER | ID | FLOAT) 'to' ID ;
 multiply  : '*' (NUMBER | ID | FLOAT) 'to' ID ;
@@ -67,6 +68,11 @@ stat_block: OBRACE statement+ CBRACE;
 if_stat   : IF condition_block (ELSE IF condition_block)* (ELSE stat_block)?;
 condition_block: expr stat_block;
 block: '{' statement* '}';
+
+MUL : '*' ;
+DIV : '/' ;
+ADD : '+' ;
+SUB : '-' ;
 
 IF : 'if';
 ELSE : 'else';

@@ -191,6 +191,16 @@ public interface JulesVerneListener extends ParseTreeListener {
 	 */
 	void exitPrint(JulesVerneParser.PrintContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JulesVerneParser#arithmExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterArithmExpr(JulesVerneParser.ArithmExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JulesVerneParser#arithmExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitArithmExpr(JulesVerneParser.ArithmExprContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JulesVerneParser#add}.
 	 * @param ctx the parse tree
 	 */
