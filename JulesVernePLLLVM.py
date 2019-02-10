@@ -21,6 +21,9 @@ reserved = {
     'let' : 'LET',
     'pow' : 'POW',
     'log' : 'LOG',
+    'sqrt' : 'SQRT',
+    'cos' : 'COS',
+    'sin' : 'SIN',
     '<<' : 'SHL',
     '>>' : 'SHR',
     '%' : 'MOD',
@@ -71,6 +74,9 @@ t_FLOAT = r'Float'
 t_LET = r'let'
 t_POW = r'pow'
 t_LOG = r'log'
+t_SQRT = r'sqrt'
+t_COS = r'cos'
+t_SIN = r'sin'
 t_SHL = r'<<'
 t_SHR = r'>>'
 t_MOD = r'%'
@@ -334,6 +340,30 @@ def p_term_log(p):
         p[0] = math.log(p[3])
     elif isinstance(p[3], int) and isinstance(p[5], int):
         p[0] = math.log(p[3], p[5])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# sqrt function
+def p_term_sqrt(p):
+    'term : SQRT LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.sqrt(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# cos function
+def p_term_cos(p):
+    'term : COS LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.sqrt(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# sin function
+def p_term_sin(p):
+    'term : SIN LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.sqrt(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
