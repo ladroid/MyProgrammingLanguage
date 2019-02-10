@@ -8,6 +8,7 @@ import subprocess
 import click
 import decimal
 from termcolor import colored
+import math
 
 reserved = {
     'if' : 'IF',
@@ -19,6 +20,7 @@ reserved = {
     'Float' : 'FLOAT',
     'let' : 'LET',
     'pow' : 'POW',
+    'log' : 'LOG',
     '<<' : 'SHL',
     '>>' : 'SHR',
     '%' : 'MOD',
@@ -68,6 +70,7 @@ t_VAR = r'var'
 t_FLOAT = r'Float'
 t_LET = r'let'
 t_POW = r'pow'
+t_LOG = r'log'
 t_SHL = r'<<'
 t_SHR = r'>>'
 t_MOD = r'%'
@@ -314,6 +317,25 @@ def p_term_openFile(p):
     file = p[3].replace('"', '')
     f = open(file, "r")
     p[0] = f.read()
+
+# pow function
+def p_term_pow(p):
+    'term : POW LPAREN factor COMMA factor RPAREN'
+    if isinstance(p[3], int) and isinstance(p[5], int):
+        p[0] = pow(p[3], p[5])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# log function
+def p_term_log(p):
+    '''term : LOG LPAREN factor RPAREN
+                            | LOG LPAREN factor COMMA factor RPAREN'''
+    if isinstance(p[3], int):
+        p[0] = math.log(p[3])
+    elif isinstance(p[3], int) and isinstance(p[5], int):
+        p[0] = math.log(p[3], p[5])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
 
 # var: Int value
 def p_term_Int(p):
