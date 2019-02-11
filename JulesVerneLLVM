@@ -21,9 +21,13 @@ reserved = {
     'let' : 'LET',
     'pow' : 'POW',
     'log' : 'LOG',
+    'log10' : 'LOG10',
+    'log1p' : 'LOG1P',
+    'exp' : 'EXP',
     'sqrt' : 'SQRT',
     'cos' : 'COS',
     'sin' : 'SIN',
+    'tan' : 'TAN',
     '<<' : 'SHL',
     '>>' : 'SHR',
     '%' : 'MOD',
@@ -74,9 +78,13 @@ t_FLOAT = r'Float'
 t_LET = r'let'
 t_POW = r'pow'
 t_LOG = r'log'
+t_LOG10 = r'log10'
+t_LOG1P = r'log1p'
+t_EXP = r'exp'
 t_SQRT = r'sqrt'
 t_COS = r'cos'
 t_SIN = r'sin'
+t_TAN = r'tan'
 t_SHL = r'<<'
 t_SHR = r'>>'
 t_MOD = r'%'
@@ -343,6 +351,30 @@ def p_term_log(p):
     else:
         print(colored("Error: Type does not fit", 'red'))
 
+# log10 function
+def p_term_log10(p):
+    'term : LOG10 LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.log10(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# log1px function
+def p_term_log1p(p):
+    'term : LOG1P LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.log1p(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# exp function
+def p_term_exp(p):
+    'term : EXP LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.exp(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
 # sqrt function
 def p_term_sqrt(p):
     'term : SQRT LPAREN factor RPAREN'
@@ -364,6 +396,14 @@ def p_term_sin(p):
     'term : SIN LPAREN factor RPAREN'
     if isinstance(p[3], int):
         p[0] = math.sqrt(p[3])
+    else:
+        print(colored("Error: Type does not fit", 'red'))
+
+# tan function
+def p_term_tan(p):
+    'term : TAN LPAREN factor RPAREN'
+    if isinstance(p[3], int):
+        p[0] = math.tan(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
