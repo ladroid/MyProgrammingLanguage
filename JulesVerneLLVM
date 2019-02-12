@@ -9,6 +9,7 @@ import click
 import decimal
 from termcolor import colored
 import math
+from pynput.keyboard import Key, Controller
 
 reserved = {
     'if' : 'IF',
@@ -290,10 +291,15 @@ def p_term_div(p):
     'term : term DIVIDE factor'
     p[0] = p[1] / p[3]
 
+a = None
+
 # equal value
 def p_term_equal(p):
     'term : ID EQUALS factor'
     p[0] = p[3]
+    a = {
+        p[1] : p[3]
+    }
 
 # shift left
 def p_term_shl(p):
@@ -499,6 +505,9 @@ def copyright(**kwargs):
 
 # Build the parser
 parser = yacc.yacc()
+
+keyboard = Controller()
+
 #print(sys.argv, len(sys.argv))
 if len(sys.argv) < 2:
     print("Whale 0.0.1 (created in 2018) " + str(datetime.now()))
@@ -511,6 +520,10 @@ if len(sys.argv) < 2:
         if not s: continue
         result = parser.parse(s)
         print(colored(result, 'green'))
+
+        # TODO: make key press up and show last code
+        if keyboard.pressed(Key.up):
+            print(s)
 if sys.argv[1] == "compile":
     subprocess.call(['java', '-jar', '/Users/lado/Documents/MyProgrammingLanguage/JulesVernePL/target/JulesVernePL-1.0-SNAPSHOT-jar-with-dependencies.jar'])
     
