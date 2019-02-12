@@ -430,7 +430,7 @@ def p_term_Let(p):
 
 # print function
 def p_term_print(p):
-    'term : PRINT term'
+    '''term : PRINT term'''
     p[0] = p[2]
 
 # output smth
