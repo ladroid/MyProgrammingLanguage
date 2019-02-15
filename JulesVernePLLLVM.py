@@ -28,6 +28,8 @@ reserved = {
     'cos' : 'COS',
     'sin' : 'SIN',
     'tan' : 'TAN',
+    'pi' : 'PI',
+    'e' : 'E',
     '<<' : 'SHL',
     '>>' : 'SHR',
     '%' : 'MOD',
@@ -85,6 +87,8 @@ t_SQRT = r'sqrt'
 t_COS = r'cos'
 t_SIN = r'sin'
 t_TAN = r'tan'
+t_PI = r'pi'
+t_E = r'e'
 t_SHL = r'<<'
 t_SHR = r'>>'
 t_MOD = r'%'
@@ -173,7 +177,8 @@ lexer = lex.lex()
 #########################################
 # plus
 def p_expression_plus(p):
-    'expression : expression PLUS term'
+    '''expression : expression PLUS term
+                            | PI PLUS term'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] + p[3]
     elif isinstance(p[3], int):
@@ -186,7 +191,8 @@ def p_expression_plus(p):
         p[0] = p[1] + p[3]
 # minus    
 def p_expression_minus(p):
-    'expression : expression MINUS term'
+    '''expression : expression MINUS term
+                            | PI MINUS term'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] - p[3]
     elif isinstance(p[3], int):
@@ -282,12 +288,14 @@ def p_statement_for(p):
 
 # time
 def p_term_times(p):
-    'term : term TIMES factor'
+    '''term : term TIMES factor
+                            | PI TIMES factor'''
     p[0] = p[1] * p[3]
 
 # divide
 def p_term_div(p):
-    'term : term DIVIDE factor'
+    '''term : term DIVIDE factor
+                            | PI DIVIDE factor'''
     p[0] = p[1] / p[3]
 
 # equal value
@@ -406,6 +414,18 @@ def p_term_tan(p):
         p[0] = math.tan(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
+
+# pi number
+def p_term_pi(p):
+    'term : PI'
+    p[1] = math.pi
+    p[0] = p[1]
+
+# e number
+def p_term_e(p):
+    'term : E'
+    p[1] = math.e
+    p[0] = p[1]
 
 # var: Int value
 def p_term_Int(p):
