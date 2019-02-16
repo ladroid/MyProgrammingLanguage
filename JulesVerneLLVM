@@ -61,7 +61,7 @@ reserved = {
     'String' : 'TYPSTRING'
 }
 
-tokens = ['NUMBER', 'DECIMAL', 'STRING', 'COMMA', 'LBRACES', 'RBRACES', 'LSQRBRACK', 'RSQRBRACK', 'COLON', 'SEMICOLON', 'EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN', 'ID'] + list(reserved.values())
+tokens = ['NUMBER', 'DECIMAL', 'STRING', 'COMMA', 'LBRACES', 'RBRACES', 'LSQRBRACK', 'RSQRBRACK', 'COLON', 'SEMICOLON', 'ASK','EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN', 'ID'] + list(reserved.values())
 
 t_EQUALS = r'\='
 t_PLUS = r'\+'
@@ -100,6 +100,7 @@ t_HELP = r'help'
 t_COPYRIGHT = r'copyright'
 t_COMMA = r','
 t_COLON = r':'
+t_ASK = r'\?'
 t_SEMICOLON = r';'
 t_EQUAL   = r'\=\='
 t_NOTEQ   = r'\!\='
@@ -226,6 +227,14 @@ def p_statement_switchcase(p):
         p[0] = p[7]
     else:
         p[0] = p[10]
+
+# ternar-operator if else
+def p_statement_ternar(p):
+    '''term : comparison ASK expression COLON expression'''
+    if p[1]:
+        p[0] = p[3]
+    else:
+        p[0] = p[5]
 
 # if-else statement
 def p_statement_if(p):
