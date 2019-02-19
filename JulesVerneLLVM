@@ -176,6 +176,10 @@ lexer = lex.lex()
 ###########################################
 ################YACC######################
 #########################################
+
+# 'value' is a global value which saved in memory
+value = None
+
 # plus
 def p_expression_plus(p):
     '''expression : expression PLUS term
@@ -310,7 +314,15 @@ def p_term_div(p):
 # equal value
 def p_term_equal(p):
     'term : ID EQUALS factor'
+    global value
+    value = p[3]
     p[0] = p[3]
+
+# tuple
+def p_term_tuple(p):
+    'term : ID EQUALS LPAREN term COMMA term RPAREN'
+    tuple = {p[4] : p[6]}
+    p[0] = tuple
 
 # shift left
 def p_term_shl(p):
@@ -459,8 +471,12 @@ def p_term_Let(p):
 
 # print function
 def p_term_print(p):
-    'term : PRINT term'
-    p[0] = p[2]
+    '''term : PRINT term
+                | PRINT ID'''
+    if value is not None:
+        p[0] = value
+    else:
+        p[0] = p[2]
 
 # output smth
 def p_term_factor(p):
