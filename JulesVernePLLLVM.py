@@ -184,7 +184,7 @@ value = None
 def p_expression_plus(p):
     '''expression : expression PLUS term
                             | PI PLUS term
-                            | ID PLUS term'''
+                            | ID PLUS expression'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] + p[3]
     elif isinstance(p[3], int):
@@ -205,7 +205,7 @@ def p_expression_plus(p):
 def p_expression_minus(p):
     '''expression : expression MINUS term
                             | PI MINUS term
-                            | ID MINUS term'''
+                            | ID MINUS expression'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] - p[3]
     elif isinstance(p[3], int):
@@ -222,11 +222,11 @@ def p_expression_minus(p):
 
 # unary minus operator
 def p_expression_uminus(p):
-    'expression : MINUS term'
+    '''expression : MINUS term'''
     p[0] = -p[2]
 
 def p_expression_term(p):
-    'expression : term'
+    '''expression : term'''
     p[0] = p[1]
 
 # func without param
@@ -316,7 +316,7 @@ def p_statement_for(p):
 def p_term_times(p):
     '''term : term TIMES factor
                             | PI TIMES factor
-                            | ID TIMES term'''
+                            | ID TIMES expression'''
     p[0] = p[1] * p[3]
 
     global value
@@ -328,7 +328,7 @@ def p_term_times(p):
 def p_term_div(p):
     '''term : term DIVIDE factor
                             | PI DIVIDE factor
-                            | ID DIVIDE term'''
+                            | ID DIVIDE expression'''
     p[0] = p[1] / p[3]
 
     global value
@@ -351,32 +351,32 @@ def p_term_tuple(p):
 
 # shift left
 def p_term_shl(p):
-    'term : term SHL factor'
+    '''term : term SHL factor'''
     p[0] = p[1] << p[3]
 
 # shift right
 def p_term_shr(p):
-    'term : term SHR factor'
+    '''term : term SHR factor'''
     p[0] = p[1] >> p[3]
 
 # mof
 def p_term_mod(p):
-    'term : term MOD factor'
+    '''term : term MOD factor'''
     p[0] = p[1] % p[3]
 
 # and
 def p_term_andlog(p):
-    'term : term ANDLOGIC factor'
+    '''term : term ANDLOGIC factor'''
     p[0] = p[1] & p[3]
 
 # or
 def p_term_orlog(p):
-    'term : term ORLOGIC factor'
+    '''term : term ORLOGIC factor'''
     p[0] = p[1] | p[3]
 
 # xor
 def p_term_xorlog(p):
-    'term : term XORLOGIC factor'
+    '''term : term XORLOGIC factor'''
     p[0] = p[1] ^ p[3]
 
 # open file
@@ -407,7 +407,7 @@ def p_term_log(p):
 
 # log10 function
 def p_term_log10(p):
-    'term : LOG10 LPAREN factor RPAREN'
+    '''term : LOG10 LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.log10(p[3])
     else:
@@ -415,7 +415,7 @@ def p_term_log10(p):
 
 # log1px function
 def p_term_log1p(p):
-    'term : LOG1P LPAREN factor RPAREN'
+    '''term : LOG1P LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.log1p(p[3])
     else:
@@ -423,7 +423,7 @@ def p_term_log1p(p):
 
 # exp function
 def p_term_exp(p):
-    'term : EXP LPAREN factor RPAREN'
+    '''term : EXP LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.exp(p[3])
     else:
@@ -431,7 +431,7 @@ def p_term_exp(p):
 
 # sqrt function
 def p_term_sqrt(p):
-    'term : SQRT LPAREN factor RPAREN'
+    '''term : SQRT LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.sqrt(p[3])
     else:
@@ -439,7 +439,7 @@ def p_term_sqrt(p):
 
 # cos function
 def p_term_cos(p):
-    'term : COS LPAREN factor RPAREN'
+    '''term : COS LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.sqrt(p[3])
     else:
@@ -447,7 +447,7 @@ def p_term_cos(p):
 
 # sin function
 def p_term_sin(p):
-    'term : SIN LPAREN factor RPAREN'
+    '''term : SIN LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.sqrt(p[3])
     else:
@@ -455,7 +455,7 @@ def p_term_sin(p):
 
 # tan function
 def p_term_tan(p):
-    'term : TAN LPAREN factor RPAREN'
+    '''term : TAN LPAREN factor RPAREN'''
     if isinstance(p[3], int):
         p[0] = math.tan(p[3])
     else:
