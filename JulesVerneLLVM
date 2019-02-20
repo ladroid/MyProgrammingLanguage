@@ -184,7 +184,7 @@ value = None
 def p_expression_plus(p):
     '''expression : expression PLUS term
                             | PI PLUS term
-                            | ID PLUS term'''
+                            | ID PLUS expression'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] + p[3]
     elif isinstance(p[3], int):
@@ -205,7 +205,7 @@ def p_expression_plus(p):
 def p_expression_minus(p):
     '''expression : expression MINUS term
                             | PI MINUS term
-                            | ID MINUS term'''
+                            | ID MINUS expression'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] - p[3]
     elif isinstance(p[3], int):
@@ -316,7 +316,7 @@ def p_statement_for(p):
 def p_term_times(p):
     '''term : term TIMES factor
                             | PI TIMES factor
-                            | ID TIMES term'''
+                            | ID TIMES expression'''
     p[0] = p[1] * p[3]
 
     global value
@@ -328,7 +328,7 @@ def p_term_times(p):
 def p_term_div(p):
     '''term : term DIVIDE factor
                             | PI DIVIDE factor
-                            | ID DIVIDE term'''
+                            | ID DIVIDE expression'''
     p[0] = p[1] / p[3]
 
     global value

@@ -17,10 +17,10 @@ Grammar
 Rule 0     S' -> expression
 Rule 1     expression -> expression PLUS term
 Rule 2     expression -> PI PLUS term
-Rule 3     expression -> ID PLUS term
+Rule 3     expression -> ID PLUS expression
 Rule 4     expression -> expression MINUS term
 Rule 5     expression -> PI MINUS term
-Rule 6     expression -> ID MINUS term
+Rule 6     expression -> ID MINUS expression
 Rule 7     expression -> MINUS term
 Rule 8     expression -> term
 Rule 9     term -> FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -42,10 +42,10 @@ Rule 24    term -> WHILE LPAREN comparison RPAREN term
 Rule 25    term -> FOR LPAREN ID IN factor RPAREN term
 Rule 26    term -> term TIMES factor
 Rule 27    term -> PI TIMES factor
-Rule 28    term -> ID TIMES term
+Rule 28    term -> ID TIMES expression
 Rule 29    term -> term DIVIDE factor
 Rule 30    term -> PI DIVIDE factor
-Rule 31    term -> ID DIVIDE term
+Rule 31    term -> ID DIVIDE expression
 Rule 32    term -> ID EQUALS factor
 Rule 33    term -> ID EQUALS LPAREN term COMMA term RPAREN
 Rule 34    term -> term SHL factor
@@ -155,9 +155,9 @@ error                :
 Nonterminals, with rules where they appear
 
 comparison           : 11 12 13 24
-expression           : 1 4 9 10 10 10 10 11 11 14 15 16 17 18 19 66 0
+expression           : 1 3 4 6 9 10 10 10 10 11 11 14 15 16 17 18 19 28 31 66 0
 factor               : 25 26 27 29 30 32 34 35 36 37 38 39 40 41 41 42 43 43 44 45 46 47 48 49 50 53 54 55 58
-term                 : 1 2 3 4 5 6 7 8 12 13 13 14 15 16 17 18 19 20 20 21 21 22 22 23 23 24 25 26 28 29 31 33 33 34 35 36 37 38 39 56
+term                 : 1 2 4 5 7 8 12 13 13 14 15 16 17 18 19 20 20 21 21 22 22 23 23 24 25 26 29 33 33 34 35 36 37 38 39 56
 
 Parsing method: LALR
 
@@ -166,10 +166,10 @@ state 0
     (0) S' -> . expression
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -181,10 +181,10 @@ state 0
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -325,8 +325,8 @@ state 2
     LBRACES         reduce using rule 8 (expression -> term .)
     COLON           reduce using rule 8 (expression -> term .)
     RBRACES         reduce using rule 8 (expression -> term .)
-    DEFAULT         reduce using rule 8 (expression -> term .)
     ASK             reduce using rule 8 (expression -> term .)
+    DEFAULT         reduce using rule 8 (expression -> term .)
     COMMA           reduce using rule 8 (expression -> term .)
     ELSE            reduce using rule 8 (expression -> term .)
     TIMES           shift and go to state 42
@@ -389,8 +389,8 @@ state 3
     LBRACES         reduce using rule 51 (term -> PI .)
     COLON           reduce using rule 51 (term -> PI .)
     RBRACES         reduce using rule 51 (term -> PI .)
-    DEFAULT         reduce using rule 51 (term -> PI .)
     ASK             reduce using rule 51 (term -> PI .)
+    DEFAULT         reduce using rule 51 (term -> PI .)
     COMMA           reduce using rule 51 (term -> PI .)
     ELSE            reduce using rule 51 (term -> PI .)
 
@@ -402,10 +402,10 @@ state 3
 
 state 4
 
-    (3) expression -> ID . PLUS term
-    (6) expression -> ID . MINUS term
-    (28) term -> ID . TIMES term
-    (31) term -> ID . DIVIDE term
+    (3) expression -> ID . PLUS expression
+    (6) expression -> ID . MINUS expression
+    (28) term -> ID . TIMES expression
+    (31) term -> ID . DIVIDE expression
     (32) term -> ID . EQUALS factor
     (33) term -> ID . EQUALS LPAREN term COMMA term RPAREN
     (59) term -> ID .
@@ -436,8 +436,8 @@ state 4
     LBRACES         reduce using rule 59 (term -> ID .)
     COLON           reduce using rule 59 (term -> ID .)
     RBRACES         reduce using rule 59 (term -> ID .)
-    DEFAULT         reduce using rule 59 (term -> ID .)
     ASK             reduce using rule 59 (term -> ID .)
+    DEFAULT         reduce using rule 59 (term -> ID .)
     COMMA           reduce using rule 59 (term -> ID .)
     ELSE            reduce using rule 59 (term -> ID .)
 
@@ -459,10 +459,10 @@ state 5
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -510,10 +510,10 @@ state 5
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -564,10 +564,10 @@ state 7
     (66) factor -> LPAREN . expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -579,10 +579,10 @@ state 7
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -669,10 +669,10 @@ state 8
     (10) term -> SWITCH . expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -684,10 +684,10 @@ state 8
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -823,8 +823,8 @@ state 13
     LBRACES         reduce using rule 58 (term -> factor .)
     COLON           reduce using rule 58 (term -> factor .)
     RBRACES         reduce using rule 58 (term -> factor .)
-    DEFAULT         reduce using rule 58 (term -> factor .)
     ASK             reduce using rule 58 (term -> factor .)
+    DEFAULT         reduce using rule 58 (term -> factor .)
     COMMA           reduce using rule 58 (term -> factor .)
     ELSE            reduce using rule 58 (term -> factor .)
 
@@ -925,8 +925,8 @@ state 24
     LBRACES         reduce using rule 52 (term -> E .)
     COLON           reduce using rule 52 (term -> E .)
     RBRACES         reduce using rule 52 (term -> E .)
-    DEFAULT         reduce using rule 52 (term -> E .)
     ASK             reduce using rule 52 (term -> E .)
+    DEFAULT         reduce using rule 52 (term -> E .)
     COMMA           reduce using rule 52 (term -> E .)
     ELSE            reduce using rule 52 (term -> E .)
 
@@ -959,10 +959,10 @@ state 27
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1010,10 +1010,10 @@ state 27
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1077,8 +1077,8 @@ state 28
     LBRACES         reduce using rule 60 (factor -> NUMBER .)
     COLON           reduce using rule 60 (factor -> NUMBER .)
     RBRACES         reduce using rule 60 (factor -> NUMBER .)
-    DEFAULT         reduce using rule 60 (factor -> NUMBER .)
     ASK             reduce using rule 60 (factor -> NUMBER .)
+    DEFAULT         reduce using rule 60 (factor -> NUMBER .)
     COMMA           reduce using rule 60 (factor -> NUMBER .)
     ELSE            reduce using rule 60 (factor -> NUMBER .)
 
@@ -1108,8 +1108,8 @@ state 29
     LBRACES         reduce using rule 61 (factor -> DECIMAL .)
     COLON           reduce using rule 61 (factor -> DECIMAL .)
     RBRACES         reduce using rule 61 (factor -> DECIMAL .)
-    DEFAULT         reduce using rule 61 (factor -> DECIMAL .)
     ASK             reduce using rule 61 (factor -> DECIMAL .)
+    DEFAULT         reduce using rule 61 (factor -> DECIMAL .)
     COMMA           reduce using rule 61 (factor -> DECIMAL .)
     ELSE            reduce using rule 61 (factor -> DECIMAL .)
 
@@ -1139,8 +1139,8 @@ state 30
     LBRACES         reduce using rule 62 (factor -> STRING .)
     COLON           reduce using rule 62 (factor -> STRING .)
     RBRACES         reduce using rule 62 (factor -> STRING .)
-    DEFAULT         reduce using rule 62 (factor -> STRING .)
     ASK             reduce using rule 62 (factor -> STRING .)
+    DEFAULT         reduce using rule 62 (factor -> STRING .)
     COMMA           reduce using rule 62 (factor -> STRING .)
     ELSE            reduce using rule 62 (factor -> STRING .)
 
@@ -1170,8 +1170,8 @@ state 31
     LBRACES         reduce using rule 63 (factor -> EXIT .)
     COLON           reduce using rule 63 (factor -> EXIT .)
     RBRACES         reduce using rule 63 (factor -> EXIT .)
-    DEFAULT         reduce using rule 63 (factor -> EXIT .)
     ASK             reduce using rule 63 (factor -> EXIT .)
+    DEFAULT         reduce using rule 63 (factor -> EXIT .)
     COMMA           reduce using rule 63 (factor -> EXIT .)
     ELSE            reduce using rule 63 (factor -> EXIT .)
 
@@ -1201,8 +1201,8 @@ state 32
     LBRACES         reduce using rule 64 (factor -> HELP .)
     COLON           reduce using rule 64 (factor -> HELP .)
     RBRACES         reduce using rule 64 (factor -> HELP .)
-    DEFAULT         reduce using rule 64 (factor -> HELP .)
     ASK             reduce using rule 64 (factor -> HELP .)
+    DEFAULT         reduce using rule 64 (factor -> HELP .)
     COMMA           reduce using rule 64 (factor -> HELP .)
     ELSE            reduce using rule 64 (factor -> HELP .)
 
@@ -1232,8 +1232,8 @@ state 33
     LBRACES         reduce using rule 65 (factor -> COPYRIGHT .)
     COLON           reduce using rule 65 (factor -> COPYRIGHT .)
     RBRACES         reduce using rule 65 (factor -> COPYRIGHT .)
-    DEFAULT         reduce using rule 65 (factor -> COPYRIGHT .)
     ASK             reduce using rule 65 (factor -> COPYRIGHT .)
+    DEFAULT         reduce using rule 65 (factor -> COPYRIGHT .)
     COMMA           reduce using rule 65 (factor -> COPYRIGHT .)
     ELSE            reduce using rule 65 (factor -> COPYRIGHT .)
 
@@ -1250,10 +1250,10 @@ state 34
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1301,10 +1301,10 @@ state 34
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1355,10 +1355,10 @@ state 35
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1406,10 +1406,10 @@ state 35
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1460,10 +1460,10 @@ state 36
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1511,10 +1511,10 @@ state 36
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1565,10 +1565,10 @@ state 37
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1616,10 +1616,10 @@ state 37
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1670,10 +1670,10 @@ state 38
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1721,10 +1721,10 @@ state 38
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1775,10 +1775,10 @@ state 39
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1826,10 +1826,10 @@ state 39
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1880,10 +1880,10 @@ state 40
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -1931,10 +1931,10 @@ state 40
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -1985,10 +1985,10 @@ state 41
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2036,10 +2036,10 @@ state 41
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2258,10 +2258,10 @@ state 50
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2309,10 +2309,10 @@ state 50
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2363,10 +2363,10 @@ state 51
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2414,10 +2414,10 @@ state 51
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2468,10 +2468,10 @@ state 52
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2519,10 +2519,10 @@ state 52
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2573,10 +2573,10 @@ state 53
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2624,10 +2624,10 @@ state 53
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2678,10 +2678,10 @@ state 54
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2729,10 +2729,10 @@ state 54
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2783,10 +2783,10 @@ state 55
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2834,10 +2834,10 @@ state 55
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -2920,7 +2920,15 @@ state 57
 
 state 58
 
-    (3) expression -> ID PLUS . term
+    (3) expression -> ID PLUS . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . PI PLUS term
+    (3) expression -> . ID PLUS expression
+    (4) expression -> . expression MINUS term
+    (5) expression -> . PI MINUS term
+    (6) expression -> . ID MINUS expression
+    (7) expression -> . MINUS term
+    (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
     (10) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (11) term -> . comparison ASK expression COLON expression
@@ -2930,10 +2938,10 @@ state 58
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -2979,22 +2987,15 @@ state 58
     (64) factor -> . HELP
     (65) factor -> . COPYRIGHT
     (66) factor -> . LPAREN expression RPAREN
-    (1) expression -> . expression PLUS term
-    (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
-    (4) expression -> . expression MINUS term
-    (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
-    (7) expression -> . MINUS term
-    (8) expression -> . term
 
+    PI              shift and go to state 3
+    ID              shift and go to state 4
+    MINUS           shift and go to state 5
     FUNC            shift and go to state 6
     SWITCH          shift and go to state 8
     IF              shift and go to state 10
     WHILE           shift and go to state 11
     FOR             shift and go to state 12
-    PI              shift and go to state 66
-    ID              shift and go to state 65
     OPEN            shift and go to state 14
     POW             shift and go to state 15
     LOG             shift and go to state 16
@@ -3016,16 +3017,23 @@ state 58
     HELP            shift and go to state 32
     COPYRIGHT       shift and go to state 33
     LPAREN          shift and go to state 7
-    MINUS           shift and go to state 5
 
-    term                           shift and go to state 112
-    expression                     shift and go to state 64
+    expression                     shift and go to state 112
+    term                           shift and go to state 2
     comparison                     shift and go to state 9
     factor                         shift and go to state 13
 
 state 59
 
-    (6) expression -> ID MINUS . term
+    (6) expression -> ID MINUS . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . PI PLUS term
+    (3) expression -> . ID PLUS expression
+    (4) expression -> . expression MINUS term
+    (5) expression -> . PI MINUS term
+    (6) expression -> . ID MINUS expression
+    (7) expression -> . MINUS term
+    (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
     (10) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (11) term -> . comparison ASK expression COLON expression
@@ -3035,10 +3043,10 @@ state 59
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -3084,22 +3092,15 @@ state 59
     (64) factor -> . HELP
     (65) factor -> . COPYRIGHT
     (66) factor -> . LPAREN expression RPAREN
-    (1) expression -> . expression PLUS term
-    (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
-    (4) expression -> . expression MINUS term
-    (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
-    (7) expression -> . MINUS term
-    (8) expression -> . term
 
+    PI              shift and go to state 3
+    ID              shift and go to state 4
+    MINUS           shift and go to state 5
     FUNC            shift and go to state 6
     SWITCH          shift and go to state 8
     IF              shift and go to state 10
     WHILE           shift and go to state 11
     FOR             shift and go to state 12
-    PI              shift and go to state 66
-    ID              shift and go to state 65
     OPEN            shift and go to state 14
     POW             shift and go to state 15
     LOG             shift and go to state 16
@@ -3121,16 +3122,23 @@ state 59
     HELP            shift and go to state 32
     COPYRIGHT       shift and go to state 33
     LPAREN          shift and go to state 7
-    MINUS           shift and go to state 5
 
-    term                           shift and go to state 113
-    expression                     shift and go to state 64
+    expression                     shift and go to state 113
+    term                           shift and go to state 2
     comparison                     shift and go to state 9
     factor                         shift and go to state 13
 
 state 60
 
-    (28) term -> ID TIMES . term
+    (28) term -> ID TIMES . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . PI PLUS term
+    (3) expression -> . ID PLUS expression
+    (4) expression -> . expression MINUS term
+    (5) expression -> . PI MINUS term
+    (6) expression -> . ID MINUS expression
+    (7) expression -> . MINUS term
+    (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
     (10) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (11) term -> . comparison ASK expression COLON expression
@@ -3140,10 +3148,10 @@ state 60
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -3189,22 +3197,15 @@ state 60
     (64) factor -> . HELP
     (65) factor -> . COPYRIGHT
     (66) factor -> . LPAREN expression RPAREN
-    (1) expression -> . expression PLUS term
-    (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
-    (4) expression -> . expression MINUS term
-    (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
-    (7) expression -> . MINUS term
-    (8) expression -> . term
 
+    PI              shift and go to state 3
+    ID              shift and go to state 4
+    MINUS           shift and go to state 5
     FUNC            shift and go to state 6
     SWITCH          shift and go to state 8
     IF              shift and go to state 10
     WHILE           shift and go to state 11
     FOR             shift and go to state 12
-    PI              shift and go to state 66
-    ID              shift and go to state 65
     OPEN            shift and go to state 14
     POW             shift and go to state 15
     LOG             shift and go to state 16
@@ -3226,16 +3227,23 @@ state 60
     HELP            shift and go to state 32
     COPYRIGHT       shift and go to state 33
     LPAREN          shift and go to state 7
-    MINUS           shift and go to state 5
 
-    term                           shift and go to state 114
-    expression                     shift and go to state 64
+    expression                     shift and go to state 114
+    term                           shift and go to state 2
     comparison                     shift and go to state 9
     factor                         shift and go to state 13
 
 state 61
 
-    (31) term -> ID DIVIDE . term
+    (31) term -> ID DIVIDE . expression
+    (1) expression -> . expression PLUS term
+    (2) expression -> . PI PLUS term
+    (3) expression -> . ID PLUS expression
+    (4) expression -> . expression MINUS term
+    (5) expression -> . PI MINUS term
+    (6) expression -> . ID MINUS expression
+    (7) expression -> . MINUS term
+    (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
     (10) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (11) term -> . comparison ASK expression COLON expression
@@ -3245,10 +3253,10 @@ state 61
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -3294,22 +3302,15 @@ state 61
     (64) factor -> . HELP
     (65) factor -> . COPYRIGHT
     (66) factor -> . LPAREN expression RPAREN
-    (1) expression -> . expression PLUS term
-    (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
-    (4) expression -> . expression MINUS term
-    (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
-    (7) expression -> . MINUS term
-    (8) expression -> . term
 
+    PI              shift and go to state 3
+    ID              shift and go to state 4
+    MINUS           shift and go to state 5
     FUNC            shift and go to state 6
     SWITCH          shift and go to state 8
     IF              shift and go to state 10
     WHILE           shift and go to state 11
     FOR             shift and go to state 12
-    PI              shift and go to state 66
-    ID              shift and go to state 65
     OPEN            shift and go to state 14
     POW             shift and go to state 15
     LOG             shift and go to state 16
@@ -3331,10 +3332,9 @@ state 61
     HELP            shift and go to state 32
     COPYRIGHT       shift and go to state 33
     LPAREN          shift and go to state 7
-    MINUS           shift and go to state 5
 
-    term                           shift and go to state 115
-    expression                     shift and go to state 64
+    expression                     shift and go to state 115
+    term                           shift and go to state 2
     comparison                     shift and go to state 9
     factor                         shift and go to state 13
 
@@ -3406,8 +3406,8 @@ state 63
     LBRACES         reduce using rule 7 (expression -> MINUS term .)
     COLON           reduce using rule 7 (expression -> MINUS term .)
     RBRACES         reduce using rule 7 (expression -> MINUS term .)
-    DEFAULT         reduce using rule 7 (expression -> MINUS term .)
     ASK             reduce using rule 7 (expression -> MINUS term .)
+    DEFAULT         reduce using rule 7 (expression -> MINUS term .)
     COMMA           reduce using rule 7 (expression -> MINUS term .)
     ELSE            reduce using rule 7 (expression -> MINUS term .)
     TIMES           shift and go to state 42
@@ -3468,13 +3468,13 @@ state 64
 
 state 65
 
-    (28) term -> ID . TIMES term
-    (31) term -> ID . DIVIDE term
+    (28) term -> ID . TIMES expression
+    (31) term -> ID . DIVIDE expression
     (32) term -> ID . EQUALS factor
     (33) term -> ID . EQUALS LPAREN term COMMA term RPAREN
     (59) term -> ID .
-    (3) expression -> ID . PLUS term
-    (6) expression -> ID . MINUS term
+    (3) expression -> ID . PLUS expression
+    (6) expression -> ID . MINUS expression
 
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
@@ -3500,8 +3500,8 @@ state 65
     LBRACES         reduce using rule 59 (term -> ID .)
     COLON           reduce using rule 59 (term -> ID .)
     RBRACES         reduce using rule 59 (term -> ID .)
-    DEFAULT         reduce using rule 59 (term -> ID .)
     ASK             reduce using rule 59 (term -> ID .)
+    DEFAULT         reduce using rule 59 (term -> ID .)
     COMMA           reduce using rule 59 (term -> ID .)
     ELSE            reduce using rule 59 (term -> ID .)
     PLUS            shift and go to state 58
@@ -3544,8 +3544,8 @@ state 66
     LBRACES         reduce using rule 51 (term -> PI .)
     COLON           reduce using rule 51 (term -> PI .)
     RBRACES         reduce using rule 51 (term -> PI .)
-    DEFAULT         reduce using rule 51 (term -> PI .)
     ASK             reduce using rule 51 (term -> PI .)
+    DEFAULT         reduce using rule 51 (term -> PI .)
     COMMA           reduce using rule 51 (term -> PI .)
     ELSE            reduce using rule 51 (term -> PI .)
     PLUS            shift and go to state 54
@@ -3615,10 +3615,10 @@ state 70
     (11) term -> comparison ASK . expression COLON expression
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -3630,10 +3630,10 @@ state 70
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -3731,10 +3731,10 @@ state 71
     (23) comparison -> . term SMALL term
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -3746,10 +3746,10 @@ state 71
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -3836,10 +3836,10 @@ state 72
     (23) comparison -> . term SMALL term
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -3851,10 +3851,10 @@ state 72
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -4202,8 +4202,8 @@ state 86
     LBRACES         reduce using rule 56 (term -> PRINT term .)
     COLON           reduce using rule 56 (term -> PRINT term .)
     RBRACES         reduce using rule 56 (term -> PRINT term .)
-    DEFAULT         reduce using rule 56 (term -> PRINT term .)
     ASK             reduce using rule 56 (term -> PRINT term .)
+    DEFAULT         reduce using rule 56 (term -> PRINT term .)
     COMMA           reduce using rule 56 (term -> PRINT term .)
     ELSE            reduce using rule 56 (term -> PRINT term .)
     TIMES           shift and go to state 42
@@ -4248,13 +4248,13 @@ state 86
 state 87
 
     (57) term -> PRINT ID .
-    (28) term -> ID . TIMES term
-    (31) term -> ID . DIVIDE term
+    (28) term -> ID . TIMES expression
+    (31) term -> ID . DIVIDE expression
     (32) term -> ID . EQUALS factor
     (33) term -> ID . EQUALS LPAREN term COMMA term RPAREN
     (59) term -> ID .
-    (3) expression -> ID . PLUS term
-    (6) expression -> ID . MINUS term
+    (3) expression -> ID . PLUS expression
+    (6) expression -> ID . MINUS expression
 
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
@@ -4279,8 +4279,8 @@ state 87
   ! reduce/reduce conflict for LBRACES resolved using rule 57 (term -> PRINT ID .)
   ! reduce/reduce conflict for COLON resolved using rule 57 (term -> PRINT ID .)
   ! reduce/reduce conflict for RBRACES resolved using rule 57 (term -> PRINT ID .)
-  ! reduce/reduce conflict for DEFAULT resolved using rule 57 (term -> PRINT ID .)
   ! reduce/reduce conflict for ASK resolved using rule 57 (term -> PRINT ID .)
+  ! reduce/reduce conflict for DEFAULT resolved using rule 57 (term -> PRINT ID .)
   ! reduce/reduce conflict for COMMA resolved using rule 57 (term -> PRINT ID .)
   ! reduce/reduce conflict for ELSE resolved using rule 57 (term -> PRINT ID .)
   ! shift/reduce conflict for PLUS resolved as shift
@@ -4302,8 +4302,8 @@ state 87
     LBRACES         reduce using rule 57 (term -> PRINT ID .)
     COLON           reduce using rule 57 (term -> PRINT ID .)
     RBRACES         reduce using rule 57 (term -> PRINT ID .)
-    DEFAULT         reduce using rule 57 (term -> PRINT ID .)
     ASK             reduce using rule 57 (term -> PRINT ID .)
+    DEFAULT         reduce using rule 57 (term -> PRINT ID .)
     COMMA           reduce using rule 57 (term -> PRINT ID .)
     ELSE            reduce using rule 57 (term -> PRINT ID .)
     TIMES           shift and go to state 60
@@ -4337,8 +4337,8 @@ state 87
   ! LBRACES         [ reduce using rule 59 (term -> ID .) ]
   ! COLON           [ reduce using rule 59 (term -> ID .) ]
   ! RBRACES         [ reduce using rule 59 (term -> ID .) ]
-  ! DEFAULT         [ reduce using rule 59 (term -> ID .) ]
   ! ASK             [ reduce using rule 59 (term -> ID .) ]
+  ! DEFAULT         [ reduce using rule 59 (term -> ID .) ]
   ! COMMA           [ reduce using rule 59 (term -> ID .) ]
   ! ELSE            [ reduce using rule 59 (term -> ID .) ]
 
@@ -4389,8 +4389,8 @@ state 88
     LBRACES         reduce using rule 1 (expression -> expression PLUS term .)
     COLON           reduce using rule 1 (expression -> expression PLUS term .)
     RBRACES         reduce using rule 1 (expression -> expression PLUS term .)
-    DEFAULT         reduce using rule 1 (expression -> expression PLUS term .)
     ASK             reduce using rule 1 (expression -> expression PLUS term .)
+    DEFAULT         reduce using rule 1 (expression -> expression PLUS term .)
     COMMA           reduce using rule 1 (expression -> expression PLUS term .)
     ELSE            reduce using rule 1 (expression -> expression PLUS term .)
     TIMES           shift and go to state 42
@@ -4474,8 +4474,8 @@ state 89
     LBRACES         reduce using rule 4 (expression -> expression MINUS term .)
     COLON           reduce using rule 4 (expression -> expression MINUS term .)
     RBRACES         reduce using rule 4 (expression -> expression MINUS term .)
-    DEFAULT         reduce using rule 4 (expression -> expression MINUS term .)
     ASK             reduce using rule 4 (expression -> expression MINUS term .)
+    DEFAULT         reduce using rule 4 (expression -> expression MINUS term .)
     COMMA           reduce using rule 4 (expression -> expression MINUS term .)
     ELSE            reduce using rule 4 (expression -> expression MINUS term .)
     TIMES           shift and go to state 42
@@ -4814,8 +4814,8 @@ state 96
     LBRACES         reduce using rule 26 (term -> term TIMES factor .)
     COLON           reduce using rule 26 (term -> term TIMES factor .)
     RBRACES         reduce using rule 26 (term -> term TIMES factor .)
-    DEFAULT         reduce using rule 26 (term -> term TIMES factor .)
     ASK             reduce using rule 26 (term -> term TIMES factor .)
+    DEFAULT         reduce using rule 26 (term -> term TIMES factor .)
     COMMA           reduce using rule 26 (term -> term TIMES factor .)
     ELSE            reduce using rule 26 (term -> term TIMES factor .)
 
@@ -4845,8 +4845,8 @@ state 97
     LBRACES         reduce using rule 29 (term -> term DIVIDE factor .)
     COLON           reduce using rule 29 (term -> term DIVIDE factor .)
     RBRACES         reduce using rule 29 (term -> term DIVIDE factor .)
-    DEFAULT         reduce using rule 29 (term -> term DIVIDE factor .)
     ASK             reduce using rule 29 (term -> term DIVIDE factor .)
+    DEFAULT         reduce using rule 29 (term -> term DIVIDE factor .)
     COMMA           reduce using rule 29 (term -> term DIVIDE factor .)
     ELSE            reduce using rule 29 (term -> term DIVIDE factor .)
 
@@ -4876,8 +4876,8 @@ state 98
     LBRACES         reduce using rule 34 (term -> term SHL factor .)
     COLON           reduce using rule 34 (term -> term SHL factor .)
     RBRACES         reduce using rule 34 (term -> term SHL factor .)
-    DEFAULT         reduce using rule 34 (term -> term SHL factor .)
     ASK             reduce using rule 34 (term -> term SHL factor .)
+    DEFAULT         reduce using rule 34 (term -> term SHL factor .)
     COMMA           reduce using rule 34 (term -> term SHL factor .)
     ELSE            reduce using rule 34 (term -> term SHL factor .)
 
@@ -4907,8 +4907,8 @@ state 99
     LBRACES         reduce using rule 35 (term -> term SHR factor .)
     COLON           reduce using rule 35 (term -> term SHR factor .)
     RBRACES         reduce using rule 35 (term -> term SHR factor .)
-    DEFAULT         reduce using rule 35 (term -> term SHR factor .)
     ASK             reduce using rule 35 (term -> term SHR factor .)
+    DEFAULT         reduce using rule 35 (term -> term SHR factor .)
     COMMA           reduce using rule 35 (term -> term SHR factor .)
     ELSE            reduce using rule 35 (term -> term SHR factor .)
 
@@ -4938,8 +4938,8 @@ state 100
     LBRACES         reduce using rule 36 (term -> term MOD factor .)
     COLON           reduce using rule 36 (term -> term MOD factor .)
     RBRACES         reduce using rule 36 (term -> term MOD factor .)
-    DEFAULT         reduce using rule 36 (term -> term MOD factor .)
     ASK             reduce using rule 36 (term -> term MOD factor .)
+    DEFAULT         reduce using rule 36 (term -> term MOD factor .)
     COMMA           reduce using rule 36 (term -> term MOD factor .)
     ELSE            reduce using rule 36 (term -> term MOD factor .)
 
@@ -4969,8 +4969,8 @@ state 101
     LBRACES         reduce using rule 37 (term -> term ANDLOGIC factor .)
     COLON           reduce using rule 37 (term -> term ANDLOGIC factor .)
     RBRACES         reduce using rule 37 (term -> term ANDLOGIC factor .)
-    DEFAULT         reduce using rule 37 (term -> term ANDLOGIC factor .)
     ASK             reduce using rule 37 (term -> term ANDLOGIC factor .)
+    DEFAULT         reduce using rule 37 (term -> term ANDLOGIC factor .)
     COMMA           reduce using rule 37 (term -> term ANDLOGIC factor .)
     ELSE            reduce using rule 37 (term -> term ANDLOGIC factor .)
 
@@ -5000,8 +5000,8 @@ state 102
     LBRACES         reduce using rule 38 (term -> term ORLOGIC factor .)
     COLON           reduce using rule 38 (term -> term ORLOGIC factor .)
     RBRACES         reduce using rule 38 (term -> term ORLOGIC factor .)
-    DEFAULT         reduce using rule 38 (term -> term ORLOGIC factor .)
     ASK             reduce using rule 38 (term -> term ORLOGIC factor .)
+    DEFAULT         reduce using rule 38 (term -> term ORLOGIC factor .)
     COMMA           reduce using rule 38 (term -> term ORLOGIC factor .)
     ELSE            reduce using rule 38 (term -> term ORLOGIC factor .)
 
@@ -5031,8 +5031,8 @@ state 103
     LBRACES         reduce using rule 39 (term -> term XORLOGIC factor .)
     COLON           reduce using rule 39 (term -> term XORLOGIC factor .)
     RBRACES         reduce using rule 39 (term -> term XORLOGIC factor .)
-    DEFAULT         reduce using rule 39 (term -> term XORLOGIC factor .)
     ASK             reduce using rule 39 (term -> term XORLOGIC factor .)
+    DEFAULT         reduce using rule 39 (term -> term XORLOGIC factor .)
     COMMA           reduce using rule 39 (term -> term XORLOGIC factor .)
     ELSE            reduce using rule 39 (term -> term XORLOGIC factor .)
 
@@ -5267,8 +5267,8 @@ state 108
     LBRACES         reduce using rule 2 (expression -> PI PLUS term .)
     COLON           reduce using rule 2 (expression -> PI PLUS term .)
     RBRACES         reduce using rule 2 (expression -> PI PLUS term .)
-    DEFAULT         reduce using rule 2 (expression -> PI PLUS term .)
     ASK             reduce using rule 2 (expression -> PI PLUS term .)
+    DEFAULT         reduce using rule 2 (expression -> PI PLUS term .)
     COMMA           reduce using rule 2 (expression -> PI PLUS term .)
     ELSE            reduce using rule 2 (expression -> PI PLUS term .)
     TIMES           shift and go to state 42
@@ -5352,8 +5352,8 @@ state 109
     LBRACES         reduce using rule 5 (expression -> PI MINUS term .)
     COLON           reduce using rule 5 (expression -> PI MINUS term .)
     RBRACES         reduce using rule 5 (expression -> PI MINUS term .)
-    DEFAULT         reduce using rule 5 (expression -> PI MINUS term .)
     ASK             reduce using rule 5 (expression -> PI MINUS term .)
+    DEFAULT         reduce using rule 5 (expression -> PI MINUS term .)
     COMMA           reduce using rule 5 (expression -> PI MINUS term .)
     ELSE            reduce using rule 5 (expression -> PI MINUS term .)
     TIMES           shift and go to state 42
@@ -5416,8 +5416,8 @@ state 110
     LBRACES         reduce using rule 27 (term -> PI TIMES factor .)
     COLON           reduce using rule 27 (term -> PI TIMES factor .)
     RBRACES         reduce using rule 27 (term -> PI TIMES factor .)
-    DEFAULT         reduce using rule 27 (term -> PI TIMES factor .)
     ASK             reduce using rule 27 (term -> PI TIMES factor .)
+    DEFAULT         reduce using rule 27 (term -> PI TIMES factor .)
     COMMA           reduce using rule 27 (term -> PI TIMES factor .)
     ELSE            reduce using rule 27 (term -> PI TIMES factor .)
 
@@ -5447,350 +5447,234 @@ state 111
     LBRACES         reduce using rule 30 (term -> PI DIVIDE factor .)
     COLON           reduce using rule 30 (term -> PI DIVIDE factor .)
     RBRACES         reduce using rule 30 (term -> PI DIVIDE factor .)
-    DEFAULT         reduce using rule 30 (term -> PI DIVIDE factor .)
     ASK             reduce using rule 30 (term -> PI DIVIDE factor .)
+    DEFAULT         reduce using rule 30 (term -> PI DIVIDE factor .)
     COMMA           reduce using rule 30 (term -> PI DIVIDE factor .)
     ELSE            reduce using rule 30 (term -> PI DIVIDE factor .)
 
 
 state 112
 
-    (3) expression -> ID PLUS term .
-    (26) term -> term . TIMES factor
-    (29) term -> term . DIVIDE factor
-    (34) term -> term . SHL factor
-    (35) term -> term . SHR factor
-    (36) term -> term . MOD factor
-    (37) term -> term . ANDLOGIC factor
-    (38) term -> term . ORLOGIC factor
-    (39) term -> term . XORLOGIC factor
-    (20) comparison -> term . EQUAL term
-    (21) comparison -> term . NOTEQ term
-    (22) comparison -> term . LARGE term
-    (23) comparison -> term . SMALL term
-    (8) expression -> term .
+    (3) expression -> ID PLUS expression .
+    (1) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (14) comparison -> expression . EQUAL term
+    (15) comparison -> expression . NOTEQ term
+    (16) comparison -> expression . LARGE term
+    (17) comparison -> expression . SMALL term
+    (18) comparison -> expression . LRGEQ term
+    (19) comparison -> expression . SMLEQ term
 
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for SHL resolved as shift
-  ! shift/reduce conflict for SHR resolved as shift
-  ! shift/reduce conflict for MOD resolved as shift
-  ! shift/reduce conflict for ANDLOGIC resolved as shift
-  ! shift/reduce conflict for ORLOGIC resolved as shift
-  ! shift/reduce conflict for XORLOGIC resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for EQUAL resolved as shift
   ! shift/reduce conflict for NOTEQ resolved as shift
   ! shift/reduce conflict for LARGE resolved as shift
   ! shift/reduce conflict for SMALL resolved as shift
-  ! shift/reduce conflict for EQUAL resolved as shift
-  ! shift/reduce conflict for NOTEQ resolved as shift
-  ! shift/reduce conflict for LARGE resolved as shift
-  ! shift/reduce conflict for SMALL resolved as shift
-  ! reduce/reduce conflict for LRGEQ resolved using rule 3 (expression -> ID PLUS term .)
-  ! reduce/reduce conflict for SMLEQ resolved using rule 3 (expression -> ID PLUS term .)
-  ! reduce/reduce conflict for PLUS resolved using rule 3 (expression -> ID PLUS term .)
-  ! reduce/reduce conflict for MINUS resolved using rule 3 (expression -> ID PLUS term .)
-    PLUS            reduce using rule 3 (expression -> ID PLUS term .)
-    MINUS           reduce using rule 3 (expression -> ID PLUS term .)
-    LRGEQ           reduce using rule 3 (expression -> ID PLUS term .)
-    SMLEQ           reduce using rule 3 (expression -> ID PLUS term .)
-    $end            reduce using rule 3 (expression -> ID PLUS term .)
-    RPAREN          reduce using rule 3 (expression -> ID PLUS term .)
-    LBRACES         reduce using rule 3 (expression -> ID PLUS term .)
-    COLON           reduce using rule 3 (expression -> ID PLUS term .)
-    RBRACES         reduce using rule 3 (expression -> ID PLUS term .)
-    DEFAULT         reduce using rule 3 (expression -> ID PLUS term .)
-    ASK             reduce using rule 3 (expression -> ID PLUS term .)
-    COMMA           reduce using rule 3 (expression -> ID PLUS term .)
-    ELSE            reduce using rule 3 (expression -> ID PLUS term .)
-    TIMES           shift and go to state 42
-    DIVIDE          shift and go to state 43
-    SHL             shift and go to state 44
-    SHR             shift and go to state 45
-    MOD             shift and go to state 46
-    ANDLOGIC        shift and go to state 47
-    ORLOGIC         shift and go to state 48
-    XORLOGIC        shift and go to state 49
-    EQUAL           shift and go to state 50
-    NOTEQ           shift and go to state 51
-    LARGE           shift and go to state 52
-    SMALL           shift and go to state 53
+  ! shift/reduce conflict for LRGEQ resolved as shift
+  ! shift/reduce conflict for SMLEQ resolved as shift
+    $end            reduce using rule 3 (expression -> ID PLUS expression .)
+    RPAREN          reduce using rule 3 (expression -> ID PLUS expression .)
+    LBRACES         reduce using rule 3 (expression -> ID PLUS expression .)
+    TIMES           reduce using rule 3 (expression -> ID PLUS expression .)
+    DIVIDE          reduce using rule 3 (expression -> ID PLUS expression .)
+    SHL             reduce using rule 3 (expression -> ID PLUS expression .)
+    SHR             reduce using rule 3 (expression -> ID PLUS expression .)
+    MOD             reduce using rule 3 (expression -> ID PLUS expression .)
+    ANDLOGIC        reduce using rule 3 (expression -> ID PLUS expression .)
+    ORLOGIC         reduce using rule 3 (expression -> ID PLUS expression .)
+    XORLOGIC        reduce using rule 3 (expression -> ID PLUS expression .)
+    COLON           reduce using rule 3 (expression -> ID PLUS expression .)
+    RBRACES         reduce using rule 3 (expression -> ID PLUS expression .)
+    ASK             reduce using rule 3 (expression -> ID PLUS expression .)
+    DEFAULT         reduce using rule 3 (expression -> ID PLUS expression .)
+    COMMA           reduce using rule 3 (expression -> ID PLUS expression .)
+    ELSE            reduce using rule 3 (expression -> ID PLUS expression .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    EQUAL           shift and go to state 36
+    NOTEQ           shift and go to state 37
+    LARGE           shift and go to state 38
+    SMALL           shift and go to state 39
+    LRGEQ           shift and go to state 40
+    SMLEQ           shift and go to state 41
 
-  ! EQUAL           [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! NOTEQ           [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! LARGE           [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! SMALL           [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! TIMES           [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! DIVIDE          [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! SHL             [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! SHR             [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! MOD             [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! ANDLOGIC        [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! ORLOGIC         [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! XORLOGIC        [ reduce using rule 3 (expression -> ID PLUS term .) ]
-  ! EQUAL           [ reduce using rule 8 (expression -> term .) ]
-  ! NOTEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! LARGE           [ reduce using rule 8 (expression -> term .) ]
-  ! SMALL           [ reduce using rule 8 (expression -> term .) ]
-  ! LRGEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! SMLEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! PLUS            [ reduce using rule 8 (expression -> term .) ]
-  ! MINUS           [ reduce using rule 8 (expression -> term .) ]
+  ! PLUS            [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! MINUS           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! EQUAL           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! NOTEQ           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! LARGE           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! SMALL           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! LRGEQ           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
+  ! SMLEQ           [ reduce using rule 3 (expression -> ID PLUS expression .) ]
 
 
 state 113
 
-    (6) expression -> ID MINUS term .
-    (26) term -> term . TIMES factor
-    (29) term -> term . DIVIDE factor
-    (34) term -> term . SHL factor
-    (35) term -> term . SHR factor
-    (36) term -> term . MOD factor
-    (37) term -> term . ANDLOGIC factor
-    (38) term -> term . ORLOGIC factor
-    (39) term -> term . XORLOGIC factor
-    (20) comparison -> term . EQUAL term
-    (21) comparison -> term . NOTEQ term
-    (22) comparison -> term . LARGE term
-    (23) comparison -> term . SMALL term
-    (8) expression -> term .
+    (6) expression -> ID MINUS expression .
+    (1) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (14) comparison -> expression . EQUAL term
+    (15) comparison -> expression . NOTEQ term
+    (16) comparison -> expression . LARGE term
+    (17) comparison -> expression . SMALL term
+    (18) comparison -> expression . LRGEQ term
+    (19) comparison -> expression . SMLEQ term
 
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for SHL resolved as shift
-  ! shift/reduce conflict for SHR resolved as shift
-  ! shift/reduce conflict for MOD resolved as shift
-  ! shift/reduce conflict for ANDLOGIC resolved as shift
-  ! shift/reduce conflict for ORLOGIC resolved as shift
-  ! shift/reduce conflict for XORLOGIC resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for EQUAL resolved as shift
   ! shift/reduce conflict for NOTEQ resolved as shift
   ! shift/reduce conflict for LARGE resolved as shift
   ! shift/reduce conflict for SMALL resolved as shift
-  ! shift/reduce conflict for EQUAL resolved as shift
-  ! shift/reduce conflict for NOTEQ resolved as shift
-  ! shift/reduce conflict for LARGE resolved as shift
-  ! shift/reduce conflict for SMALL resolved as shift
-  ! reduce/reduce conflict for LRGEQ resolved using rule 6 (expression -> ID MINUS term .)
-  ! reduce/reduce conflict for SMLEQ resolved using rule 6 (expression -> ID MINUS term .)
-  ! reduce/reduce conflict for PLUS resolved using rule 6 (expression -> ID MINUS term .)
-  ! reduce/reduce conflict for MINUS resolved using rule 6 (expression -> ID MINUS term .)
-    PLUS            reduce using rule 6 (expression -> ID MINUS term .)
-    MINUS           reduce using rule 6 (expression -> ID MINUS term .)
-    LRGEQ           reduce using rule 6 (expression -> ID MINUS term .)
-    SMLEQ           reduce using rule 6 (expression -> ID MINUS term .)
-    $end            reduce using rule 6 (expression -> ID MINUS term .)
-    RPAREN          reduce using rule 6 (expression -> ID MINUS term .)
-    LBRACES         reduce using rule 6 (expression -> ID MINUS term .)
-    COLON           reduce using rule 6 (expression -> ID MINUS term .)
-    RBRACES         reduce using rule 6 (expression -> ID MINUS term .)
-    DEFAULT         reduce using rule 6 (expression -> ID MINUS term .)
-    ASK             reduce using rule 6 (expression -> ID MINUS term .)
-    COMMA           reduce using rule 6 (expression -> ID MINUS term .)
-    ELSE            reduce using rule 6 (expression -> ID MINUS term .)
-    TIMES           shift and go to state 42
-    DIVIDE          shift and go to state 43
-    SHL             shift and go to state 44
-    SHR             shift and go to state 45
-    MOD             shift and go to state 46
-    ANDLOGIC        shift and go to state 47
-    ORLOGIC         shift and go to state 48
-    XORLOGIC        shift and go to state 49
-    EQUAL           shift and go to state 50
-    NOTEQ           shift and go to state 51
-    LARGE           shift and go to state 52
-    SMALL           shift and go to state 53
+  ! shift/reduce conflict for LRGEQ resolved as shift
+  ! shift/reduce conflict for SMLEQ resolved as shift
+    $end            reduce using rule 6 (expression -> ID MINUS expression .)
+    RPAREN          reduce using rule 6 (expression -> ID MINUS expression .)
+    LBRACES         reduce using rule 6 (expression -> ID MINUS expression .)
+    TIMES           reduce using rule 6 (expression -> ID MINUS expression .)
+    DIVIDE          reduce using rule 6 (expression -> ID MINUS expression .)
+    SHL             reduce using rule 6 (expression -> ID MINUS expression .)
+    SHR             reduce using rule 6 (expression -> ID MINUS expression .)
+    MOD             reduce using rule 6 (expression -> ID MINUS expression .)
+    ANDLOGIC        reduce using rule 6 (expression -> ID MINUS expression .)
+    ORLOGIC         reduce using rule 6 (expression -> ID MINUS expression .)
+    XORLOGIC        reduce using rule 6 (expression -> ID MINUS expression .)
+    COLON           reduce using rule 6 (expression -> ID MINUS expression .)
+    RBRACES         reduce using rule 6 (expression -> ID MINUS expression .)
+    ASK             reduce using rule 6 (expression -> ID MINUS expression .)
+    DEFAULT         reduce using rule 6 (expression -> ID MINUS expression .)
+    COMMA           reduce using rule 6 (expression -> ID MINUS expression .)
+    ELSE            reduce using rule 6 (expression -> ID MINUS expression .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    EQUAL           shift and go to state 36
+    NOTEQ           shift and go to state 37
+    LARGE           shift and go to state 38
+    SMALL           shift and go to state 39
+    LRGEQ           shift and go to state 40
+    SMLEQ           shift and go to state 41
 
-  ! EQUAL           [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! NOTEQ           [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! LARGE           [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! SMALL           [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! TIMES           [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! DIVIDE          [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! SHL             [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! SHR             [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! MOD             [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! ANDLOGIC        [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! ORLOGIC         [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! XORLOGIC        [ reduce using rule 6 (expression -> ID MINUS term .) ]
-  ! EQUAL           [ reduce using rule 8 (expression -> term .) ]
-  ! NOTEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! LARGE           [ reduce using rule 8 (expression -> term .) ]
-  ! SMALL           [ reduce using rule 8 (expression -> term .) ]
-  ! LRGEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! SMLEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! PLUS            [ reduce using rule 8 (expression -> term .) ]
-  ! MINUS           [ reduce using rule 8 (expression -> term .) ]
+  ! PLUS            [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! MINUS           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! EQUAL           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! NOTEQ           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! LARGE           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! SMALL           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! LRGEQ           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
+  ! SMLEQ           [ reduce using rule 6 (expression -> ID MINUS expression .) ]
 
 
 state 114
 
-    (28) term -> ID TIMES term .
-    (26) term -> term . TIMES factor
-    (29) term -> term . DIVIDE factor
-    (34) term -> term . SHL factor
-    (35) term -> term . SHR factor
-    (36) term -> term . MOD factor
-    (37) term -> term . ANDLOGIC factor
-    (38) term -> term . ORLOGIC factor
-    (39) term -> term . XORLOGIC factor
-    (20) comparison -> term . EQUAL term
-    (21) comparison -> term . NOTEQ term
-    (22) comparison -> term . LARGE term
-    (23) comparison -> term . SMALL term
-    (8) expression -> term .
+    (28) term -> ID TIMES expression .
+    (1) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (14) comparison -> expression . EQUAL term
+    (15) comparison -> expression . NOTEQ term
+    (16) comparison -> expression . LARGE term
+    (17) comparison -> expression . SMALL term
+    (18) comparison -> expression . LRGEQ term
+    (19) comparison -> expression . SMLEQ term
 
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for SHL resolved as shift
-  ! shift/reduce conflict for SHR resolved as shift
-  ! shift/reduce conflict for MOD resolved as shift
-  ! shift/reduce conflict for ANDLOGIC resolved as shift
-  ! shift/reduce conflict for ORLOGIC resolved as shift
-  ! shift/reduce conflict for XORLOGIC resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for EQUAL resolved as shift
   ! shift/reduce conflict for NOTEQ resolved as shift
   ! shift/reduce conflict for LARGE resolved as shift
   ! shift/reduce conflict for SMALL resolved as shift
-  ! shift/reduce conflict for EQUAL resolved as shift
-  ! shift/reduce conflict for NOTEQ resolved as shift
-  ! shift/reduce conflict for LARGE resolved as shift
-  ! shift/reduce conflict for SMALL resolved as shift
-  ! reduce/reduce conflict for LRGEQ resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for SMLEQ resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for PLUS resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for MINUS resolved using rule 8 (expression -> term .)
-    $end            reduce using rule 28 (term -> ID TIMES term .)
-    RPAREN          reduce using rule 28 (term -> ID TIMES term .)
-    LBRACES         reduce using rule 28 (term -> ID TIMES term .)
-    COLON           reduce using rule 28 (term -> ID TIMES term .)
-    RBRACES         reduce using rule 28 (term -> ID TIMES term .)
-    DEFAULT         reduce using rule 28 (term -> ID TIMES term .)
-    ASK             reduce using rule 28 (term -> ID TIMES term .)
-    COMMA           reduce using rule 28 (term -> ID TIMES term .)
-    ELSE            reduce using rule 28 (term -> ID TIMES term .)
-    TIMES           shift and go to state 42
-    DIVIDE          shift and go to state 43
-    SHL             shift and go to state 44
-    SHR             shift and go to state 45
-    MOD             shift and go to state 46
-    ANDLOGIC        shift and go to state 47
-    ORLOGIC         shift and go to state 48
-    XORLOGIC        shift and go to state 49
-    EQUAL           shift and go to state 50
-    NOTEQ           shift and go to state 51
-    LARGE           shift and go to state 52
-    SMALL           shift and go to state 53
-    LRGEQ           reduce using rule 8 (expression -> term .)
-    SMLEQ           reduce using rule 8 (expression -> term .)
-    PLUS            reduce using rule 8 (expression -> term .)
-    MINUS           reduce using rule 8 (expression -> term .)
+  ! shift/reduce conflict for LRGEQ resolved as shift
+  ! shift/reduce conflict for SMLEQ resolved as shift
+    TIMES           reduce using rule 28 (term -> ID TIMES expression .)
+    DIVIDE          reduce using rule 28 (term -> ID TIMES expression .)
+    SHL             reduce using rule 28 (term -> ID TIMES expression .)
+    SHR             reduce using rule 28 (term -> ID TIMES expression .)
+    MOD             reduce using rule 28 (term -> ID TIMES expression .)
+    ANDLOGIC        reduce using rule 28 (term -> ID TIMES expression .)
+    ORLOGIC         reduce using rule 28 (term -> ID TIMES expression .)
+    XORLOGIC        reduce using rule 28 (term -> ID TIMES expression .)
+    $end            reduce using rule 28 (term -> ID TIMES expression .)
+    RPAREN          reduce using rule 28 (term -> ID TIMES expression .)
+    LBRACES         reduce using rule 28 (term -> ID TIMES expression .)
+    COLON           reduce using rule 28 (term -> ID TIMES expression .)
+    RBRACES         reduce using rule 28 (term -> ID TIMES expression .)
+    ASK             reduce using rule 28 (term -> ID TIMES expression .)
+    DEFAULT         reduce using rule 28 (term -> ID TIMES expression .)
+    COMMA           reduce using rule 28 (term -> ID TIMES expression .)
+    ELSE            reduce using rule 28 (term -> ID TIMES expression .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    EQUAL           shift and go to state 36
+    NOTEQ           shift and go to state 37
+    LARGE           shift and go to state 38
+    SMALL           shift and go to state 39
+    LRGEQ           shift and go to state 40
+    SMLEQ           shift and go to state 41
 
-  ! TIMES           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! DIVIDE          [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! SHL             [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! SHR             [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! MOD             [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! ANDLOGIC        [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! ORLOGIC         [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! XORLOGIC        [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! EQUAL           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! NOTEQ           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! LARGE           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! SMALL           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! PLUS            [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! MINUS           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! LRGEQ           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! SMLEQ           [ reduce using rule 28 (term -> ID TIMES term .) ]
-  ! EQUAL           [ reduce using rule 8 (expression -> term .) ]
-  ! NOTEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! LARGE           [ reduce using rule 8 (expression -> term .) ]
-  ! SMALL           [ reduce using rule 8 (expression -> term .) ]
+  ! EQUAL           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! NOTEQ           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! LARGE           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! SMALL           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! PLUS            [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! MINUS           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! LRGEQ           [ reduce using rule 28 (term -> ID TIMES expression .) ]
+  ! SMLEQ           [ reduce using rule 28 (term -> ID TIMES expression .) ]
 
 
 state 115
 
-    (31) term -> ID DIVIDE term .
-    (26) term -> term . TIMES factor
-    (29) term -> term . DIVIDE factor
-    (34) term -> term . SHL factor
-    (35) term -> term . SHR factor
-    (36) term -> term . MOD factor
-    (37) term -> term . ANDLOGIC factor
-    (38) term -> term . ORLOGIC factor
-    (39) term -> term . XORLOGIC factor
-    (20) comparison -> term . EQUAL term
-    (21) comparison -> term . NOTEQ term
-    (22) comparison -> term . LARGE term
-    (23) comparison -> term . SMALL term
-    (8) expression -> term .
+    (31) term -> ID DIVIDE expression .
+    (1) expression -> expression . PLUS term
+    (4) expression -> expression . MINUS term
+    (14) comparison -> expression . EQUAL term
+    (15) comparison -> expression . NOTEQ term
+    (16) comparison -> expression . LARGE term
+    (17) comparison -> expression . SMALL term
+    (18) comparison -> expression . LRGEQ term
+    (19) comparison -> expression . SMLEQ term
 
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for SHL resolved as shift
-  ! shift/reduce conflict for SHR resolved as shift
-  ! shift/reduce conflict for MOD resolved as shift
-  ! shift/reduce conflict for ANDLOGIC resolved as shift
-  ! shift/reduce conflict for ORLOGIC resolved as shift
-  ! shift/reduce conflict for XORLOGIC resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for EQUAL resolved as shift
   ! shift/reduce conflict for NOTEQ resolved as shift
   ! shift/reduce conflict for LARGE resolved as shift
   ! shift/reduce conflict for SMALL resolved as shift
-  ! shift/reduce conflict for EQUAL resolved as shift
-  ! shift/reduce conflict for NOTEQ resolved as shift
-  ! shift/reduce conflict for LARGE resolved as shift
-  ! shift/reduce conflict for SMALL resolved as shift
-  ! reduce/reduce conflict for LRGEQ resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for SMLEQ resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for PLUS resolved using rule 8 (expression -> term .)
-  ! reduce/reduce conflict for MINUS resolved using rule 8 (expression -> term .)
-    $end            reduce using rule 31 (term -> ID DIVIDE term .)
-    RPAREN          reduce using rule 31 (term -> ID DIVIDE term .)
-    LBRACES         reduce using rule 31 (term -> ID DIVIDE term .)
-    COLON           reduce using rule 31 (term -> ID DIVIDE term .)
-    RBRACES         reduce using rule 31 (term -> ID DIVIDE term .)
-    DEFAULT         reduce using rule 31 (term -> ID DIVIDE term .)
-    ASK             reduce using rule 31 (term -> ID DIVIDE term .)
-    COMMA           reduce using rule 31 (term -> ID DIVIDE term .)
-    ELSE            reduce using rule 31 (term -> ID DIVIDE term .)
-    TIMES           shift and go to state 42
-    DIVIDE          shift and go to state 43
-    SHL             shift and go to state 44
-    SHR             shift and go to state 45
-    MOD             shift and go to state 46
-    ANDLOGIC        shift and go to state 47
-    ORLOGIC         shift and go to state 48
-    XORLOGIC        shift and go to state 49
-    EQUAL           shift and go to state 50
-    NOTEQ           shift and go to state 51
-    LARGE           shift and go to state 52
-    SMALL           shift and go to state 53
-    LRGEQ           reduce using rule 8 (expression -> term .)
-    SMLEQ           reduce using rule 8 (expression -> term .)
-    PLUS            reduce using rule 8 (expression -> term .)
-    MINUS           reduce using rule 8 (expression -> term .)
+  ! shift/reduce conflict for LRGEQ resolved as shift
+  ! shift/reduce conflict for SMLEQ resolved as shift
+    TIMES           reduce using rule 31 (term -> ID DIVIDE expression .)
+    DIVIDE          reduce using rule 31 (term -> ID DIVIDE expression .)
+    SHL             reduce using rule 31 (term -> ID DIVIDE expression .)
+    SHR             reduce using rule 31 (term -> ID DIVIDE expression .)
+    MOD             reduce using rule 31 (term -> ID DIVIDE expression .)
+    ANDLOGIC        reduce using rule 31 (term -> ID DIVIDE expression .)
+    ORLOGIC         reduce using rule 31 (term -> ID DIVIDE expression .)
+    XORLOGIC        reduce using rule 31 (term -> ID DIVIDE expression .)
+    $end            reduce using rule 31 (term -> ID DIVIDE expression .)
+    RPAREN          reduce using rule 31 (term -> ID DIVIDE expression .)
+    LBRACES         reduce using rule 31 (term -> ID DIVIDE expression .)
+    COLON           reduce using rule 31 (term -> ID DIVIDE expression .)
+    RBRACES         reduce using rule 31 (term -> ID DIVIDE expression .)
+    ASK             reduce using rule 31 (term -> ID DIVIDE expression .)
+    DEFAULT         reduce using rule 31 (term -> ID DIVIDE expression .)
+    COMMA           reduce using rule 31 (term -> ID DIVIDE expression .)
+    ELSE            reduce using rule 31 (term -> ID DIVIDE expression .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    EQUAL           shift and go to state 36
+    NOTEQ           shift and go to state 37
+    LARGE           shift and go to state 38
+    SMALL           shift and go to state 39
+    LRGEQ           shift and go to state 40
+    SMLEQ           shift and go to state 41
 
-  ! TIMES           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! DIVIDE          [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! SHL             [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! SHR             [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! MOD             [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! ANDLOGIC        [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! ORLOGIC         [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! XORLOGIC        [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! EQUAL           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! NOTEQ           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! LARGE           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! SMALL           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! PLUS            [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! MINUS           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! LRGEQ           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! SMLEQ           [ reduce using rule 31 (term -> ID DIVIDE term .) ]
-  ! EQUAL           [ reduce using rule 8 (expression -> term .) ]
-  ! NOTEQ           [ reduce using rule 8 (expression -> term .) ]
-  ! LARGE           [ reduce using rule 8 (expression -> term .) ]
-  ! SMALL           [ reduce using rule 8 (expression -> term .) ]
+  ! EQUAL           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! NOTEQ           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! LARGE           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! SMALL           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! PLUS            [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! LRGEQ           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
+  ! SMLEQ           [ reduce using rule 31 (term -> ID DIVIDE expression .) ]
 
 
 state 116
@@ -5818,8 +5702,8 @@ state 116
     LBRACES         reduce using rule 32 (term -> ID EQUALS factor .)
     COLON           reduce using rule 32 (term -> ID EQUALS factor .)
     RBRACES         reduce using rule 32 (term -> ID EQUALS factor .)
-    DEFAULT         reduce using rule 32 (term -> ID EQUALS factor .)
     ASK             reduce using rule 32 (term -> ID EQUALS factor .)
+    DEFAULT         reduce using rule 32 (term -> ID EQUALS factor .)
     COMMA           reduce using rule 32 (term -> ID EQUALS factor .)
     ELSE            reduce using rule 32 (term -> ID EQUALS factor .)
 
@@ -5837,10 +5721,10 @@ state 117
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -5871,10 +5755,10 @@ state 117
     (59) term -> . ID
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (14) comparison -> . expression EQUAL term
@@ -5962,8 +5846,8 @@ state 119
     LBRACES         reduce using rule 66 (factor -> LPAREN expression RPAREN .)
     COLON           reduce using rule 66 (factor -> LPAREN expression RPAREN .)
     RBRACES         reduce using rule 66 (factor -> LPAREN expression RPAREN .)
-    DEFAULT         reduce using rule 66 (factor -> LPAREN expression RPAREN .)
     ASK             reduce using rule 66 (factor -> LPAREN expression RPAREN .)
+    DEFAULT         reduce using rule 66 (factor -> LPAREN expression RPAREN .)
     COMMA           reduce using rule 66 (factor -> LPAREN expression RPAREN .)
     ELSE            reduce using rule 66 (factor -> LPAREN expression RPAREN .)
 
@@ -6225,10 +6109,10 @@ state 140
     (9) term -> FUNC LPAREN RPAREN LBRACES . expression RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -6240,10 +6124,10 @@ state 140
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -6330,10 +6214,10 @@ state 141
     (10) term -> SWITCH expression LBRACES CASE . expression COLON expression DEFAULT COLON expression RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -6345,10 +6229,10 @@ state 141
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -6435,10 +6319,10 @@ state 142
     (11) term -> comparison ASK expression COLON . expression
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -6450,10 +6334,10 @@ state 142
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -6548,10 +6432,10 @@ state 143
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -6599,10 +6483,10 @@ state 143
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -6653,10 +6537,10 @@ state 144
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -6704,10 +6588,10 @@ state 144
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -6792,8 +6676,8 @@ state 146
     LBRACES         reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
     COLON           reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
     RBRACES         reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
     ASK             reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
     COMMA           reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
     ELSE            reduce using rule 40 (term -> OPEN LPAREN factor RPAREN .)
 
@@ -6844,8 +6728,8 @@ state 148
     LBRACES         reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
     COLON           reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
     RBRACES         reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
     ASK             reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
     COMMA           reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
     ELSE            reduce using rule 42 (term -> LOG LPAREN factor RPAREN .)
 
@@ -6896,8 +6780,8 @@ state 150
     LBRACES         reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
     COLON           reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
     RBRACES         reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
     ASK             reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
     COMMA           reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
     ELSE            reduce using rule 44 (term -> LOG10 LPAREN factor RPAREN .)
 
@@ -6927,8 +6811,8 @@ state 151
     LBRACES         reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
     COLON           reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
     RBRACES         reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
     ASK             reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
     COMMA           reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
     ELSE            reduce using rule 45 (term -> LOG1P LPAREN factor RPAREN .)
 
@@ -6958,8 +6842,8 @@ state 152
     LBRACES         reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
     COLON           reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
     RBRACES         reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
     ASK             reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
     COMMA           reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
     ELSE            reduce using rule 46 (term -> EXP LPAREN factor RPAREN .)
 
@@ -6989,8 +6873,8 @@ state 153
     LBRACES         reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
     COLON           reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
     RBRACES         reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
     ASK             reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
     COMMA           reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
     ELSE            reduce using rule 47 (term -> SQRT LPAREN factor RPAREN .)
 
@@ -7020,8 +6904,8 @@ state 154
     LBRACES         reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
     COLON           reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
     RBRACES         reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
     ASK             reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
     COMMA           reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
     ELSE            reduce using rule 48 (term -> COS LPAREN factor RPAREN .)
 
@@ -7051,8 +6935,8 @@ state 155
     LBRACES         reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
     COLON           reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
     RBRACES         reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
     ASK             reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
     COMMA           reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
     ELSE            reduce using rule 49 (term -> SIN LPAREN factor RPAREN .)
 
@@ -7082,8 +6966,8 @@ state 156
     LBRACES         reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
     COLON           reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
     RBRACES         reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
-    DEFAULT         reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
     ASK             reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
+    DEFAULT         reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
     COMMA           reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
     ELSE            reduce using rule 50 (term -> TAN LPAREN factor RPAREN .)
 
@@ -7127,8 +7011,8 @@ state 159
     LBRACES         reduce using rule 55 (term -> LET ID EQUALS factor .)
     COLON           reduce using rule 55 (term -> LET ID EQUALS factor .)
     RBRACES         reduce using rule 55 (term -> LET ID EQUALS factor .)
-    DEFAULT         reduce using rule 55 (term -> LET ID EQUALS factor .)
     ASK             reduce using rule 55 (term -> LET ID EQUALS factor .)
+    DEFAULT         reduce using rule 55 (term -> LET ID EQUALS factor .)
     COMMA           reduce using rule 55 (term -> LET ID EQUALS factor .)
     ELSE            reduce using rule 55 (term -> LET ID EQUALS factor .)
 
@@ -7145,10 +7029,10 @@ state 160
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -7196,10 +7080,10 @@ state 160
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -7317,8 +7201,8 @@ state 163
     LBRACES         reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     COLON           reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     RBRACES         reduce using rule 11 (term -> comparison ASK expression COLON expression .)
-    DEFAULT         reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     ASK             reduce using rule 11 (term -> comparison ASK expression COLON expression .)
+    DEFAULT         reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     COMMA           reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     ELSE            reduce using rule 11 (term -> comparison ASK expression COLON expression .)
     PLUS            shift and go to state 34
@@ -7384,8 +7268,8 @@ state 164
     LBRACES         reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
     COLON           reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
     RBRACES         reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
-    DEFAULT         reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
     ASK             reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
+    DEFAULT         reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
     COMMA           reduce using rule 12 (term -> IF LPAREN comparison RPAREN term .)
     ELSE            shift and go to state 174
     TIMES           shift and go to state 42
@@ -7470,8 +7354,8 @@ state 165
     LBRACES         reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     COLON           reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     RBRACES         reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
-    DEFAULT         reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     ASK             reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
+    DEFAULT         reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     COMMA           reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     ELSE            reduce using rule 24 (term -> WHILE LPAREN comparison RPAREN term .)
     TIMES           shift and go to state 42
@@ -7646,8 +7530,8 @@ state 172
     LBRACES         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     COLON           reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     RBRACES         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
-    DEFAULT         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     ASK             reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    DEFAULT         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     COMMA           reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     ELSE            reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
 
@@ -7657,10 +7541,10 @@ state 173
     (10) term -> SWITCH expression LBRACES CASE expression COLON . expression DEFAULT COLON expression RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -7672,10 +7556,10 @@ state 173
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -7769,10 +7653,10 @@ state 174
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -7820,10 +7704,10 @@ state 174
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -7874,10 +7758,10 @@ state 175
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -7925,10 +7809,10 @@ state 175
     (66) factor -> . LPAREN expression RPAREN
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
 
@@ -7992,8 +7876,8 @@ state 176
     LBRACES         reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
     COLON           reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
     RBRACES         reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
-    DEFAULT         reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
     ASK             reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
+    DEFAULT         reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
     COMMA           reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
     ELSE            reduce using rule 41 (term -> POW LPAREN factor COMMA factor RPAREN .)
 
@@ -8023,8 +7907,8 @@ state 177
     LBRACES         reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     COLON           reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     RBRACES         reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
-    DEFAULT         reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     ASK             reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
+    DEFAULT         reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     COMMA           reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     ELSE            reduce using rule 43 (term -> LOG LPAREN factor COMMA factor RPAREN .)
 
@@ -8054,8 +7938,8 @@ state 178
     LBRACES         reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
     COLON           reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
     RBRACES         reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
-    DEFAULT         reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
     ASK             reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    DEFAULT         reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
     COMMA           reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
     ELSE            reduce using rule 53 (term -> VAR COLON TYPINT ID EQUALS factor .)
 
@@ -8085,8 +7969,8 @@ state 179
     LBRACES         reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     COLON           reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     RBRACES         reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
-    DEFAULT         reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     ASK             reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    DEFAULT         reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     COMMA           reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     ELSE            reduce using rule 54 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
 
@@ -8116,8 +8000,8 @@ state 180
     LBRACES         reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     COLON           reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     RBRACES         reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
-    DEFAULT         reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     ASK             reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
+    DEFAULT         reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     COMMA           reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     ELSE            reduce using rule 33 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
 
@@ -8187,8 +8071,8 @@ state 182
     LBRACES         reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     COLON           reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     RBRACES         reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
-    DEFAULT         reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     ASK             reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    DEFAULT         reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     COMMA           reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     ELSE            reduce using rule 13 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     TIMES           shift and go to state 42
@@ -8272,8 +8156,8 @@ state 183
     LBRACES         reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     COLON           reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     RBRACES         reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
-    DEFAULT         reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     ASK             reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    DEFAULT         reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     COMMA           reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     ELSE            reduce using rule 25 (term -> FOR LPAREN ID IN factor RPAREN term .)
     TIMES           shift and go to state 42
@@ -8327,10 +8211,10 @@ state 185
     (10) term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON . expression RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
-    (3) expression -> . ID PLUS term
+    (3) expression -> . ID PLUS expression
     (4) expression -> . expression MINUS term
     (5) expression -> . PI MINUS term
-    (6) expression -> . ID MINUS term
+    (6) expression -> . ID MINUS expression
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
@@ -8342,10 +8226,10 @@ state 185
     (25) term -> . FOR LPAREN ID IN factor RPAREN term
     (26) term -> . term TIMES factor
     (27) term -> . PI TIMES factor
-    (28) term -> . ID TIMES term
+    (28) term -> . ID TIMES expression
     (29) term -> . term DIVIDE factor
     (30) term -> . PI DIVIDE factor
-    (31) term -> . ID DIVIDE term
+    (31) term -> . ID DIVIDE expression
     (32) term -> . ID EQUALS factor
     (33) term -> . ID EQUALS LPAREN term COMMA term RPAREN
     (34) term -> . term SHL factor
@@ -8475,8 +8359,8 @@ state 187
     LBRACES         reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     COLON           reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     RBRACES         reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
-    DEFAULT         reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     ASK             reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    DEFAULT         reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     COMMA           reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     ELSE            reduce using rule 10 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
 
@@ -8653,70 +8537,38 @@ WARNING: shift/reduce conflict for EQUAL in state 109 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 109 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 109 resolved as shift
 WARNING: shift/reduce conflict for SMALL in state 109 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 112 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 112 resolved as shift
-WARNING: shift/reduce conflict for SHL in state 112 resolved as shift
-WARNING: shift/reduce conflict for SHR in state 112 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 112 resolved as shift
-WARNING: shift/reduce conflict for ANDLOGIC in state 112 resolved as shift
-WARNING: shift/reduce conflict for ORLOGIC in state 112 resolved as shift
-WARNING: shift/reduce conflict for XORLOGIC in state 112 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 112 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 112 resolved as shift
 WARNING: shift/reduce conflict for EQUAL in state 112 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 112 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 112 resolved as shift
 WARNING: shift/reduce conflict for SMALL in state 112 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 112 resolved as shift
-WARNING: shift/reduce conflict for NOTEQ in state 112 resolved as shift
-WARNING: shift/reduce conflict for LARGE in state 112 resolved as shift
-WARNING: shift/reduce conflict for SMALL in state 112 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 113 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 113 resolved as shift
-WARNING: shift/reduce conflict for SHL in state 113 resolved as shift
-WARNING: shift/reduce conflict for SHR in state 113 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 113 resolved as shift
-WARNING: shift/reduce conflict for ANDLOGIC in state 113 resolved as shift
-WARNING: shift/reduce conflict for ORLOGIC in state 113 resolved as shift
-WARNING: shift/reduce conflict for XORLOGIC in state 113 resolved as shift
+WARNING: shift/reduce conflict for LRGEQ in state 112 resolved as shift
+WARNING: shift/reduce conflict for SMLEQ in state 112 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 113 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 113 resolved as shift
 WARNING: shift/reduce conflict for EQUAL in state 113 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 113 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 113 resolved as shift
 WARNING: shift/reduce conflict for SMALL in state 113 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 113 resolved as shift
-WARNING: shift/reduce conflict for NOTEQ in state 113 resolved as shift
-WARNING: shift/reduce conflict for LARGE in state 113 resolved as shift
-WARNING: shift/reduce conflict for SMALL in state 113 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 114 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 114 resolved as shift
-WARNING: shift/reduce conflict for SHL in state 114 resolved as shift
-WARNING: shift/reduce conflict for SHR in state 114 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 114 resolved as shift
-WARNING: shift/reduce conflict for ANDLOGIC in state 114 resolved as shift
-WARNING: shift/reduce conflict for ORLOGIC in state 114 resolved as shift
-WARNING: shift/reduce conflict for XORLOGIC in state 114 resolved as shift
+WARNING: shift/reduce conflict for LRGEQ in state 113 resolved as shift
+WARNING: shift/reduce conflict for SMLEQ in state 113 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 114 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 114 resolved as shift
 WARNING: shift/reduce conflict for EQUAL in state 114 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 114 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 114 resolved as shift
 WARNING: shift/reduce conflict for SMALL in state 114 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 114 resolved as shift
-WARNING: shift/reduce conflict for NOTEQ in state 114 resolved as shift
-WARNING: shift/reduce conflict for LARGE in state 114 resolved as shift
-WARNING: shift/reduce conflict for SMALL in state 114 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 115 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 115 resolved as shift
-WARNING: shift/reduce conflict for SHL in state 115 resolved as shift
-WARNING: shift/reduce conflict for SHR in state 115 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 115 resolved as shift
-WARNING: shift/reduce conflict for ANDLOGIC in state 115 resolved as shift
-WARNING: shift/reduce conflict for ORLOGIC in state 115 resolved as shift
-WARNING: shift/reduce conflict for XORLOGIC in state 115 resolved as shift
+WARNING: shift/reduce conflict for LRGEQ in state 114 resolved as shift
+WARNING: shift/reduce conflict for SMLEQ in state 114 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 115 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 115 resolved as shift
 WARNING: shift/reduce conflict for EQUAL in state 115 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 115 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 115 resolved as shift
 WARNING: shift/reduce conflict for SMALL in state 115 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 115 resolved as shift
-WARNING: shift/reduce conflict for NOTEQ in state 115 resolved as shift
-WARNING: shift/reduce conflict for LARGE in state 115 resolved as shift
-WARNING: shift/reduce conflict for SMALL in state 115 resolved as shift
+WARNING: shift/reduce conflict for LRGEQ in state 115 resolved as shift
+WARNING: shift/reduce conflict for SMLEQ in state 115 resolved as shift
 WARNING: shift/reduce conflict for EQUAL in state 123 resolved as shift
 WARNING: shift/reduce conflict for NOTEQ in state 123 resolved as shift
 WARNING: shift/reduce conflict for LARGE in state 123 resolved as shift
@@ -8816,14 +8668,6 @@ WARNING: reduce/reduce conflict in state 108 resolved using rule (expression -> 
 WARNING: rejected rule (expression -> term) in state 108
 WARNING: reduce/reduce conflict in state 109 resolved using rule (expression -> PI MINUS term)
 WARNING: rejected rule (expression -> term) in state 109
-WARNING: reduce/reduce conflict in state 112 resolved using rule (expression -> ID PLUS term)
-WARNING: rejected rule (expression -> term) in state 112
-WARNING: reduce/reduce conflict in state 113 resolved using rule (expression -> ID MINUS term)
-WARNING: rejected rule (expression -> term) in state 113
-WARNING: reduce/reduce conflict in state 114 resolved using rule (expression -> term)
-WARNING: rejected rule (term -> ID TIMES term) in state 114
-WARNING: reduce/reduce conflict in state 115 resolved using rule (expression -> term)
-WARNING: rejected rule (term -> ID DIVIDE term) in state 115
 WARNING: reduce/reduce conflict in state 164 resolved using rule (expression -> term)
 WARNING: rejected rule (term -> IF LPAREN comparison RPAREN term) in state 164
 WARNING: reduce/reduce conflict in state 165 resolved using rule (expression -> term)
