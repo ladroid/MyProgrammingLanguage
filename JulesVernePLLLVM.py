@@ -176,10 +176,15 @@ lexer = lex.lex()
 ###########################################
 ################YACC######################
 #########################################
+
+# 'value' is a global value which saved in memory
+value = None
+
 # plus
 def p_expression_plus(p):
     '''expression : expression PLUS term
-                            | PI PLUS term'''
+                            | PI PLUS term
+                            | ID PLUS term'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] + p[3]
     elif isinstance(p[3], int):
@@ -190,10 +195,17 @@ def p_expression_plus(p):
         p[0] = asci_num + p[3]
     elif isinstance(p[1], str) and isinstance(p[3], str):
         p[0] = p[1] + p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value + p[3]
+        value = p[0]
+
 # minus    
 def p_expression_minus(p):
     '''expression : expression MINUS term
-                            | PI MINUS term'''
+                            | PI MINUS term
+                            | ID MINUS term'''
     if isinstance(p[1], int) and isinstance(p[3], int):
         p[0] = p[1] - p[3]
     elif isinstance(p[3], int):
@@ -201,7 +213,12 @@ def p_expression_minus(p):
         p[0] = p[1] + asci_num
     elif isinstance(p[1], int):
         asci_num = chr(p[1])
-        p[0] = asci_num + p[3]    
+        p[0] = asci_num + p[3]  
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value - p[3]
+        value = p[0]
 
 # unary minus operator
 def p_expression_uminus(p):
@@ -298,19 +315,39 @@ def p_statement_for(p):
 # time
 def p_term_times(p):
     '''term : term TIMES factor
-                            | PI TIMES factor'''
+                            | PI TIMES factor
+                            | ID TIMES term'''
     p[0] = p[1] * p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value * p[3]
+        value = p[0]
 
 # divide
 def p_term_div(p):
     '''term : term DIVIDE factor
-                            | PI DIVIDE factor'''
+                            | PI DIVIDE factor
+                            | ID DIVIDE term'''
     p[0] = p[1] / p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value * p[3]
+        value = p[0]
 
 # equal value
 def p_term_equal(p):
     'term : ID EQUALS factor'
+    global value
+    value = p[3]
     p[0] = p[3]
+
+# tuple
+def p_term_tuple(p):
+    'term : ID EQUALS LPAREN term COMMA term RPAREN'
+    tuple = {p[4] : p[6]}
+    p[0] = tuple
 
 # shift left
 def p_term_shl(p):
@@ -459,13 +496,22 @@ def p_term_Let(p):
 
 # print function
 def p_term_print(p):
-    'term : PRINT term'
-    p[0] = p[2]
+    '''term : PRINT term
+                | PRINT ID'''
+    if value is not None:
+        p[0] = value
+    else:
+        p[0] = p[2]
 
 # output smth
 def p_term_factor(p):
      'term : factor'
      p[0] = p[1]
+
+# output ID
+def p_term_IDfactor(p):
+    'term : ID'
+    p[0] = value
  
 # output number 
 def p_factor_num(p):
