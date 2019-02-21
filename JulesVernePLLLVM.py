@@ -351,33 +351,75 @@ def p_term_tuple(p):
 
 # shift left
 def p_term_shl(p):
-    '''term : term SHL factor'''
-    p[0] = p[1] << p[3]
+    '''term : term SHL factor
+                        | ID SHL expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] << p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value << p[3]
+        value = p[0]
 
 # shift right
 def p_term_shr(p):
-    '''term : term SHR factor'''
-    p[0] = p[1] >> p[3]
+    '''term : term SHR factor
+                        | ID SHR expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] >> p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value >> p[3]
+        value = p[0]
 
 # mof
 def p_term_mod(p):
-    '''term : term MOD factor'''
-    p[0] = p[1] % p[3]
+    '''term : term MOD factor
+                        | ID MOD expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] % p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value % p[3]
+        value = p[0]
 
 # and
 def p_term_andlog(p):
-    '''term : term ANDLOGIC factor'''
-    p[0] = p[1] & p[3]
+    '''term : term ANDLOGIC factor
+                        | ID ANDLOGIC expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] & p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value & p[3]
+        value = p[0]
 
 # or
 def p_term_orlog(p):
-    '''term : term ORLOGIC factor'''
-    p[0] = p[1] | p[3]
+    '''term : term ORLOGIC factor
+                        | ID ORLOGIC expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] | p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value | p[3]
+        value = p[0]
 
 # xor
 def p_term_xorlog(p):
-    '''term : term XORLOGIC factor'''
-    p[0] = p[1] ^ p[3]
+    '''term : term XORLOGIC factor
+                        | ID XORLOGIC expression'''
+    if isinstance(p[1], int) and isinstance(p[3], int):
+        p[0] = p[1] ^ p[3]
+
+    global value
+    if value is not None and isinstance(value, int) and isinstance(p[3], int):
+        p[0] = value ^ p[3]
+        value = p[0]
 
 # open file
 def p_term_openFile(p):
