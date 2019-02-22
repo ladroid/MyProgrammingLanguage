@@ -275,7 +275,13 @@ def p_comparison_binop(p):
                           | expression LARGE term
                           | expression SMALL term
                           | expression LRGEQ term
-                          | expression SMLEQ term'''
+                          | expression SMLEQ term
+                          | ID EQUAL term
+                          | ID NOTEQ term
+                          | ID LARGE term
+                          | ID SMALL term
+                          | ID LRGEQ term
+                          | ID SMLEQ term'''
     if p[2] == '==':
         p[0] = p[1] == p[3]
     elif p[2] == '!=':
@@ -288,6 +294,22 @@ def p_comparison_binop(p):
         p[0] = p[1] >= p[3]
     elif p[2] == '<=':
         p[0] = p[1] <= p[3]
+
+    # TODO: change it
+    # TODO: change it
+    global value
+    if p[2] == '==' and value is not None and isinstance(value, int):
+        p[0] = (value == p[3])
+    elif p[2] == '!=' and value is not None and isinstance(value, int):
+        p[0] = (value != p[3])
+    elif p[2] == '>' and value is not None and isinstance(value, int):
+        p[0] = (value > p[3])
+    elif p[2] == '<' and value is not None and isinstance(value, int):
+        p[0] = (value < p[3])
+    elif p[2] == '>=' and value is not None and isinstance(value, int):
+        p[0] = (value >= p[3])
+    elif p[2] == '<=' and value is not None and isinstance(value, int):
+        p[0] = (value <= p[3])
 
 def p_comparison_equal(p):
     'comparison : term EQUAL term'
