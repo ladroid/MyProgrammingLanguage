@@ -551,8 +551,9 @@ def p_term_print(p):
     else:
         p[0] = p[2]
     
+    # print several values and remove square brackets
     if len(p) > 4:
-        p[0] = [p[3], p[5]]
+        p[0] = str([p[3], p[5]])[1:-1]
 
 # output smth
 def p_term_factor(p):

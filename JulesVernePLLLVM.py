@@ -234,8 +234,13 @@ def p_statement_funcWithoutParam(p):
     'term : FUNC LPAREN RPAREN LBRACES expression RBRACES'
     p[0] = p[5]
 
-# TODO: func with param
-
+# TODO: func with param and change it
+def p_statement_funcWithParam(p):
+    '''term : FUNC LPAREN ID COMMA ID RPAREN'''
+    if len(p) == 2:
+        p[0] = p[3]
+    else:
+        p[0] = [p[3]] + [p[5]]
 
 # TODO: switch 
 def p_statement_switchcase(p):
@@ -539,11 +544,16 @@ def p_term_Let(p):
 # print function
 def p_term_print(p):
     '''term : PRINT term
-                | PRINT ID'''
+                | PRINT ID
+                | PRINT LPAREN term COMMA term RPAREN'''
     if value is not None:
         p[0] = value
     else:
         p[0] = p[2]
+    
+    # print several values and remove square brackets
+    if len(p) > 4:
+        p[0] = ", ".join(repr(e) for e in [p[3], p[5]]) 
 
 # output smth
 def p_term_factor(p):
