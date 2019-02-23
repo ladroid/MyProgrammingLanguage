@@ -238,17 +238,31 @@ def p_statement_funcWithoutParam(p):
     'term : FUNC LPAREN RPAREN LBRACES expression RBRACES'
     p[0] = p[5]
 
-# func with param and change it
-def p_statement_funcWithParam(p):
+# func with param and change it Int
+def p_statement_funcWithParamInt(p):
     '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES'''
     global value
     global value2
     if len(p) == 2:
         p[0] = None
     else:
-        value = p[10]
-        value2 = p[12]
-        p[0] = [value, value2]
+        if isinstance(p[10], int) and isinstance(p[12], int):
+            value = p[10]
+            value2 = p[12]
+            p[0] = [value, value2]
+
+# func with param and change it String
+def p_statement_funcWithParamString(p):
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES'''
+    global value
+    global value2
+    if len(p) == 2:
+        p[0] = None
+    else:
+        if isinstance(p[10], str) and isinstance(p[12], str):
+            value = p[10]
+            value2 = p[12]
+            p[0] = [value, value2]
 
 # TODO: switch 
 def p_statement_switchcase(p):
