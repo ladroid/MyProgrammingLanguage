@@ -180,6 +180,10 @@ lexer = lex.lex()
 # 'value' is a global value which saved in memory
 value = None
 
+value2 = None
+
+valueIFELSE = None
+
 # plus
 def p_expression_plus(p):
     '''expression : expression PLUS term
@@ -234,13 +238,17 @@ def p_statement_funcWithoutParam(p):
     'term : FUNC LPAREN RPAREN LBRACES expression RBRACES'
     p[0] = p[5]
 
-# TODO: func with param and change it
+# func with param and change it
 def p_statement_funcWithParam(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES'''
+    global value
+    global value2
     if len(p) == 2:
-        p[0] = p[3]
+        p[0] = None
     else:
-        p[0] = [p[3]] + [p[5]]
+        value = p[10]
+        value2 = p[12]
+        p[0] = [value, value2]
 
 # TODO: switch 
 def p_statement_switchcase(p):
@@ -275,13 +283,7 @@ def p_comparison_binop(p):
                           | expression LARGE term
                           | expression SMALL term
                           | expression LRGEQ term
-                          | expression SMLEQ term
-                          | ID EQUAL term
-                          | ID NOTEQ term
-                          | ID LARGE term
-                          | ID SMALL term
-                          | ID LRGEQ term
-                          | ID SMLEQ term'''
+                          | expression SMLEQ term'''
     if p[2] == '==':
         p[0] = p[1] == p[3]
     elif p[2] == '!=':
@@ -294,22 +296,6 @@ def p_comparison_binop(p):
         p[0] = p[1] >= p[3]
     elif p[2] == '<=':
         p[0] = p[1] <= p[3]
-
-    # TODO: change it
-    # TODO: change it
-    global value
-    if p[2] == '==' and value is not None and isinstance(value, int):
-        p[0] = (value == p[3])
-    elif p[2] == '!=' and value is not None and isinstance(value, int):
-        p[0] = (value != p[3])
-    elif p[2] == '>' and value is not None and isinstance(value, int):
-        p[0] = (value > p[3])
-    elif p[2] == '<' and value is not None and isinstance(value, int):
-        p[0] = (value < p[3])
-    elif p[2] == '>=' and value is not None and isinstance(value, int):
-        p[0] = (value >= p[3])
-    elif p[2] == '<=' and value is not None and isinstance(value, int):
-        p[0] = (value <= p[3])
 
 def p_comparison_equal(p):
     'comparison : term EQUAL term'

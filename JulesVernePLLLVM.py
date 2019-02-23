@@ -180,6 +180,10 @@ lexer = lex.lex()
 # 'value' is a global value which saved in memory
 value = None
 
+value2 = None
+
+valueIFELSE = None
+
 # plus
 def p_expression_plus(p):
     '''expression : expression PLUS term
@@ -234,13 +238,17 @@ def p_statement_funcWithoutParam(p):
     'term : FUNC LPAREN RPAREN LBRACES expression RBRACES'
     p[0] = p[5]
 
-# TODO: func with param and change it
+# func with param and change it
 def p_statement_funcWithParam(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES'''
+    global value
+    global value2
     if len(p) == 2:
-        p[0] = p[3]
+        p[0] = None
     else:
-        p[0] = [p[3]] + [p[5]]
+        value = p[10]
+        value2 = p[12]
+        p[0] = [value, value2]
 
 # TODO: switch 
 def p_statement_switchcase(p):
@@ -553,7 +561,7 @@ def p_term_print(p):
     
     # print several values and remove square brackets
     if len(p) > 4:
-        p[0] = ", ".join(repr(e) for e in [p[3], p[5]]) 
+        p[0] = str([p[3], p[5]])[1:-1]
 
 # output smth
 def p_term_factor(p):
