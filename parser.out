@@ -6,9 +6,6 @@ Unused terminals:
     CALLBACK
     FLOAT
     INT
-    LSQRBRACK
-    RETURN
-    RSQRBRACK
     SEMICOLON
 
 Grammar
@@ -23,8 +20,8 @@ Rule 6     expression -> ID MINUS expression
 Rule 7     expression -> MINUS term
 Rule 8     expression -> term
 Rule 9     term -> FUNC LPAREN RPAREN LBRACES expression RBRACES
-Rule 10    term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-Rule 11    term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+Rule 10    term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+Rule 11    term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 Rule 12    term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
 Rule 13    term -> comparison ASK expression COLON expression
 Rule 14    term -> IF LPAREN comparison RPAREN term
@@ -99,7 +96,7 @@ ASYNC                :
 CALLBACK             : 
 CASE                 : 12
 COLON                : 12 12 13 61 62
-COMMA                : 10 10 11 11 35 49 51 66
+COMMA                : 10 10 10 11 11 11 35 49 51 66
 COPYRIGHT            : 74
 COS                  : 56
 DECIMAL              : 70
@@ -115,7 +112,7 @@ FLOAT                :
 FOR                  : 27
 FUNC                 : 9 10 11
 HELP                 : 73
-ID                   : 3 6 10 10 11 11 27 30 33 34 35 37 39 41 43 45 47 61 62 63 65 68
+ID                   : 3 6 10 10 10 10 11 11 11 11 27 30 33 34 35 37 39 41 43 45 47 61 62 63 65 68
 IF                   : 14 15
 IN                   : 27
 INT                  : 
@@ -127,7 +124,7 @@ LOG10                : 52
 LOG1P                : 53
 LPAREN               : 9 10 11 14 15 26 27 35 48 49 50 51 52 53 54 55 56 57 58 66 75
 LRGEQ                : 20
-LSQRBRACK            : 
+LSQRBRACK            : 10 11
 MINUS                : 4 5 6 7
 MOD                  : 40 41
 NOTEQ                : 17 23
@@ -139,9 +136,9 @@ PLUS                 : 1 2 3
 POW                  : 49
 PRINT                : 64 65 66
 RBRACES              : 9 10 11 12
-RETURN               : 
+RETURN               : 10 11
 RPAREN               : 9 10 11 14 15 26 27 35 48 49 50 51 52 53 54 55 56 57 58 66 75
-RSQRBRACK            : 
+RSQRBRACK            : 10 11
 SEMICOLON            : 
 SHL                  : 36 37
 SHR                  : 38 39
@@ -181,8 +178,8 @@ state 0
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -346,6 +343,7 @@ state 2
     RBRACES         reduce using rule 8 (expression -> term .)
     ELSE            reduce using rule 8 (expression -> term .)
     DEFAULT         reduce using rule 8 (expression -> term .)
+    RETURN          reduce using rule 8 (expression -> term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -410,6 +408,7 @@ state 3
     RBRACES         reduce using rule 59 (term -> PI .)
     ELSE            reduce using rule 59 (term -> PI .)
     DEFAULT         reduce using rule 59 (term -> PI .)
+    RETURN          reduce using rule 59 (term -> PI .)
 
   ! TIMES           [ reduce using rule 59 (term -> PI .) ]
   ! DIVIDE          [ reduce using rule 59 (term -> PI .) ]
@@ -469,6 +468,7 @@ state 4
     RBRACES         reduce using rule 68 (term -> ID .)
     ELSE            reduce using rule 68 (term -> ID .)
     DEFAULT         reduce using rule 68 (term -> ID .)
+    RETURN          reduce using rule 68 (term -> ID .)
 
   ! TIMES           [ reduce using rule 68 (term -> ID .) ]
   ! DIVIDE          [ reduce using rule 68 (term -> ID .) ]
@@ -486,8 +486,8 @@ state 5
 
     (7) expression -> MINUS . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -599,8 +599,8 @@ state 5
 state 6
 
     (9) term -> FUNC . LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> FUNC . LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC . LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC . LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC . LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     LPAREN          shift and go to state 73
 
@@ -617,8 +617,8 @@ state 7
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -731,8 +731,8 @@ state 8
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -891,6 +891,7 @@ state 13
     RBRACES         reduce using rule 67 (term -> factor .)
     ELSE            reduce using rule 67 (term -> factor .)
     DEFAULT         reduce using rule 67 (term -> factor .)
+    RETURN          reduce using rule 67 (term -> factor .)
 
 
 state 14
@@ -993,6 +994,7 @@ state 24
     RBRACES         reduce using rule 60 (term -> E .)
     ELSE            reduce using rule 60 (term -> E .)
     DEFAULT         reduce using rule 60 (term -> E .)
+    RETURN          reduce using rule 60 (term -> E .)
 
 
 state 25
@@ -1016,8 +1018,8 @@ state 27
     (65) term -> PRINT . ID
     (66) term -> PRINT . LPAREN term COMMA term RPAREN
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1155,6 +1157,7 @@ state 28
     RBRACES         reduce using rule 69 (factor -> NUMBER .)
     ELSE            reduce using rule 69 (factor -> NUMBER .)
     DEFAULT         reduce using rule 69 (factor -> NUMBER .)
+    RETURN          reduce using rule 69 (factor -> NUMBER .)
 
 
 state 29
@@ -1186,6 +1189,7 @@ state 29
     RBRACES         reduce using rule 70 (factor -> DECIMAL .)
     ELSE            reduce using rule 70 (factor -> DECIMAL .)
     DEFAULT         reduce using rule 70 (factor -> DECIMAL .)
+    RETURN          reduce using rule 70 (factor -> DECIMAL .)
 
 
 state 30
@@ -1217,6 +1221,7 @@ state 30
     RBRACES         reduce using rule 71 (factor -> STRING .)
     ELSE            reduce using rule 71 (factor -> STRING .)
     DEFAULT         reduce using rule 71 (factor -> STRING .)
+    RETURN          reduce using rule 71 (factor -> STRING .)
 
 
 state 31
@@ -1248,6 +1253,7 @@ state 31
     RBRACES         reduce using rule 72 (factor -> EXIT .)
     ELSE            reduce using rule 72 (factor -> EXIT .)
     DEFAULT         reduce using rule 72 (factor -> EXIT .)
+    RETURN          reduce using rule 72 (factor -> EXIT .)
 
 
 state 32
@@ -1279,6 +1285,7 @@ state 32
     RBRACES         reduce using rule 73 (factor -> HELP .)
     ELSE            reduce using rule 73 (factor -> HELP .)
     DEFAULT         reduce using rule 73 (factor -> HELP .)
+    RETURN          reduce using rule 73 (factor -> HELP .)
 
 
 state 33
@@ -1310,14 +1317,15 @@ state 33
     RBRACES         reduce using rule 74 (factor -> COPYRIGHT .)
     ELSE            reduce using rule 74 (factor -> COPYRIGHT .)
     DEFAULT         reduce using rule 74 (factor -> COPYRIGHT .)
+    RETURN          reduce using rule 74 (factor -> COPYRIGHT .)
 
 
 state 34
 
     (1) expression -> expression PLUS . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1430,8 +1438,8 @@ state 35
 
     (4) expression -> expression MINUS . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1544,8 +1552,8 @@ state 36
 
     (16) comparison -> expression EQUAL . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1658,8 +1666,8 @@ state 37
 
     (17) comparison -> expression NOTEQ . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1772,8 +1780,8 @@ state 38
 
     (18) comparison -> expression LARGE . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -1886,8 +1894,8 @@ state 39
 
     (19) comparison -> expression SMALL . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2000,8 +2008,8 @@ state 40
 
     (20) comparison -> expression LRGEQ . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2114,8 +2122,8 @@ state 41
 
     (21) comparison -> expression SMLEQ . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2396,8 +2404,8 @@ state 50
 
     (22) comparison -> term EQUAL . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2510,8 +2518,8 @@ state 51
 
     (23) comparison -> term NOTEQ . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2624,8 +2632,8 @@ state 52
 
     (24) comparison -> term LARGE . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2738,8 +2746,8 @@ state 53
 
     (25) comparison -> term SMALL . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2852,8 +2860,8 @@ state 54
 
     (2) expression -> PI PLUS . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -2966,8 +2974,8 @@ state 55
 
     (5) expression -> PI MINUS . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3130,8 +3138,8 @@ state 58
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3244,8 +3252,8 @@ state 59
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3358,8 +3366,8 @@ state 60
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3472,8 +3480,8 @@ state 61
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3608,8 +3616,8 @@ state 63
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3722,8 +3730,8 @@ state 64
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3836,8 +3844,8 @@ state 65
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -3950,8 +3958,8 @@ state 66
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -4064,8 +4072,8 @@ state 67
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -4178,8 +4186,8 @@ state 68
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -4330,6 +4338,7 @@ state 69
     RBRACES         reduce using rule 7 (expression -> MINUS term .)
     ELSE            reduce using rule 7 (expression -> MINUS term .)
     DEFAULT         reduce using rule 7 (expression -> MINUS term .)
+    RETURN          reduce using rule 7 (expression -> MINUS term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -4436,6 +4445,7 @@ state 71
     RBRACES         reduce using rule 68 (term -> ID .)
     ELSE            reduce using rule 68 (term -> ID .)
     DEFAULT         reduce using rule 68 (term -> ID .)
+    RETURN          reduce using rule 68 (term -> ID .)
     PLUS            shift and go to state 58
     MINUS           shift and go to state 59
 
@@ -4486,6 +4496,7 @@ state 72
     RBRACES         reduce using rule 59 (term -> PI .)
     ELSE            reduce using rule 59 (term -> PI .)
     DEFAULT         reduce using rule 59 (term -> PI .)
+    RETURN          reduce using rule 59 (term -> PI .)
     PLUS            shift and go to state 54
     MINUS           shift and go to state 55
 
@@ -4498,8 +4509,8 @@ state 72
 state 73
 
     (9) term -> FUNC LPAREN . RPAREN LBRACES expression RBRACES
-    (10) term -> FUNC LPAREN . ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN . ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN . ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN . ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     RPAREN          shift and go to state 131
     ID              shift and go to state 132
@@ -4563,8 +4574,8 @@ state 76
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -4688,8 +4699,8 @@ state 77
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -4802,8 +4813,8 @@ state 78
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -5174,6 +5185,7 @@ state 92
     RBRACES         reduce using rule 64 (term -> PRINT term .)
     ELSE            reduce using rule 64 (term -> PRINT term .)
     DEFAULT         reduce using rule 64 (term -> PRINT term .)
+    RETURN          reduce using rule 64 (term -> PRINT term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -5263,6 +5275,7 @@ state 93
   ! reduce/reduce conflict for RBRACES resolved using rule 65 (term -> PRINT ID .)
   ! reduce/reduce conflict for ELSE resolved using rule 65 (term -> PRINT ID .)
   ! reduce/reduce conflict for DEFAULT resolved using rule 65 (term -> PRINT ID .)
+  ! reduce/reduce conflict for RETURN resolved using rule 65 (term -> PRINT ID .)
   ! shift/reduce conflict for PLUS resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
     EQUAL           reduce using rule 65 (term -> PRINT ID .)
@@ -5280,6 +5293,7 @@ state 93
     RBRACES         reduce using rule 65 (term -> PRINT ID .)
     ELSE            reduce using rule 65 (term -> PRINT ID .)
     DEFAULT         reduce using rule 65 (term -> PRINT ID .)
+    RETURN          reduce using rule 65 (term -> PRINT ID .)
     TIMES           shift and go to state 60
     DIVIDE          shift and go to state 61
     EQUALS          shift and go to state 62
@@ -5327,6 +5341,7 @@ state 93
   ! RBRACES         [ reduce using rule 68 (term -> ID .) ]
   ! ELSE            [ reduce using rule 68 (term -> ID .) ]
   ! DEFAULT         [ reduce using rule 68 (term -> ID .) ]
+  ! RETURN          [ reduce using rule 68 (term -> ID .) ]
 
 
 state 94
@@ -5334,8 +5349,8 @@ state 94
     (66) term -> PRINT LPAREN . term COMMA term RPAREN
     (75) factor -> LPAREN . expression RPAREN
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -5494,6 +5509,7 @@ state 95
     RBRACES         reduce using rule 1 (expression -> expression PLUS term .)
     ELSE            reduce using rule 1 (expression -> expression PLUS term .)
     DEFAULT         reduce using rule 1 (expression -> expression PLUS term .)
+    RETURN          reduce using rule 1 (expression -> expression PLUS term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -5579,6 +5595,7 @@ state 96
     RBRACES         reduce using rule 4 (expression -> expression MINUS term .)
     ELSE            reduce using rule 4 (expression -> expression MINUS term .)
     DEFAULT         reduce using rule 4 (expression -> expression MINUS term .)
+    RETURN          reduce using rule 4 (expression -> expression MINUS term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -5919,6 +5936,7 @@ state 103
     RBRACES         reduce using rule 28 (term -> term TIMES factor .)
     ELSE            reduce using rule 28 (term -> term TIMES factor .)
     DEFAULT         reduce using rule 28 (term -> term TIMES factor .)
+    RETURN          reduce using rule 28 (term -> term TIMES factor .)
 
 
 state 104
@@ -5950,6 +5968,7 @@ state 104
     RBRACES         reduce using rule 31 (term -> term DIVIDE factor .)
     ELSE            reduce using rule 31 (term -> term DIVIDE factor .)
     DEFAULT         reduce using rule 31 (term -> term DIVIDE factor .)
+    RETURN          reduce using rule 31 (term -> term DIVIDE factor .)
 
 
 state 105
@@ -5981,6 +6000,7 @@ state 105
     RBRACES         reduce using rule 36 (term -> term SHL factor .)
     ELSE            reduce using rule 36 (term -> term SHL factor .)
     DEFAULT         reduce using rule 36 (term -> term SHL factor .)
+    RETURN          reduce using rule 36 (term -> term SHL factor .)
 
 
 state 106
@@ -6012,6 +6032,7 @@ state 106
     RBRACES         reduce using rule 38 (term -> term SHR factor .)
     ELSE            reduce using rule 38 (term -> term SHR factor .)
     DEFAULT         reduce using rule 38 (term -> term SHR factor .)
+    RETURN          reduce using rule 38 (term -> term SHR factor .)
 
 
 state 107
@@ -6043,6 +6064,7 @@ state 107
     RBRACES         reduce using rule 40 (term -> term MOD factor .)
     ELSE            reduce using rule 40 (term -> term MOD factor .)
     DEFAULT         reduce using rule 40 (term -> term MOD factor .)
+    RETURN          reduce using rule 40 (term -> term MOD factor .)
 
 
 state 108
@@ -6074,6 +6096,7 @@ state 108
     RBRACES         reduce using rule 42 (term -> term ANDLOGIC factor .)
     ELSE            reduce using rule 42 (term -> term ANDLOGIC factor .)
     DEFAULT         reduce using rule 42 (term -> term ANDLOGIC factor .)
+    RETURN          reduce using rule 42 (term -> term ANDLOGIC factor .)
 
 
 state 109
@@ -6105,6 +6128,7 @@ state 109
     RBRACES         reduce using rule 44 (term -> term ORLOGIC factor .)
     ELSE            reduce using rule 44 (term -> term ORLOGIC factor .)
     DEFAULT         reduce using rule 44 (term -> term ORLOGIC factor .)
+    RETURN          reduce using rule 44 (term -> term ORLOGIC factor .)
 
 
 state 110
@@ -6136,6 +6160,7 @@ state 110
     RBRACES         reduce using rule 46 (term -> term XORLOGIC factor .)
     ELSE            reduce using rule 46 (term -> term XORLOGIC factor .)
     DEFAULT         reduce using rule 46 (term -> term XORLOGIC factor .)
+    RETURN          reduce using rule 46 (term -> term XORLOGIC factor .)
 
 
 state 111
@@ -6372,6 +6397,7 @@ state 115
     RBRACES         reduce using rule 2 (expression -> PI PLUS term .)
     ELSE            reduce using rule 2 (expression -> PI PLUS term .)
     DEFAULT         reduce using rule 2 (expression -> PI PLUS term .)
+    RETURN          reduce using rule 2 (expression -> PI PLUS term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -6457,6 +6483,7 @@ state 116
     RBRACES         reduce using rule 5 (expression -> PI MINUS term .)
     ELSE            reduce using rule 5 (expression -> PI MINUS term .)
     DEFAULT         reduce using rule 5 (expression -> PI MINUS term .)
+    RETURN          reduce using rule 5 (expression -> PI MINUS term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -6521,6 +6548,7 @@ state 117
     RBRACES         reduce using rule 29 (term -> PI TIMES factor .)
     ELSE            reduce using rule 29 (term -> PI TIMES factor .)
     DEFAULT         reduce using rule 29 (term -> PI TIMES factor .)
+    RETURN          reduce using rule 29 (term -> PI TIMES factor .)
 
 
 state 118
@@ -6552,6 +6580,7 @@ state 118
     RBRACES         reduce using rule 32 (term -> PI DIVIDE factor .)
     ELSE            reduce using rule 32 (term -> PI DIVIDE factor .)
     DEFAULT         reduce using rule 32 (term -> PI DIVIDE factor .)
+    RETURN          reduce using rule 32 (term -> PI DIVIDE factor .)
 
 
 state 119
@@ -6591,6 +6620,7 @@ state 119
     RBRACES         reduce using rule 3 (expression -> ID PLUS expression .)
     ELSE            reduce using rule 3 (expression -> ID PLUS expression .)
     DEFAULT         reduce using rule 3 (expression -> ID PLUS expression .)
+    RETURN          reduce using rule 3 (expression -> ID PLUS expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -6647,6 +6677,7 @@ state 120
     RBRACES         reduce using rule 6 (expression -> ID MINUS expression .)
     ELSE            reduce using rule 6 (expression -> ID MINUS expression .)
     DEFAULT         reduce using rule 6 (expression -> ID MINUS expression .)
+    RETURN          reduce using rule 6 (expression -> ID MINUS expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -6703,6 +6734,7 @@ state 121
     RBRACES         reduce using rule 30 (term -> ID TIMES expression .)
     ELSE            reduce using rule 30 (term -> ID TIMES expression .)
     DEFAULT         reduce using rule 30 (term -> ID TIMES expression .)
+    RETURN          reduce using rule 30 (term -> ID TIMES expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -6759,6 +6791,7 @@ state 122
     RBRACES         reduce using rule 33 (term -> ID DIVIDE expression .)
     ELSE            reduce using rule 33 (term -> ID DIVIDE expression .)
     DEFAULT         reduce using rule 33 (term -> ID DIVIDE expression .)
+    RETURN          reduce using rule 33 (term -> ID DIVIDE expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -6807,6 +6840,7 @@ state 123
     RBRACES         reduce using rule 34 (term -> ID EQUALS factor .)
     ELSE            reduce using rule 34 (term -> ID EQUALS factor .)
     DEFAULT         reduce using rule 34 (term -> ID EQUALS factor .)
+    RETURN          reduce using rule 34 (term -> ID EQUALS factor .)
 
 
 state 124
@@ -6814,8 +6848,8 @@ state 124
     (35) term -> ID EQUALS LPAREN . term COMMA term RPAREN
     (75) factor -> LPAREN . expression RPAREN
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -6961,6 +6995,7 @@ state 125
     RBRACES         reduce using rule 37 (term -> ID SHL expression .)
     ELSE            reduce using rule 37 (term -> ID SHL expression .)
     DEFAULT         reduce using rule 37 (term -> ID SHL expression .)
+    RETURN          reduce using rule 37 (term -> ID SHL expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7017,6 +7052,7 @@ state 126
     RBRACES         reduce using rule 39 (term -> ID SHR expression .)
     ELSE            reduce using rule 39 (term -> ID SHR expression .)
     DEFAULT         reduce using rule 39 (term -> ID SHR expression .)
+    RETURN          reduce using rule 39 (term -> ID SHR expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7073,6 +7109,7 @@ state 127
     RBRACES         reduce using rule 41 (term -> ID MOD expression .)
     ELSE            reduce using rule 41 (term -> ID MOD expression .)
     DEFAULT         reduce using rule 41 (term -> ID MOD expression .)
+    RETURN          reduce using rule 41 (term -> ID MOD expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7129,6 +7166,7 @@ state 128
     RBRACES         reduce using rule 43 (term -> ID ANDLOGIC expression .)
     ELSE            reduce using rule 43 (term -> ID ANDLOGIC expression .)
     DEFAULT         reduce using rule 43 (term -> ID ANDLOGIC expression .)
+    RETURN          reduce using rule 43 (term -> ID ANDLOGIC expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7185,6 +7223,7 @@ state 129
     RBRACES         reduce using rule 45 (term -> ID ORLOGIC expression .)
     ELSE            reduce using rule 45 (term -> ID ORLOGIC expression .)
     DEFAULT         reduce using rule 45 (term -> ID ORLOGIC expression .)
+    RETURN          reduce using rule 45 (term -> ID ORLOGIC expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7241,6 +7280,7 @@ state 130
     RBRACES         reduce using rule 47 (term -> ID XORLOGIC expression .)
     ELSE            reduce using rule 47 (term -> ID XORLOGIC expression .)
     DEFAULT         reduce using rule 47 (term -> ID XORLOGIC expression .)
+    RETURN          reduce using rule 47 (term -> ID XORLOGIC expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -7269,8 +7309,8 @@ state 131
 
 state 132
 
-    (10) term -> FUNC LPAREN ID . COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN ID . COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID . COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN ID . COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     COMMA           shift and go to state 156
 
@@ -7304,6 +7344,7 @@ state 133
     RBRACES         reduce using rule 75 (factor -> LPAREN expression RPAREN .)
     ELSE            reduce using rule 75 (factor -> LPAREN expression RPAREN .)
     DEFAULT         reduce using rule 75 (factor -> LPAREN expression RPAREN .)
+    RETURN          reduce using rule 75 (factor -> LPAREN expression RPAREN .)
 
 
 state 134
@@ -7616,8 +7657,8 @@ state 155
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -7720,8 +7761,8 @@ state 155
 
 state 156
 
-    (10) term -> FUNC LPAREN ID COMMA . ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN ID COMMA . ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA . ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN ID COMMA . ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     ID              shift and go to state 179
 
@@ -7738,8 +7779,8 @@ state 157
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -7852,8 +7893,8 @@ state 158
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -7959,8 +8000,8 @@ state 159
     (14) term -> IF LPAREN comparison RPAREN . term
     (15) term -> IF LPAREN comparison RPAREN . term ELSE term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -8073,8 +8114,8 @@ state 160
 
     (26) term -> WHILE LPAREN comparison RPAREN . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -8233,6 +8274,7 @@ state 162
     RBRACES         reduce using rule 48 (term -> OPEN LPAREN factor RPAREN .)
     ELSE            reduce using rule 48 (term -> OPEN LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 48 (term -> OPEN LPAREN factor RPAREN .)
+    RETURN          reduce using rule 48 (term -> OPEN LPAREN factor RPAREN .)
 
 
 state 163
@@ -8285,6 +8327,7 @@ state 164
     RBRACES         reduce using rule 50 (term -> LOG LPAREN factor RPAREN .)
     ELSE            reduce using rule 50 (term -> LOG LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 50 (term -> LOG LPAREN factor RPAREN .)
+    RETURN          reduce using rule 50 (term -> LOG LPAREN factor RPAREN .)
 
 
 state 165
@@ -8337,6 +8380,7 @@ state 166
     RBRACES         reduce using rule 52 (term -> LOG10 LPAREN factor RPAREN .)
     ELSE            reduce using rule 52 (term -> LOG10 LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 52 (term -> LOG10 LPAREN factor RPAREN .)
+    RETURN          reduce using rule 52 (term -> LOG10 LPAREN factor RPAREN .)
 
 
 state 167
@@ -8368,6 +8412,7 @@ state 167
     RBRACES         reduce using rule 53 (term -> LOG1P LPAREN factor RPAREN .)
     ELSE            reduce using rule 53 (term -> LOG1P LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 53 (term -> LOG1P LPAREN factor RPAREN .)
+    RETURN          reduce using rule 53 (term -> LOG1P LPAREN factor RPAREN .)
 
 
 state 168
@@ -8399,6 +8444,7 @@ state 168
     RBRACES         reduce using rule 54 (term -> EXP LPAREN factor RPAREN .)
     ELSE            reduce using rule 54 (term -> EXP LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 54 (term -> EXP LPAREN factor RPAREN .)
+    RETURN          reduce using rule 54 (term -> EXP LPAREN factor RPAREN .)
 
 
 state 169
@@ -8430,6 +8476,7 @@ state 169
     RBRACES         reduce using rule 55 (term -> SQRT LPAREN factor RPAREN .)
     ELSE            reduce using rule 55 (term -> SQRT LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 55 (term -> SQRT LPAREN factor RPAREN .)
+    RETURN          reduce using rule 55 (term -> SQRT LPAREN factor RPAREN .)
 
 
 state 170
@@ -8461,6 +8508,7 @@ state 170
     RBRACES         reduce using rule 56 (term -> COS LPAREN factor RPAREN .)
     ELSE            reduce using rule 56 (term -> COS LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 56 (term -> COS LPAREN factor RPAREN .)
+    RETURN          reduce using rule 56 (term -> COS LPAREN factor RPAREN .)
 
 
 state 171
@@ -8492,6 +8540,7 @@ state 171
     RBRACES         reduce using rule 57 (term -> SIN LPAREN factor RPAREN .)
     ELSE            reduce using rule 57 (term -> SIN LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 57 (term -> SIN LPAREN factor RPAREN .)
+    RETURN          reduce using rule 57 (term -> SIN LPAREN factor RPAREN .)
 
 
 state 172
@@ -8523,6 +8572,7 @@ state 172
     RBRACES         reduce using rule 58 (term -> TAN LPAREN factor RPAREN .)
     ELSE            reduce using rule 58 (term -> TAN LPAREN factor RPAREN .)
     DEFAULT         reduce using rule 58 (term -> TAN LPAREN factor RPAREN .)
+    RETURN          reduce using rule 58 (term -> TAN LPAREN factor RPAREN .)
 
 
 state 173
@@ -8568,14 +8618,15 @@ state 175
     RBRACES         reduce using rule 63 (term -> LET ID EQUALS factor .)
     ELSE            reduce using rule 63 (term -> LET ID EQUALS factor .)
     DEFAULT         reduce using rule 63 (term -> LET ID EQUALS factor .)
+    RETURN          reduce using rule 63 (term -> LET ID EQUALS factor .)
 
 
 state 176
 
     (66) term -> PRINT LPAREN term COMMA . term RPAREN
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -8688,8 +8739,8 @@ state 177
 
     (35) term -> ID EQUALS LPAREN term COMMA . term RPAREN
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -8823,8 +8874,8 @@ state 178
 
 state 179
 
-    (10) term -> FUNC LPAREN ID COMMA ID . RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN ID COMMA ID . RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID . RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID . RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     RPAREN          shift and go to state 192
 
@@ -8889,6 +8940,7 @@ state 181
     RBRACES         reduce using rule 13 (term -> comparison ASK expression COLON expression .)
     ELSE            reduce using rule 13 (term -> comparison ASK expression COLON expression .)
     DEFAULT         reduce using rule 13 (term -> comparison ASK expression COLON expression .)
+    RETURN          reduce using rule 13 (term -> comparison ASK expression COLON expression .)
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -8955,6 +9007,7 @@ state 182
     COMMA           reduce using rule 14 (term -> IF LPAREN comparison RPAREN term .)
     RBRACES         reduce using rule 14 (term -> IF LPAREN comparison RPAREN term .)
     DEFAULT         reduce using rule 14 (term -> IF LPAREN comparison RPAREN term .)
+    RETURN          reduce using rule 14 (term -> IF LPAREN comparison RPAREN term .)
     ELSE            shift and go to state 194
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
@@ -9042,6 +9095,7 @@ state 183
     RBRACES         reduce using rule 26 (term -> WHILE LPAREN comparison RPAREN term .)
     ELSE            reduce using rule 26 (term -> WHILE LPAREN comparison RPAREN term .)
     DEFAULT         reduce using rule 26 (term -> WHILE LPAREN comparison RPAREN term .)
+    RETURN          reduce using rule 26 (term -> WHILE LPAREN comparison RPAREN term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -9263,12 +9317,13 @@ state 191
     RBRACES         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     ELSE            reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
     DEFAULT         reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
+    RETURN          reduce using rule 9 (term -> FUNC LPAREN RPAREN LBRACES expression RBRACES .)
 
 
 state 192
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN . ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN . ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN . ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN . ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     ARROW           shift and go to state 202
 
@@ -9285,8 +9340,8 @@ state 193
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -9391,8 +9446,8 @@ state 194
 
     (15) term -> IF LPAREN comparison RPAREN term ELSE . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -9505,8 +9560,8 @@ state 195
 
     (27) term -> FOR LPAREN ID IN factor RPAREN . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -9644,6 +9699,7 @@ state 196
     RBRACES         reduce using rule 49 (term -> POW LPAREN factor COMMA factor RPAREN .)
     ELSE            reduce using rule 49 (term -> POW LPAREN factor COMMA factor RPAREN .)
     DEFAULT         reduce using rule 49 (term -> POW LPAREN factor COMMA factor RPAREN .)
+    RETURN          reduce using rule 49 (term -> POW LPAREN factor COMMA factor RPAREN .)
 
 
 state 197
@@ -9675,6 +9731,7 @@ state 197
     RBRACES         reduce using rule 51 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     ELSE            reduce using rule 51 (term -> LOG LPAREN factor COMMA factor RPAREN .)
     DEFAULT         reduce using rule 51 (term -> LOG LPAREN factor COMMA factor RPAREN .)
+    RETURN          reduce using rule 51 (term -> LOG LPAREN factor COMMA factor RPAREN .)
 
 
 state 198
@@ -9706,6 +9763,7 @@ state 198
     RBRACES         reduce using rule 61 (term -> VAR COLON TYPINT ID EQUALS factor .)
     ELSE            reduce using rule 61 (term -> VAR COLON TYPINT ID EQUALS factor .)
     DEFAULT         reduce using rule 61 (term -> VAR COLON TYPINT ID EQUALS factor .)
+    RETURN          reduce using rule 61 (term -> VAR COLON TYPINT ID EQUALS factor .)
 
 
 state 199
@@ -9737,6 +9795,7 @@ state 199
     RBRACES         reduce using rule 62 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     ELSE            reduce using rule 62 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
     DEFAULT         reduce using rule 62 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
+    RETURN          reduce using rule 62 (term -> VAR COLON TYPSTRING ID EQUALS factor .)
 
 
 state 200
@@ -9768,6 +9827,7 @@ state 200
     RBRACES         reduce using rule 66 (term -> PRINT LPAREN term COMMA term RPAREN .)
     ELSE            reduce using rule 66 (term -> PRINT LPAREN term COMMA term RPAREN .)
     DEFAULT         reduce using rule 66 (term -> PRINT LPAREN term COMMA term RPAREN .)
+    RETURN          reduce using rule 66 (term -> PRINT LPAREN term COMMA term RPAREN .)
 
 
 state 201
@@ -9799,12 +9859,13 @@ state 201
     RBRACES         reduce using rule 35 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     ELSE            reduce using rule 35 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
     DEFAULT         reduce using rule 35 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
+    RETURN          reduce using rule 35 (term -> ID EQUALS LPAREN term COMMA term RPAREN .)
 
 
 state 202
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW . TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW . TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW . TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW . TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     TYPINT          shift and go to state 206
     TYPSTRING       shift and go to state 207
@@ -9879,6 +9940,7 @@ state 204
     RBRACES         reduce using rule 15 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     ELSE            reduce using rule 15 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     DEFAULT         reduce using rule 15 (term -> IF LPAREN comparison RPAREN term ELSE term .)
+    RETURN          reduce using rule 15 (term -> IF LPAREN comparison RPAREN term ELSE term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -9964,6 +10026,7 @@ state 205
     RBRACES         reduce using rule 27 (term -> FOR LPAREN ID IN factor RPAREN term .)
     ELSE            reduce using rule 27 (term -> FOR LPAREN ID IN factor RPAREN term .)
     DEFAULT         reduce using rule 27 (term -> FOR LPAREN ID IN factor RPAREN term .)
+    RETURN          reduce using rule 27 (term -> FOR LPAREN ID IN factor RPAREN term .)
     TIMES           shift and go to state 42
     DIVIDE          shift and go to state 43
     SHL             shift and go to state 44
@@ -10005,14 +10068,14 @@ state 205
 
 state 206
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT . LBRACES expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT . LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     LBRACES         shift and go to state 209
 
 
 state 207
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING . LBRACES expression COMMA expression RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING . LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
     LBRACES         shift and go to state 210
 
@@ -10026,7 +10089,7 @@ state 208
 
 state 209
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES . expression COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES . expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
     (3) expression -> . ID PLUS expression
@@ -10036,8 +10099,8 @@ state 209
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -10140,7 +10203,7 @@ state 209
 
 state 210
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES . expression COMMA expression RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES . expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
     (3) expression -> . ID PLUS expression
@@ -10150,8 +10213,8 @@ state 210
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -10264,8 +10327,8 @@ state 211
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -10368,7 +10431,7 @@ state 211
 
 state 212
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression . COMMA expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression . COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> expression . PLUS term
     (4) expression -> expression . MINUS term
     (16) comparison -> expression . EQUAL term
@@ -10391,7 +10454,7 @@ state 212
 
 state 213
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression . COMMA expression RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression . COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> expression . PLUS term
     (4) expression -> expression . MINUS term
     (16) comparison -> expression . EQUAL term
@@ -10437,7 +10500,7 @@ state 214
 
 state 215
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA . expression RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA . expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
     (3) expression -> . ID PLUS expression
@@ -10447,8 +10510,8 @@ state 215
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -10551,7 +10614,7 @@ state 215
 
 state 216
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA . expression RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA . expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> . expression PLUS term
     (2) expression -> . PI PLUS term
     (3) expression -> . ID PLUS expression
@@ -10561,8 +10624,8 @@ state 216
     (7) expression -> . MINUS term
     (8) expression -> . term
     (9) term -> . FUNC LPAREN RPAREN LBRACES expression RBRACES
-    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES
-    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES
+    (10) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+    (11) term -> . FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (12) term -> . SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES
     (13) term -> . comparison ASK expression COLON expression
     (14) term -> . IF LPAREN comparison RPAREN term
@@ -10692,11 +10755,12 @@ state 217
     RBRACES         reduce using rule 12 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     ELSE            reduce using rule 12 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
     DEFAULT         reduce using rule 12 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
+    RETURN          reduce using rule 12 (term -> SWITCH expression LBRACES CASE expression COLON expression DEFAULT COLON expression RBRACES .)
 
 
 state 218
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression . RBRACES
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression . RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> expression . PLUS term
     (4) expression -> expression . MINUS term
     (16) comparison -> expression . EQUAL term
@@ -10706,7 +10770,7 @@ state 218
     (20) comparison -> expression . LRGEQ term
     (21) comparison -> expression . SMLEQ term
 
-    RBRACES         shift and go to state 220
+    RETURN          shift and go to state 220
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -10719,7 +10783,7 @@ state 218
 
 state 219
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression . RBRACES
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression . RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
     (1) expression -> expression . PLUS term
     (4) expression -> expression . MINUS term
     (16) comparison -> expression . EQUAL term
@@ -10729,7 +10793,7 @@ state 219
     (20) comparison -> expression . LRGEQ term
     (21) comparison -> expression . SMLEQ term
 
-    RBRACES         shift and go to state 221
+    RETURN          shift and go to state 221
     PLUS            shift and go to state 34
     MINUS           shift and go to state 35
     EQUAL           shift and go to state 36
@@ -10742,64 +10806,150 @@ state 219
 
 state 220
 
-    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN . LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
-    TIMES           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    DIVIDE          reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    SHL             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    SHR             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    MOD             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    ANDLOGIC        reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    ORLOGIC         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    XORLOGIC        reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    EQUAL           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    NOTEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    LARGE           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    SMALL           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    PLUS            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    MINUS           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    LRGEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    SMLEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    $end            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    RPAREN          reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    LBRACES         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    ASK             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    COLON           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    COMMA           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    RBRACES         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    ELSE            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
-    DEFAULT         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES .)
+    LSQRBRACK       shift and go to state 222
 
 
 state 221
 
-    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN . LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
 
-    TIMES           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    DIVIDE          reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    SHL             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    SHR             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    MOD             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    ANDLOGIC        reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    ORLOGIC         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    XORLOGIC        reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    EQUAL           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    NOTEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    LARGE           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    SMALL           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    PLUS            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    MINUS           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    LRGEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    SMLEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    $end            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    RPAREN          reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    LBRACES         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    ASK             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    COLON           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    COMMA           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    RBRACES         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    ELSE            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
-    DEFAULT         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES .)
+    LSQRBRACK       shift and go to state 223
+
+
+state 222
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK . ID COMMA ID RSQRBRACK RBRACES
+
+    ID              shift and go to state 224
+
+
+state 223
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK . ID COMMA ID RSQRBRACK RBRACES
+
+    ID              shift and go to state 225
+
+
+state 224
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID . COMMA ID RSQRBRACK RBRACES
+
+    COMMA           shift and go to state 226
+
+
+state 225
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID . COMMA ID RSQRBRACK RBRACES
+
+    COMMA           shift and go to state 227
+
+
+state 226
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA . ID RSQRBRACK RBRACES
+
+    ID              shift and go to state 228
+
+
+state 227
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA . ID RSQRBRACK RBRACES
+
+    ID              shift and go to state 229
+
+
+state 228
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID . RSQRBRACK RBRACES
+
+    RSQRBRACK       shift and go to state 230
+
+
+state 229
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID . RSQRBRACK RBRACES
+
+    RSQRBRACK       shift and go to state 231
+
+
+state 230
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK . RBRACES
+
+    RBRACES         shift and go to state 232
+
+
+state 231
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK . RBRACES
+
+    RBRACES         shift and go to state 233
+
+
+state 232
+
+    (10) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .
+
+    TIMES           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    DIVIDE          reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SHL             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SHR             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    MOD             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ANDLOGIC        reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ORLOGIC         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    XORLOGIC        reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    EQUAL           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    NOTEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LARGE           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SMALL           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    PLUS            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    MINUS           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LRGEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SMLEQ           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    $end            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RPAREN          reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LBRACES         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ASK             reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    COLON           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    COMMA           reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RBRACES         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ELSE            reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    DEFAULT         reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RETURN          reduce using rule 10 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+
+
+state 233
+
+    (11) term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .
+
+    TIMES           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    DIVIDE          reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SHL             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SHR             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    MOD             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ANDLOGIC        reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ORLOGIC         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    XORLOGIC        reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    EQUAL           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    NOTEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LARGE           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SMALL           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    PLUS            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    MINUS           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LRGEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    SMLEQ           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    $end            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RPAREN          reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    LBRACES         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ASK             reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    COLON           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    COMMA           reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RBRACES         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    ELSE            reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    DEFAULT         reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
+    RETURN          reduce using rule 11 (term -> FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES .)
 
 WARNING: 
 WARNING: Conflicts:

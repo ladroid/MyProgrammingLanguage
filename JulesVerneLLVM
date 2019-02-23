@@ -240,7 +240,7 @@ def p_statement_funcWithoutParam(p):
 
 # func with param and change it Int
 def p_statement_funcWithParamInt(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RBRACES'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES'''
     global value
     global value2
     if len(p) == 2:
@@ -250,10 +250,11 @@ def p_statement_funcWithParamInt(p):
             value = p[10]
             value2 = p[12]
             p[0] = [value, value2]
+            p[13] = p[0]
 
 # func with param and change it String
 def p_statement_funcWithParamString(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RBRACES'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES'''
     global value
     global value2
     if len(p) == 2:
@@ -263,6 +264,7 @@ def p_statement_funcWithParamString(p):
             value = p[10]
             value2 = p[12]
             p[0] = [value, value2]
+            p[13] = p[0]
 
 # TODO: switch 
 def p_statement_switchcase(p):
