@@ -238,13 +238,19 @@ def p_statement_funcWithoutParam(p):
     'term : FUNC LPAREN RPAREN LBRACES expression RBRACES'
     p[0] = p[5]
 
+# TODO: make it more flexible
 # func with param and change it Int
 def p_statement_funcWithParamInt(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPINT LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+                      | FUNC LPAREN ID RPAREN ARROW TYPINT LBRACES expression RETURN ID RBRACES'''
     global value
     global value2
     if len(p) == 2:
         p[0] = None
+    elif isinstance(p[8], int):
+        value = p[8]
+        p[0] = value
+        p[9] = p[0]
     else:
         if isinstance(p[10], int) and isinstance(p[12], int):
             value = p[10]
@@ -252,13 +258,19 @@ def p_statement_funcWithParamInt(p):
             p[0] = [value, value2]
             p[13] = p[0]
 
+# TODO: make it more flexible
 # func with param and change it String
 def p_statement_funcWithParamString(p):
-    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES'''
+    '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
+                        | | FUNC LPAREN ID RPAREN ARROW TYPSTRING LBRACES expression RETURN ID RBRACES'''
     global value
     global value2
     if len(p) == 2:
         p[0] = None
+    elif isinstance(p[8], str):
+        value = p[8]
+        p[0] = value
+        p[9] = p[0]
     else:
         if isinstance(p[10], str) and isinstance(p[12], str):
             value = p[10]
