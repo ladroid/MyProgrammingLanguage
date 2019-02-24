@@ -262,7 +262,7 @@ def p_statement_funcWithParamInt(p):
 # func with param and change it String
 def p_statement_funcWithParamString(p):
     '''term : FUNC LPAREN ID COMMA ID RPAREN ARROW TYPSTRING LBRACES expression COMMA expression RETURN LSQRBRACK ID COMMA ID RSQRBRACK RBRACES
-                        | | FUNC LPAREN ID RPAREN ARROW TYPSTRING LBRACES expression RETURN ID RBRACES'''
+                        | FUNC LPAREN ID RPAREN ARROW TYPSTRING LBRACES expression RETURN ID RBRACES'''
     global value
     global value2
     if len(p) == 2:
