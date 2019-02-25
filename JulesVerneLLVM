@@ -46,6 +46,8 @@ reserved = {
     '<=' : 'SMLEQ',
     'help' : 'HELP',
     'in' : 'IN',
+    'is' : 'IS',
+    'not' : 'NOT',
     #'int' : 'INTARR',
     'open' : 'OPEN',
     'func' : 'FUNC',
@@ -58,10 +60,11 @@ reserved = {
     'callback' : 'CALLBACK',
     'async' : 'ASYNC',
     'Int' : 'TYPINT',
-    'String' : 'TYPSTRING'
+    'String' : 'TYPSTRING',
+    'type' : 'TYPE'
 }
 
-tokens = ['NUMBER', 'DECIMAL', 'STRING', 'COMMA', 'LBRACES', 'RBRACES', 'LSQRBRACK', 'RSQRBRACK', 'COLON', 'SEMICOLON', 'ASK','EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN', 'ID'] + list(reserved.values())
+tokens = ['NUMBER', 'DECIMAL', 'BOOL', 'STRING', 'COMMA', 'LBRACES', 'RBRACES', 'LSQRBRACK', 'RSQRBRACK', 'COLON', 'SEMICOLON', 'ASK','EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN', 'ID'] + list(reserved.values())
 
 t_EQUALS = r'\='
 t_PLUS = r'\+'
@@ -109,6 +112,8 @@ t_SMALL   = r'\<'
 t_LRGEQ   = r'\>\='
 t_SMLEQ   = r'\<\='
 t_IN = r'in'
+t_IS = r'is'
+t_NOT = r'not'
 #t_INTARR = r'int'
 t_LSQRBRACK = r'\['
 t_RSQRBRACK = r'\]'
@@ -126,15 +131,29 @@ t_CALLBACK = r'callback'
 t_ASYNC = r'async'
 t_TYPINT = r'Int'
 t_TYPSTRING = r'String'
+t_TYPE = r'type'
 
 def t_NUMBER(t):
-    r'\d+'
-    t.value = int(t.value)
+    r'(\d+|0[Xx]\d+)'
+    if t.value.startswith(('0x', '0X')):
+        t.value = int(t.value, 16)
+    elif t.value.startswith('0'):
+        t.value = int(t.value, 8)
+    else:
+        t.value = int(t.value)
     return t
 
 def t_DECIMAL(t):
     r'[-+]?[0-9]+(\.([0-9]+)?([eE][-+]?[0-9]+)?|[eE][-+]?[0-9]+)'
     t.value = decimal.Decimal(t.value)
+    return t
+
+# TODO: make type function
+# TODO: make this thing: if a is true or if a is not true
+def t_BOOL(t):
+    r'(true|false)'
+    mapping = {"true": True, "false": False}
+    t.value = mapping[t.value]
     return t
 
 def t_STRING(t):
@@ -160,9 +179,11 @@ def t_ID(t):
 lexer = lex.lex()
 
 # data = '''
+# 0123
 # 2.3
 # 3 + 4 * 10
 #     + -20 * 2
+# true
 # '''
 
 # lexer.input(data)

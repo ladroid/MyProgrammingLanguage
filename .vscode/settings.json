@@ -1,5 +1,15 @@
 {
     "editor.tokenColorCustomizations": {
     },
-    "python.pythonPath": "/usr/local/opt/python/bin/python3.7"
+    "python.pythonPath": "/usr/local/opt/python/bin/python3.7",
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "test*.py"
+    ],
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.unittestEnabled": true
 }
