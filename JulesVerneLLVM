@@ -148,7 +148,6 @@ def t_DECIMAL(t):
     t.value = decimal.Decimal(t.value)
     return t
 
-# TODO: make type function
 # TODO: make this thing: if a is true or if a is not true
 def t_BOOL(t):
     r'(true|false)'
@@ -564,6 +563,16 @@ def p_term_tan(p):
         p[0] = math.tan(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
+
+# get type(fuction) from object
+def p_term_type(p):
+    '''term : TYPE LPAREN expression RPAREN
+                    | TYPE LPAREN ID RPAREN'''
+    global value
+    p[0] = type(p[3])
+    if value is not None:
+        #value = p[3]
+        p[0] = type(value)
 
 # pi number
 def p_term_pi(p):
