@@ -399,10 +399,10 @@ def p_term_div(p):
 
 # equal value
 def p_term_equal(p):
-    'term : ID EQUALS factor'
+    '''term : ID EQUALS factor'''
     global value
     value = p[3]
-    p[0] = p[3]
+    p[0] = p[3]      
 
 # tuple
 def p_term_tuple(p):
