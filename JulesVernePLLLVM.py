@@ -666,6 +666,10 @@ def p_factor_expr(p):
     'factor : LPAREN expression RPAREN'
     p[0] = p[2]
 
+# empty value
+def p_empty(p):
+    pass
+
 def p_error(p):
     print(colored("Syntax error in input!", 'red'))
 
