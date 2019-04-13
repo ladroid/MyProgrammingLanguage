@@ -35,4 +35,4 @@
  extern double tan_(double x);
  extern double sqrt_(double x);
  extern double log_(double x);
- extern double log_10(double x); 
+ extern double log_10(double x);
