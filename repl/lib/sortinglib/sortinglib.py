@@ -386,9 +386,9 @@ DoubleVector_swigregister = _sortinglib.DoubleVector_swigregister
 DoubleVector_swigregister(DoubleVector)
 
 
-def get_arrz(length: 'int') -> "std::vector< double,std::allocator< double > >":
-    return _sortinglib.get_arrz(length)
-get_arrz = _sortinglib.get_arrz
+def rand_arr(length: 'int') -> "std::vector< double,std::allocator< double > >":
+    return _sortinglib.rand_arr(length)
+rand_arr = _sortinglib.rand_arr
 # This file is compatible with both classic and new-style classes.
 
 

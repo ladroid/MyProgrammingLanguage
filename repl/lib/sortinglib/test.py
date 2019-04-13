@@ -1,3 +1,3 @@
 import sortinglib
 
-print(sortinglib.get_arrz(3))
+print(sortinglib.rand_arr(4))

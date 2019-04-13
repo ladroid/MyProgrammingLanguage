@@ -3,6 +3,6 @@
 #include <vector>
 #include <iostream>
 
-std::vector<double> get_arrz(int length);
+std::vector<double> rand_arr(int length);
 
 #endif
