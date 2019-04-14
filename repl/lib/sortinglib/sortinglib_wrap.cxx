@@ -9786,6 +9786,30 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_arr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< int,std::allocator< int > > arg1 ;
+  PyObject * obj0 = 0 ;
+  std::vector< int,std::allocator< int > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:arr",&obj0)) SWIG_fail;
+  {
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    int res = swig::asptr(obj0, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "arr" "', argument " "1"" of type '" "std::vector< int,std::allocator< int > >""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = arr(arg1);
+  resultobj = swig::from(static_cast< std::vector< int,std::allocator< int > > >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"delete_SwigPyIterator", _wrap_delete_SwigPyIterator, METH_VARARGS, NULL},
@@ -9875,6 +9899,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_DoubleVector", _wrap_delete_DoubleVector, METH_VARARGS, NULL},
 	 { (char *)"DoubleVector_swigregister", DoubleVector_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rand_arr", _wrap_rand_arr, METH_VARARGS, NULL},
+	 { (char *)"arr", _wrap_arr, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
