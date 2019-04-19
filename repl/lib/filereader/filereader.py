@@ -95,10 +95,191 @@ except __builtin__.Exception:
         pass
     _newclass = 0
 
+class SwigPyIterator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SwigPyIterator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, SwigPyIterator, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _filereader.delete_SwigPyIterator
+    __del__ = lambda self: None
+
+    def value(self) -> "PyObject *":
+        return _filereader.SwigPyIterator_value(self)
+
+    def incr(self, n: 'size_t'=1) -> "swig::SwigPyIterator *":
+        return _filereader.SwigPyIterator_incr(self, n)
+
+    def decr(self, n: 'size_t'=1) -> "swig::SwigPyIterator *":
+        return _filereader.SwigPyIterator_decr(self, n)
+
+    def distance(self, x: 'SwigPyIterator') -> "ptrdiff_t":
+        return _filereader.SwigPyIterator_distance(self, x)
+
+    def equal(self, x: 'SwigPyIterator') -> "bool":
+        return _filereader.SwigPyIterator_equal(self, x)
+
+    def copy(self) -> "swig::SwigPyIterator *":
+        return _filereader.SwigPyIterator_copy(self)
+
+    def next(self) -> "PyObject *":
+        return _filereader.SwigPyIterator_next(self)
+
+    def __next__(self) -> "PyObject *":
+        return _filereader.SwigPyIterator___next__(self)
+
+    def previous(self) -> "PyObject *":
+        return _filereader.SwigPyIterator_previous(self)
+
+    def advance(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator *":
+        return _filereader.SwigPyIterator_advance(self, n)
+
+    def __eq__(self, x: 'SwigPyIterator') -> "bool":
+        return _filereader.SwigPyIterator___eq__(self, x)
+
+    def __ne__(self, x: 'SwigPyIterator') -> "bool":
+        return _filereader.SwigPyIterator___ne__(self, x)
+
+    def __iadd__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator &":
+        return _filereader.SwigPyIterator___iadd__(self, n)
+
+    def __isub__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator &":
+        return _filereader.SwigPyIterator___isub__(self, n)
+
+    def __add__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator *":
+        return _filereader.SwigPyIterator___add__(self, n)
+
+    def __sub__(self, *args) -> "ptrdiff_t":
+        return _filereader.SwigPyIterator___sub__(self, *args)
+    def __iter__(self):
+        return self
+SwigPyIterator_swigregister = _filereader.SwigPyIterator_swigregister
+SwigPyIterator_swigregister(SwigPyIterator)
+
+class _string_list(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, _string_list, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, _string_list, name)
+    __repr__ = _swig_repr
+
+    def iterator(self) -> "swig::SwigPyIterator *":
+        return _filereader._string_list_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self) -> "bool":
+        return _filereader._string_list___nonzero__(self)
+
+    def __bool__(self) -> "bool":
+        return _filereader._string_list___bool__(self)
+
+    def __len__(self) -> "std::vector< std::string >::size_type":
+        return _filereader._string_list___len__(self)
+
+    def __getslice__(self, i: 'std::vector< std::string >::difference_type', j: 'std::vector< std::string >::difference_type') -> "std::vector< std::string,std::allocator< std::string > > *":
+        return _filereader._string_list___getslice__(self, i, j)
+
+    def __setslice__(self, *args) -> "void":
+        return _filereader._string_list___setslice__(self, *args)
+
+    def __delslice__(self, i: 'std::vector< std::string >::difference_type', j: 'std::vector< std::string >::difference_type') -> "void":
+        return _filereader._string_list___delslice__(self, i, j)
+
+    def __delitem__(self, *args) -> "void":
+        return _filereader._string_list___delitem__(self, *args)
+
+    def __getitem__(self, *args) -> "std::vector< std::string >::value_type const &":
+        return _filereader._string_list___getitem__(self, *args)
+
+    def __setitem__(self, *args) -> "void":
+        return _filereader._string_list___setitem__(self, *args)
+
+    def pop(self) -> "std::vector< std::string >::value_type":
+        return _filereader._string_list_pop(self)
+
+    def append(self, x: 'std::vector< std::string >::value_type const &') -> "void":
+        return _filereader._string_list_append(self, x)
+
+    def empty(self) -> "bool":
+        return _filereader._string_list_empty(self)
+
+    def size(self) -> "std::vector< std::string >::size_type":
+        return _filereader._string_list_size(self)
+
+    def swap(self, v: '_string_list') -> "void":
+        return _filereader._string_list_swap(self, v)
+
+    def begin(self) -> "std::vector< std::string >::iterator":
+        return _filereader._string_list_begin(self)
+
+    def end(self) -> "std::vector< std::string >::iterator":
+        return _filereader._string_list_end(self)
+
+    def rbegin(self) -> "std::vector< std::string >::reverse_iterator":
+        return _filereader._string_list_rbegin(self)
+
+    def rend(self) -> "std::vector< std::string >::reverse_iterator":
+        return _filereader._string_list_rend(self)
+
+    def clear(self) -> "void":
+        return _filereader._string_list_clear(self)
+
+    def get_allocator(self) -> "std::vector< std::string >::allocator_type":
+        return _filereader._string_list_get_allocator(self)
+
+    def pop_back(self) -> "void":
+        return _filereader._string_list_pop_back(self)
+
+    def erase(self, *args) -> "std::vector< std::string >::iterator":
+        return _filereader._string_list_erase(self, *args)
+
+    def __init__(self, *args):
+        this = _filereader.new__string_list(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def push_back(self, x: 'std::vector< std::string >::value_type const &') -> "void":
+        return _filereader._string_list_push_back(self, x)
+
+    def front(self) -> "std::vector< std::string >::value_type const &":
+        return _filereader._string_list_front(self)
+
+    def back(self) -> "std::vector< std::string >::value_type const &":
+        return _filereader._string_list_back(self)
+
+    def assign(self, n: 'std::vector< std::string >::size_type', x: 'std::vector< std::string >::value_type const &') -> "void":
+        return _filereader._string_list_assign(self, n, x)
+
+    def resize(self, *args) -> "void":
+        return _filereader._string_list_resize(self, *args)
+
+    def insert(self, *args) -> "void":
+        return _filereader._string_list_insert(self, *args)
+
+    def reserve(self, n: 'std::vector< std::string >::size_type') -> "void":
+        return _filereader._string_list_reserve(self, n)
+
+    def capacity(self) -> "std::vector< std::string >::size_type":
+        return _filereader._string_list_capacity(self)
+    __swig_destroy__ = _filereader.delete__string_list
+    __del__ = lambda self: None
+_string_list_swigregister = _filereader._string_list_swigregister
+_string_list_swigregister(_string_list)
+
 
 def read_file(file: 'std::string') -> "std::string":
     return _filereader.read_file(file)
 read_file = _filereader.read_file
+
+def reading(file: 'std::string') -> "std::string":
+    return _filereader.reading(file)
+reading = _filereader.reading
 # This file is compatible with both classic and new-style classes.
 
 

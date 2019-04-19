@@ -1,20 +1,24 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include <numeric>
 
 std::string read_file(std::string file) {
     std::ifstream inFile;
-    inFile.open(file);
+    inFile.open(file, std::ios::in);
     std::string line;
     std::string result;
+    std::vector<std::string> text;
 
     if(!inFile) {
-        return "Unable to open file";
-    } else {
+       
+    }else {
         while(std::getline(inFile, line)) {
-            result = line;
+            text.push_back(line);
         }
-        inFile.close();
     }
+    result = std::accumulate(std::begin(text), std::end(text), result);
+    inFile.close();
     return result;
 }
