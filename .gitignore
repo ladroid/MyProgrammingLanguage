@@ -1,3 +1,5 @@
 *.DS_Store
 *.vscode
 *__pycache__
+*/lib/sortinglib/__pycache__
+*/lib/mathlib/__pycache__
