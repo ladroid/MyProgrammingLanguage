@@ -12,10 +12,10 @@ class SimpleHTMLMaker:
             print ("Successfully created the directory %s " % pathing)
 
     def make(self):
-        st = os.path.realpath('./html/index.html')
-        rootdir = st
-        print(rootdir)
-        print(type(rootdir))
+        s = os.path.abspath(os.path.join(os.getcwd(), '..'))
+        s = os.path.abspath(os.path.join(s, '..'))
+        s = os.path.abspath(os.path.join(s, '..'))
+        rootdir = s + "/html/index.html"
         with open(rootdir) as f:
             return f.read()
 
