@@ -38,10 +38,10 @@ class SimpleHTTPRequest(BaseHTTPRequestHandler):
         self._set_headers()
         self.wfile.write(b"<html><body><h1>POST!</h1></body></html>")
 
-def run():
+def run(host, port):
     try:
         print("Start server...")
-        httpstart = HTTPServer(('localhost', 8000), SimpleHTTPRequest)
+        httpstart = HTTPServer((host, port), SimpleHTTPRequest)
         httpstart.serve_forever()
     except KeyboardInterrupt:
         print("\nShut down server...")
