@@ -1,3 +1,3 @@
 import unittesting
 
-print(unittesting.test_equal(int(), int()))
+print(unittesting.test_equal("1", "32"))
