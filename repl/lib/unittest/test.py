@@ -1,3 +1,3 @@
-import unittest
+import unittesting
 
-print(unittest.test(int(1), int(11)))
+print(unittesting.test_equal(int(), int()))

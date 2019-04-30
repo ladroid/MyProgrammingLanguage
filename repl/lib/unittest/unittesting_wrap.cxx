@@ -3030,16 +3030,16 @@ static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
 #endif
 
 /*-----------------------------------------------
-              @(target):= _unittest.so
+              @(target):= _unittesting.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__unittest
+#  define SWIG_init    PyInit__unittesting
 
 #else
-#  define SWIG_init    init_unittest
+#  define SWIG_init    init_unittesting
 
 #endif
-#define SWIG_name    "_unittest"
+#define SWIG_name    "_unittesting"
 
 #define SWIGVERSION 0x030012 
 #define SWIG_VERSION SWIGVERSION
@@ -3123,7 +3123,7 @@ namespace swig {
 
 
    /* Put header files here or function declarations like below */
-   #include "unittest.h"
+   #include "unittesting.h"
  
 
 #include <string>
@@ -8024,7 +8024,7 @@ SWIGINTERN PyObject *_string_list_swigregister(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_test__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_test_equal__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -8035,18 +8035,18 @@ SWIGINTERN PyObject *_wrap_test__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:test",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:test_equal",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "test" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "test_equal" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "test" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "test_equal" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  test(arg1,arg2);
+  test_equal(arg1,arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -8054,7 +8054,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_test__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_test_equal__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   float arg1 ;
   float arg2 ;
@@ -8065,18 +8065,18 @@ SWIGINTERN PyObject *_wrap_test__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:test",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:test_equal",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_float(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "test" "', argument " "1"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "test_equal" "', argument " "1"" of type '" "float""'");
   } 
   arg1 = static_cast< float >(val1);
   ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "test" "', argument " "2"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "test_equal" "', argument " "2"" of type '" "float""'");
   } 
   arg2 = static_cast< float >(val2);
-  test(arg1,arg2);
+  test_equal(arg1,arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -8084,19 +8084,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_test__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_test_equal__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   std::string arg2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:test",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:test_equal",&obj0,&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj0, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "test" "', argument " "1"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "test_equal" "', argument " "1"" of type '" "std::string""'"); 
     }
     arg1 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
@@ -8105,12 +8105,12 @@ SWIGINTERN PyObject *_wrap_test__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "test" "', argument " "2"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "test_equal" "', argument " "2"" of type '" "std::string""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  test(arg1,arg2);
+  test_equal(arg1,arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -8118,7 +8118,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_test(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_test_equal(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
@@ -8142,7 +8142,7 @@ SWIGINTERN PyObject *_wrap_test(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_test__SWIG_0(self, args);
+        return _wrap_test_equal__SWIG_0(self, args);
       }
     }
   }
@@ -8158,7 +8158,7 @@ SWIGINTERN PyObject *_wrap_test(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_test__SWIG_1(self, args);
+        return _wrap_test_equal__SWIG_1(self, args);
       }
     }
   }
@@ -8170,17 +8170,17 @@ SWIGINTERN PyObject *_wrap_test(PyObject *self, PyObject *args) {
       int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_test__SWIG_2(self, args);
+        return _wrap_test_equal__SWIG_2(self, args);
       }
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'test'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'test_equal'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    test(int,int)\n"
-    "    test(float,float)\n"
-    "    test(std::string,std::string)\n");
+    "    test_equal(int,int)\n"
+    "    test_equal(float,float)\n"
+    "    test_equal(std::string,std::string)\n");
   return 0;
 }
 
@@ -8239,7 +8239,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"_string_list_capacity", _wrap__string_list_capacity, METH_VARARGS, NULL},
 	 { (char *)"delete__string_list", _wrap_delete__string_list, METH_VARARGS, NULL},
 	 { (char *)"_string_list_swigregister", _string_list_swigregister, METH_VARARGS, NULL},
-	 { (char *)"test", _wrap_test, METH_VARARGS, NULL},
+	 { (char *)"test_equal", _wrap_test_equal, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

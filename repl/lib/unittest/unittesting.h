@@ -9,6 +9,6 @@
 
 using namespace std;
 
-void test(int obj1, int obj2);
-void test(float obj1, float obj2);
-void test(string obj1, string obj2);
+void test_equal(int obj1, int obj2);
+void test_equal(float obj1, float obj2);
+void test_equal(string obj1, string obj2);
