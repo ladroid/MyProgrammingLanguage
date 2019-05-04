@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <iomanip>
 #include "Decimal.h"
 
 using namespace std;
@@ -26,7 +27,8 @@ Decimal operator/(Decimal &number, Decimal &number2) {
 }
 
 void Decimal::value() {
-    cout << this->number << endl;
+    cout << setprecision(17);
+    cout << atof(this->number.c_str()) << endl;
 }
 
 Decimal::~Decimal() { }

@@ -1,6 +1,6 @@
 from Decimal import *
 
-a = Decimal("3.14")
-b = Decimal("2")
-c = Multiply(a, b)
+a = Decimal("1.1")
+b = Decimal("2.2")
+c = Addition(a, b)
 c.value()
