@@ -12,5 +12,8 @@ class String
         ~String();
         friend String operator+(String& str1, String& str2);
         int size();
+        string capitalize();
+        string upper();
+        string lower();
         string value();
 };

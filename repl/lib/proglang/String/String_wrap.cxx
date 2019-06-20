@@ -8058,6 +8058,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_String_capitalize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  String *arg1 = (String *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:String_capitalize",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_String, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "String_capitalize" "', argument " "1"" of type '" "String *""'"); 
+  }
+  arg1 = reinterpret_cast< String * >(argp1);
+  result = (arg1)->capitalize();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_String_upper(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  String *arg1 = (String *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:String_upper",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_String, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "String_upper" "', argument " "1"" of type '" "String *""'"); 
+  }
+  arg1 = reinterpret_cast< String * >(argp1);
+  result = (arg1)->upper();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_String_lower(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  String *arg1 = (String *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:String_lower",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_String, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "String_lower" "', argument " "1"" of type '" "String *""'"); 
+  }
+  arg1 = reinterpret_cast< String * >(argp1);
+  result = (arg1)->lower();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_String_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   String *arg1 = (String *) 0 ;
@@ -8145,6 +8211,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_String", _wrap_delete_String, METH_VARARGS, NULL},
 	 { (char *)"Addition", _wrap_Addition, METH_VARARGS, NULL},
 	 { (char *)"String_size", _wrap_String_size, METH_VARARGS, NULL},
+	 { (char *)"String_capitalize", _wrap_String_capitalize, METH_VARARGS, NULL},
+	 { (char *)"String_upper", _wrap_String_upper, METH_VARARGS, NULL},
+	 { (char *)"String_lower", _wrap_String_lower, METH_VARARGS, NULL},
 	 { (char *)"String_value", _wrap_String_value, METH_VARARGS, NULL},
 	 { (char *)"String_swigregister", String_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

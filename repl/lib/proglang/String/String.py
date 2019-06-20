@@ -291,6 +291,15 @@ class String(_object):
     def size(self) -> "int":
         return _String.String_size(self)
 
+    def capitalize(self) -> "std::string":
+        return _String.String_capitalize(self)
+
+    def upper(self) -> "std::string":
+        return _String.String_upper(self)
+
+    def lower(self) -> "std::string":
+        return _String.String_lower(self)
+
     def value(self) -> "std::string":
         return _String.String_value(self)
 String_swigregister = _String.String_swigregister
