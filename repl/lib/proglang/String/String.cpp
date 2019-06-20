@@ -10,7 +10,7 @@ String::String(string str) {
 }
 
 String operator+(String& str1, String& str2) {
-    string result = str1.str + str2.str;
+    string result = str1.str + " " + str2.str;
     return(String(result));
 }
 
