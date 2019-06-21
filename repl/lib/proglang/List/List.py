@@ -332,6 +332,9 @@ class List(_object):
 
     def delete_position(self, pos: 'int') -> "void":
         return _List.List_delete_position(self, pos)
+
+    def find_elem(self, data: 'int') -> "bool":
+        return _List.List_find_elem(self, data)
     __swig_destroy__ = _List.delete_List
     __del__ = lambda self: None
 List_swigregister = _List.List_swigregister

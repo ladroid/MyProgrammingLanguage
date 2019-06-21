@@ -8321,6 +8321,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_List_find_elem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  List *arg1 = (List *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:List_find_elem",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_List, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "List_find_elem" "', argument " "1"" of type '" "List *""'"); 
+  }
+  arg1 = reinterpret_cast< List * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "List_find_elem" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (bool)(arg1)->find_elem(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_List(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   List *arg1 = (List *) 0 ;
@@ -8418,6 +8449,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"List_delete_first", _wrap_List_delete_first, METH_VARARGS, NULL},
 	 { (char *)"List_delete_last", _wrap_List_delete_last, METH_VARARGS, NULL},
 	 { (char *)"List_delete_position", _wrap_List_delete_position, METH_VARARGS, NULL},
+	 { (char *)"List_find_elem", _wrap_List_find_elem, METH_VARARGS, NULL},
 	 { (char *)"delete_List", _wrap_delete_List, METH_VARARGS, NULL},
 	 { (char *)"List_swigregister", List_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

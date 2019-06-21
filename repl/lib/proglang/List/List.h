@@ -20,5 +20,6 @@ class List
         void delete_first();
         void delete_last();
         void delete_position(int pos);
+        bool find_elem(int data);
         ~List();
 };

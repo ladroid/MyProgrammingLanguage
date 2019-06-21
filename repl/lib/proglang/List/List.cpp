@@ -83,4 +83,13 @@ void List::delete_position(int pos) {
     previous->next=current->next;
 }
 
+bool List::find_elem(int data) {
+    node *current = new node;
+    current = head;
+    if(current->data == data) {
+        return true;
+    }
+    return false;
+}
+
 List::~List() { head = nullptr; tail = nullptr;}
