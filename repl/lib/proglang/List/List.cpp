@@ -29,6 +29,7 @@ void List::display() {
         cout << temp->data << " ";
         temp = temp->next;
     }
+    cout << endl;
 }
 
 void List::insert_start(int value) {
@@ -90,6 +91,28 @@ bool List::find_elem(int data) {
         return true;
     }
     return false;
+}
+
+void List::size() {
+    int count = 0;
+    node *current = new node;
+    current = head;
+    while (current != nullptr) {
+        count++;
+        current = current->next;
+    }
+    cout << count << endl;
+}
+
+void List::clear() {
+    node *current = new node;
+    node *next;
+    while(current != nullptr) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    head = nullptr;
 }
 
 List::~List() { head = nullptr; tail = nullptr;}

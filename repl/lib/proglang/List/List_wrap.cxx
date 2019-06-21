@@ -8352,6 +8352,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_List_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  List *arg1 = (List *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:List_size",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_List, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "List_size" "', argument " "1"" of type '" "List *""'"); 
+  }
+  arg1 = reinterpret_cast< List * >(argp1);
+  (arg1)->size();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_List_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  List *arg1 = (List *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:List_clear",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_List, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "List_clear" "', argument " "1"" of type '" "List *""'"); 
+  }
+  arg1 = reinterpret_cast< List * >(argp1);
+  (arg1)->clear();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_List(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   List *arg1 = (List *) 0 ;
@@ -8450,6 +8492,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"List_delete_last", _wrap_List_delete_last, METH_VARARGS, NULL},
 	 { (char *)"List_delete_position", _wrap_List_delete_position, METH_VARARGS, NULL},
 	 { (char *)"List_find_elem", _wrap_List_find_elem, METH_VARARGS, NULL},
+	 { (char *)"List_size", _wrap_List_size, METH_VARARGS, NULL},
+	 { (char *)"List_clear", _wrap_List_clear, METH_VARARGS, NULL},
 	 { (char *)"delete_List", _wrap_delete_List, METH_VARARGS, NULL},
 	 { (char *)"List_swigregister", List_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
