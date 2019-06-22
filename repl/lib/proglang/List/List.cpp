@@ -25,10 +25,12 @@ void List::createnode(int value) {
 void List::display() {
     node *temp = new node;
     temp = head;
+    cout << "[ ";
     while (temp!=nullptr) {
         cout << temp->data << " ";
         temp = temp->next;
     }
+    cout << "]";
     cout << endl;
 }
 
