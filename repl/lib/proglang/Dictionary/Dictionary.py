@@ -311,7 +311,7 @@ class dictstr(_object):
         except __builtin__.Exception:
             self.this = this
 
-    def set(self, elem: 'int', val: 'std::string') -> "void":
+    def set(self, elem: 'std::string', val: 'std::string') -> "void":
         return _Dictionary.dictstr_set(self, elem, val)
 
     def get(self) -> "void":
@@ -335,7 +335,7 @@ class dictflo(_object):
         except __builtin__.Exception:
             self.this = this
 
-    def set(self, elem: 'int', val: 'float') -> "void":
+    def set(self, elem: 'float', val: 'float') -> "void":
         return _Dictionary.dictflo_set(self, elem, val)
 
     def get(self) -> "void":
@@ -344,6 +344,150 @@ class dictflo(_object):
     __del__ = lambda self: None
 dictflo_swigregister = _Dictionary.dictflo_swigregister
 dictflo_swigregister(dictflo)
+
+class dictintstr(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictintstr, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictintstr, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictintstr(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'int', val: 'std::string') -> "void":
+        return _Dictionary.dictintstr_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictintstr_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictintstr
+    __del__ = lambda self: None
+dictintstr_swigregister = _Dictionary.dictintstr_swigregister
+dictintstr_swigregister(dictintstr)
+
+class dictintflo(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictintflo, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictintflo, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictintflo(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'int', val: 'float') -> "void":
+        return _Dictionary.dictintflo_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictintflo_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictintflo
+    __del__ = lambda self: None
+dictintflo_swigregister = _Dictionary.dictintflo_swigregister
+dictintflo_swigregister(dictintflo)
+
+class dictstrflo(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictstrflo, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictstrflo, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictstrflo(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'std::string', val: 'float') -> "void":
+        return _Dictionary.dictstrflo_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictstrflo_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictstrflo
+    __del__ = lambda self: None
+dictstrflo_swigregister = _Dictionary.dictstrflo_swigregister
+dictstrflo_swigregister(dictstrflo)
+
+class dictstrint(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictstrint, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictstrint, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictstrint(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'std::string', val: 'int') -> "void":
+        return _Dictionary.dictstrint_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictstrint_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictstrint
+    __del__ = lambda self: None
+dictstrint_swigregister = _Dictionary.dictstrint_swigregister
+dictstrint_swigregister(dictstrint)
+
+class dictfloint(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictfloint, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictfloint, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictfloint(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'float', val: 'int') -> "void":
+        return _Dictionary.dictfloint_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictfloint_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictfloint
+    __del__ = lambda self: None
+dictfloint_swigregister = _Dictionary.dictfloint_swigregister
+dictfloint_swigregister(dictfloint)
+
+class dictflostr(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, dictflostr, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, dictflostr, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, s: 'int'):
+        this = _Dictionary.new_dictflostr(s)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def set(self, elem: 'float', val: 'std::string') -> "void":
+        return _Dictionary.dictflostr_set(self, elem, val)
+
+    def get(self) -> "void":
+        return _Dictionary.dictflostr_get(self)
+    __swig_destroy__ = _Dictionary.delete_dictflostr
+    __del__ = lambda self: None
+dictflostr_swigregister = _Dictionary.dictflostr_swigregister
+dictflostr_swigregister(dictflostr)
 
 # This file is compatible with both classic and new-style classes.
 

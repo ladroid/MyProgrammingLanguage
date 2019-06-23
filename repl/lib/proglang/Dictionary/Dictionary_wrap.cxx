@@ -3006,21 +3006,27 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_DictionaryT_float_t swig_types[0]
-#define SWIGTYPE_p_DictionaryT_int_t swig_types[1]
-#define SWIGTYPE_p_DictionaryT_std__string_t swig_types[2]
-#define SWIGTYPE_p_allocator_type swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_difference_type swig_types[5]
-#define SWIGTYPE_p_p_PyObject swig_types[6]
-#define SWIGTYPE_p_size_type swig_types[7]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[8]
-#define SWIGTYPE_p_std__invalid_argument swig_types[9]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[10]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[11]
-#define SWIGTYPE_p_value_type swig_types[12]
-static swig_type_info *swig_types[14];
-static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
+#define SWIGTYPE_p_DictionaryT_float_float_t swig_types[0]
+#define SWIGTYPE_p_DictionaryT_float_int_t swig_types[1]
+#define SWIGTYPE_p_DictionaryT_float_std__string_t swig_types[2]
+#define SWIGTYPE_p_DictionaryT_int_float_t swig_types[3]
+#define SWIGTYPE_p_DictionaryT_int_int_t swig_types[4]
+#define SWIGTYPE_p_DictionaryT_int_std__string_t swig_types[5]
+#define SWIGTYPE_p_DictionaryT_std__string_float_t swig_types[6]
+#define SWIGTYPE_p_DictionaryT_std__string_int_t swig_types[7]
+#define SWIGTYPE_p_DictionaryT_std__string_std__string_t swig_types[8]
+#define SWIGTYPE_p_allocator_type swig_types[9]
+#define SWIGTYPE_p_char swig_types[10]
+#define SWIGTYPE_p_difference_type swig_types[11]
+#define SWIGTYPE_p_p_PyObject swig_types[12]
+#define SWIGTYPE_p_size_type swig_types[13]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[14]
+#define SWIGTYPE_p_std__invalid_argument swig_types[15]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[16]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[17]
+#define SWIGTYPE_p_value_type swig_types[18]
+static swig_type_info *swig_types[20];
+static swig_module_info swig_module = {swig_types, 19, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -8032,7 +8038,7 @@ SWIGINTERN PyObject *_wrap_new_dictint(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  Dictionary< int > *result = 0 ;
+  Dictionary< int,int > *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_dictint",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
@@ -8040,8 +8046,8 @@ SWIGINTERN PyObject *_wrap_new_dictint(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictint" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  result = (Dictionary< int > *)new Dictionary< int >(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_int_t, SWIG_POINTER_NEW |  0 );
+  result = (Dictionary< int,int > *)new Dictionary< int,int >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_int_int_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8050,7 +8056,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictint_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< int > *arg1 = (Dictionary< int > *) 0 ;
+  Dictionary< int,int > *arg1 = (Dictionary< int,int > *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
@@ -8064,11 +8070,11 @@ SWIGINTERN PyObject *_wrap_dictint_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj2 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:dictint_set",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictint_set" "', argument " "1"" of type '" "Dictionary< int > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictint_set" "', argument " "1"" of type '" "Dictionary< int,int > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< int > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< int,int > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictint_set" "', argument " "2"" of type '" "int""'");
@@ -8089,17 +8095,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictint_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< int > *arg1 = (Dictionary< int > *) 0 ;
+  Dictionary< int,int > *arg1 = (Dictionary< int,int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:dictint_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictint_get" "', argument " "1"" of type '" "Dictionary< int > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictint_get" "', argument " "1"" of type '" "Dictionary< int,int > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< int > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< int,int > * >(argp1);
   (arg1)->get();
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8110,17 +8116,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_dictint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< int > *arg1 = (Dictionary< int > *) 0 ;
+  Dictionary< int,int > *arg1 = (Dictionary< int,int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:delete_dictint",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictint" "', argument " "1"" of type '" "Dictionary< int > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictint" "', argument " "1"" of type '" "Dictionary< int,int > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< int > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< int,int > * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8132,7 +8138,7 @@ fail:
 SWIGINTERN PyObject *dictint_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_int_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_int_int_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -8142,7 +8148,7 @@ SWIGINTERN PyObject *_wrap_new_dictstr(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  Dictionary< std::string > *result = 0 ;
+  Dictionary< std::string,std::string > *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_dictstr",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
@@ -8150,8 +8156,8 @@ SWIGINTERN PyObject *_wrap_new_dictstr(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictstr" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  result = (Dictionary< std::string > *)new Dictionary< std::string >(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_std__string_t, SWIG_POINTER_NEW |  0 );
+  result = (Dictionary< std::string,std::string > *)new Dictionary< std::string,std::string >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_std__string_std__string_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8160,28 +8166,30 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictstr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< std::string > *arg1 = (Dictionary< std::string > *) 0 ;
-  int arg2 ;
+  Dictionary< std::string,std::string > *arg1 = (Dictionary< std::string,std::string > *) 0 ;
+  std::string arg2 ;
   std::string arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:dictstr_set",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_std__string_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstr_set" "', argument " "1"" of type '" "Dictionary< std::string > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstr_set" "', argument " "1"" of type '" "Dictionary< std::string,std::string > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< std::string > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictstr_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  arg1 = reinterpret_cast< Dictionary< std::string,std::string > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "dictstr_set" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(obj2, &ptr);
@@ -8201,17 +8209,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictstr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< std::string > *arg1 = (Dictionary< std::string > *) 0 ;
+  Dictionary< std::string,std::string > *arg1 = (Dictionary< std::string,std::string > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:dictstr_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_std__string_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstr_get" "', argument " "1"" of type '" "Dictionary< std::string > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstr_get" "', argument " "1"" of type '" "Dictionary< std::string,std::string > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< std::string > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< std::string,std::string > * >(argp1);
   (arg1)->get();
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8222,17 +8230,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_dictstr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< std::string > *arg1 = (Dictionary< std::string > *) 0 ;
+  Dictionary< std::string,std::string > *arg1 = (Dictionary< std::string,std::string > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:delete_dictstr",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_std__string_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictstr" "', argument " "1"" of type '" "Dictionary< std::string > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictstr" "', argument " "1"" of type '" "Dictionary< std::string,std::string > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< std::string > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< std::string,std::string > * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8244,7 +8252,7 @@ fail:
 SWIGINTERN PyObject *dictstr_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_std__string_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_std__string_std__string_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -8254,7 +8262,7 @@ SWIGINTERN PyObject *_wrap_new_dictflo(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  Dictionary< float > *result = 0 ;
+  Dictionary< float,float > *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_dictflo",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
@@ -8262,8 +8270,8 @@ SWIGINTERN PyObject *_wrap_new_dictflo(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictflo" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  result = (Dictionary< float > *)new Dictionary< float >(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_float_t, SWIG_POINTER_NEW |  0 );
+  result = (Dictionary< float,float > *)new Dictionary< float,float >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_float_float_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8272,12 +8280,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictflo_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< float > *arg1 = (Dictionary< float > *) 0 ;
-  int arg2 ;
+  Dictionary< float,float > *arg1 = (Dictionary< float,float > *) 0 ;
+  float arg2 ;
   float arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  float val2 ;
   int ecode2 = 0 ;
   float val3 ;
   int ecode3 = 0 ;
@@ -8286,16 +8294,16 @@ SWIGINTERN PyObject *_wrap_dictflo_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj2 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:dictflo_set",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflo_set" "', argument " "1"" of type '" "Dictionary< float > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflo_set" "', argument " "1"" of type '" "Dictionary< float,float > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< float > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  arg1 = reinterpret_cast< Dictionary< float,float > * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictflo_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictflo_set" "', argument " "2"" of type '" "float""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< float >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "dictflo_set" "', argument " "3"" of type '" "float""'");
@@ -8311,17 +8319,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_dictflo_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< float > *arg1 = (Dictionary< float > *) 0 ;
+  Dictionary< float,float > *arg1 = (Dictionary< float,float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:dictflo_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflo_get" "', argument " "1"" of type '" "Dictionary< float > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflo_get" "', argument " "1"" of type '" "Dictionary< float,float > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< float > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< float,float > * >(argp1);
   (arg1)->get();
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8332,17 +8340,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_dictflo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  Dictionary< float > *arg1 = (Dictionary< float > *) 0 ;
+  Dictionary< float,float > *arg1 = (Dictionary< float,float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:delete_dictflo",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictflo" "', argument " "1"" of type '" "Dictionary< float > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictflo" "', argument " "1"" of type '" "Dictionary< float,float > *""'"); 
   }
-  arg1 = reinterpret_cast< Dictionary< float > * >(argp1);
+  arg1 = reinterpret_cast< Dictionary< float,float > * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8354,7 +8362,675 @@ fail:
 SWIGINTERN PyObject *dictflo_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_float_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_float_float_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictintstr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< int,std::string > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictintstr",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictintstr" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< int,std::string > *)new Dictionary< int,std::string >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_int_std__string_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictintstr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,std::string > *arg1 = (Dictionary< int,std::string > *) 0 ;
+  int arg2 ;
+  std::string arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictintstr_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictintstr_set" "', argument " "1"" of type '" "Dictionary< int,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,std::string > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictintstr_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "dictintstr_set" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictintstr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,std::string > *arg1 = (Dictionary< int,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictintstr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictintstr_get" "', argument " "1"" of type '" "Dictionary< int,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,std::string > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictintstr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,std::string > *arg1 = (Dictionary< int,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictintstr",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_std__string_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictintstr" "', argument " "1"" of type '" "Dictionary< int,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,std::string > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictintstr_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_int_std__string_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictintflo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< int,float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictintflo",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictintflo" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< int,float > *)new Dictionary< int,float >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_int_float_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictintflo_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,float > *arg1 = (Dictionary< int,float > *) 0 ;
+  int arg2 ;
+  float arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictintflo_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictintflo_set" "', argument " "1"" of type '" "Dictionary< int,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,float > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictintflo_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "dictintflo_set" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictintflo_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,float > *arg1 = (Dictionary< int,float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictintflo_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictintflo_get" "', argument " "1"" of type '" "Dictionary< int,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,float > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictintflo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< int,float > *arg1 = (Dictionary< int,float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictintflo",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_int_float_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictintflo" "', argument " "1"" of type '" "Dictionary< int,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< int,float > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictintflo_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_int_float_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictstrflo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< std::string,float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictstrflo",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictstrflo" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< std::string,float > *)new Dictionary< std::string,float >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_std__string_float_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictstrflo_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,float > *arg1 = (Dictionary< std::string,float > *) 0 ;
+  std::string arg2 ;
+  float arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictstrflo_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstrflo_set" "', argument " "1"" of type '" "Dictionary< std::string,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,float > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "dictstrflo_set" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "dictstrflo_set" "', argument " "3"" of type '" "float""'");
+  } 
+  arg3 = static_cast< float >(val3);
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictstrflo_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,float > *arg1 = (Dictionary< std::string,float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictstrflo_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstrflo_get" "', argument " "1"" of type '" "Dictionary< std::string,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,float > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictstrflo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,float > *arg1 = (Dictionary< std::string,float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictstrflo",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_float_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictstrflo" "', argument " "1"" of type '" "Dictionary< std::string,float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,float > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictstrflo_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_std__string_float_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictstrint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< std::string,int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictstrint",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictstrint" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< std::string,int > *)new Dictionary< std::string,int >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_std__string_int_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictstrint_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,int > *arg1 = (Dictionary< std::string,int > *) 0 ;
+  std::string arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictstrint_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstrint_set" "', argument " "1"" of type '" "Dictionary< std::string,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,int > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "dictstrint_set" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "dictstrint_set" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictstrint_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,int > *arg1 = (Dictionary< std::string,int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictstrint_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictstrint_get" "', argument " "1"" of type '" "Dictionary< std::string,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,int > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictstrint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< std::string,int > *arg1 = (Dictionary< std::string,int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictstrint",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_std__string_int_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictstrint" "', argument " "1"" of type '" "Dictionary< std::string,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< std::string,int > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictstrint_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_std__string_int_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictfloint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< float,int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictfloint",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictfloint" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< float,int > *)new Dictionary< float,int >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_float_int_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictfloint_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,int > *arg1 = (Dictionary< float,int > *) 0 ;
+  float arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictfloint_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictfloint_set" "', argument " "1"" of type '" "Dictionary< float,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,int > * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictfloint_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "dictfloint_set" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictfloint_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,int > *arg1 = (Dictionary< float,int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictfloint_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictfloint_get" "', argument " "1"" of type '" "Dictionary< float,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,int > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictfloint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,int > *arg1 = (Dictionary< float,int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictfloint",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_int_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictfloint" "', argument " "1"" of type '" "Dictionary< float,int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,int > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictfloint_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_float_int_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_dictflostr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Dictionary< float,std::string > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_dictflostr",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_dictflostr" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Dictionary< float,std::string > *)new Dictionary< float,std::string >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DictionaryT_float_std__string_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictflostr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,std::string > *arg1 = (Dictionary< float,std::string > *) 0 ;
+  float arg2 ;
+  std::string arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:dictflostr_set",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflostr_set" "', argument " "1"" of type '" "Dictionary< float,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,std::string > * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "dictflostr_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "dictflostr_set" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->set(arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_dictflostr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,std::string > *arg1 = (Dictionary< float,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:dictflostr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "dictflostr_get" "', argument " "1"" of type '" "Dictionary< float,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,std::string > * >(argp1);
+  (arg1)->get();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_dictflostr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Dictionary< float,std::string > *arg1 = (Dictionary< float,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_dictflostr",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DictionaryT_float_std__string_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_dictflostr" "', argument " "1"" of type '" "Dictionary< float,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< Dictionary< float,std::string > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *dictflostr_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DictionaryT_float_std__string_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -8427,15 +9103,51 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"dictflo_get", _wrap_dictflo_get, METH_VARARGS, NULL},
 	 { (char *)"delete_dictflo", _wrap_delete_dictflo, METH_VARARGS, NULL},
 	 { (char *)"dictflo_swigregister", dictflo_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictintstr", _wrap_new_dictintstr, METH_VARARGS, NULL},
+	 { (char *)"dictintstr_set", _wrap_dictintstr_set, METH_VARARGS, NULL},
+	 { (char *)"dictintstr_get", _wrap_dictintstr_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictintstr", _wrap_delete_dictintstr, METH_VARARGS, NULL},
+	 { (char *)"dictintstr_swigregister", dictintstr_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictintflo", _wrap_new_dictintflo, METH_VARARGS, NULL},
+	 { (char *)"dictintflo_set", _wrap_dictintflo_set, METH_VARARGS, NULL},
+	 { (char *)"dictintflo_get", _wrap_dictintflo_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictintflo", _wrap_delete_dictintflo, METH_VARARGS, NULL},
+	 { (char *)"dictintflo_swigregister", dictintflo_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictstrflo", _wrap_new_dictstrflo, METH_VARARGS, NULL},
+	 { (char *)"dictstrflo_set", _wrap_dictstrflo_set, METH_VARARGS, NULL},
+	 { (char *)"dictstrflo_get", _wrap_dictstrflo_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictstrflo", _wrap_delete_dictstrflo, METH_VARARGS, NULL},
+	 { (char *)"dictstrflo_swigregister", dictstrflo_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictstrint", _wrap_new_dictstrint, METH_VARARGS, NULL},
+	 { (char *)"dictstrint_set", _wrap_dictstrint_set, METH_VARARGS, NULL},
+	 { (char *)"dictstrint_get", _wrap_dictstrint_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictstrint", _wrap_delete_dictstrint, METH_VARARGS, NULL},
+	 { (char *)"dictstrint_swigregister", dictstrint_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictfloint", _wrap_new_dictfloint, METH_VARARGS, NULL},
+	 { (char *)"dictfloint_set", _wrap_dictfloint_set, METH_VARARGS, NULL},
+	 { (char *)"dictfloint_get", _wrap_dictfloint_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictfloint", _wrap_delete_dictfloint, METH_VARARGS, NULL},
+	 { (char *)"dictfloint_swigregister", dictfloint_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_dictflostr", _wrap_new_dictflostr, METH_VARARGS, NULL},
+	 { (char *)"dictflostr_set", _wrap_dictflostr_set, METH_VARARGS, NULL},
+	 { (char *)"dictflostr_get", _wrap_dictflostr_get, METH_VARARGS, NULL},
+	 { (char *)"delete_dictflostr", _wrap_delete_dictflostr, METH_VARARGS, NULL},
+	 { (char *)"dictflostr_swigregister", dictflostr_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_DictionaryT_float_t = {"_p_DictionaryT_float_t", "Dictionary< float > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_DictionaryT_int_t = {"_p_DictionaryT_int_t", "Dictionary< int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_DictionaryT_std__string_t = {"_p_DictionaryT_std__string_t", "Dictionary< std::string > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_float_float_t = {"_p_DictionaryT_float_float_t", "Dictionary< float,float > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_float_int_t = {"_p_DictionaryT_float_int_t", "Dictionary< float,int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_float_std__string_t = {"_p_DictionaryT_float_std__string_t", "Dictionary< float,std::string > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_int_float_t = {"_p_DictionaryT_int_float_t", "Dictionary< int,float > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_int_int_t = {"_p_DictionaryT_int_int_t", "Dictionary< int,int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_int_std__string_t = {"_p_DictionaryT_int_std__string_t", "Dictionary< int,std::string > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_std__string_float_t = {"_p_DictionaryT_std__string_float_t", "Dictionary< std::string,float > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_std__string_int_t = {"_p_DictionaryT_std__string_int_t", "Dictionary< std::string,int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DictionaryT_std__string_std__string_t = {"_p_DictionaryT_std__string_std__string_t", "Dictionary< std::string,std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -8448,9 +9160,15 @@ static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_DictionaryT_float_t,
-  &_swigt__p_DictionaryT_int_t,
-  &_swigt__p_DictionaryT_std__string_t,
+  &_swigt__p_DictionaryT_float_float_t,
+  &_swigt__p_DictionaryT_float_int_t,
+  &_swigt__p_DictionaryT_float_std__string_t,
+  &_swigt__p_DictionaryT_int_float_t,
+  &_swigt__p_DictionaryT_int_int_t,
+  &_swigt__p_DictionaryT_int_std__string_t,
+  &_swigt__p_DictionaryT_std__string_float_t,
+  &_swigt__p_DictionaryT_std__string_int_t,
+  &_swigt__p_DictionaryT_std__string_std__string_t,
   &_swigt__p_allocator_type,
   &_swigt__p_char,
   &_swigt__p_difference_type,
@@ -8463,9 +9181,15 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_DictionaryT_float_t[] = {  {&_swigt__p_DictionaryT_float_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_DictionaryT_int_t[] = {  {&_swigt__p_DictionaryT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_DictionaryT_std__string_t[] = {  {&_swigt__p_DictionaryT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_float_float_t[] = {  {&_swigt__p_DictionaryT_float_float_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_float_int_t[] = {  {&_swigt__p_DictionaryT_float_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_float_std__string_t[] = {  {&_swigt__p_DictionaryT_float_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_int_float_t[] = {  {&_swigt__p_DictionaryT_int_float_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_int_int_t[] = {  {&_swigt__p_DictionaryT_int_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_int_std__string_t[] = {  {&_swigt__p_DictionaryT_int_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_std__string_float_t[] = {  {&_swigt__p_DictionaryT_std__string_float_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_std__string_int_t[] = {  {&_swigt__p_DictionaryT_std__string_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DictionaryT_std__string_std__string_t[] = {  {&_swigt__p_DictionaryT_std__string_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -8478,9 +9202,15 @@ static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__Sw
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_DictionaryT_float_t,
-  _swigc__p_DictionaryT_int_t,
-  _swigc__p_DictionaryT_std__string_t,
+  _swigc__p_DictionaryT_float_float_t,
+  _swigc__p_DictionaryT_float_int_t,
+  _swigc__p_DictionaryT_float_std__string_t,
+  _swigc__p_DictionaryT_int_float_t,
+  _swigc__p_DictionaryT_int_int_t,
+  _swigc__p_DictionaryT_int_std__string_t,
+  _swigc__p_DictionaryT_std__string_float_t,
+  _swigc__p_DictionaryT_std__string_int_t,
+  _swigc__p_DictionaryT_std__string_std__string_t,
   _swigc__p_allocator_type,
   _swigc__p_char,
   _swigc__p_difference_type,
