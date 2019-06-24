@@ -1,6 +1,3 @@
-#ifndef _SET_H_
-#define _SET_H_
-
 #include <iostream>
 
 using namespace std;
@@ -85,5 +82,3 @@ class Set {
             inorder(root);
         }
 };
-
-#endif
