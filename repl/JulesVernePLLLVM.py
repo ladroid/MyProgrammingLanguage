@@ -9,6 +9,18 @@ import click
 import decimal
 from termcolor import colored
 import math
+from lib.proglang.Decimal import Decimal
+from lib.proglang.Dictionary import Dictionary
+from lib.proglang.Float import Float
+from lib.proglang.Int import Int
+from lib.proglang.List import List
+from lib.proglang.Set import Set
+from lib.proglang.String import String
+from lib.mathlib import mathlib
+from lib.unittest import unittesting
+from lib.sortinglib import sortinglib
+from lib.filereader import filereader
+from lib.filewriter import filewriter
 
 reserved = {
     'if' : 'IF',
@@ -50,6 +62,7 @@ reserved = {
     'not' : 'NOT',
     #'int' : 'INTARR',
     'open' : 'OPEN',
+    'write' : 'WRITE',
     'func' : 'FUNC',
     '->' : 'ARROW',
     'int' : 'INT',
@@ -61,7 +74,15 @@ reserved = {
     'async' : 'ASYNC',
     'Int' : 'TYPINT',
     'String' : 'TYPSTRING',
-    'type' : 'TYPE'
+    'type' : 'TYPE',
+    'ƛ' : 'LAMBDA',
+    '.' : 'DOT',
+    '"' : 'QUOTES',
+    'list' : 'LIST',
+    'add' : 'ADD',
+    'createnode' : 'CREATENODE', 
+    'dict' : 'DICTIONARY',
+    'assertEquals' : 'ASSERTEQUALS'
 }
 
 tokens = ['NUMBER', 'DECIMAL', 'BOOL', 'STRING', 'COMMA', 'LBRACES', 'RBRACES', 'LSQRBRACK', 'RSQRBRACK', 'COLON', 'SEMICOLON', 'ASK','EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN', 'ID'] + list(reserved.values())
@@ -118,6 +139,7 @@ t_NOT = r'not'
 t_LSQRBRACK = r'\['
 t_RSQRBRACK = r'\]'
 t_OPEN = r'open'
+t_WRITE = r'write'
 t_LBRACES = r'{'
 t_RBRACES = r'}'
 t_FUNC = r'func'
@@ -132,6 +154,14 @@ t_ASYNC = r'async'
 t_TYPINT = r'Int'
 t_TYPSTRING = r'String'
 t_TYPE = r'type'
+t_LAMBDA = r'ƛ'
+t_DOT = r'.'
+t_QUOTES = r'"'
+t_LIST = r'list'
+t_ADD = r'add'
+t_CREATENODE = r'createnode'
+t_DICTIONARY = r'dict'
+t_ASSERTEQUALS = r'assertEquals'
 
 def t_NUMBER(t):
     r'(\d+|0[Xx]\d+)'
@@ -203,6 +233,8 @@ value = None
 value2 = None
 
 valueIFELSE = None
+
+my_list = List.List()
 
 # plus
 def p_expression_plus(p):
@@ -486,14 +518,22 @@ def p_term_xorlog(p):
 def p_term_openFile(p):
     'term : OPEN LPAREN factor RPAREN'
     file = p[3].replace('"', '')
-    f = open(file, "r")
-    p[0] = f.read()
+    f = filereader.read_file(file)
+    p[0] = f
+
+# write file
+def p_term_writeFile(p):
+    'term : WRITE LPAREN expression COMMA expression RPAREN'
+    file = p[3].replace('"', '')
+    text = p[5].replace('"', '')
+    f = filewriter.write_file(file, text)
+    p[0] = f
 
 # pow function
 def p_term_pow(p):
     'term : POW LPAREN factor COMMA factor RPAREN'
     if isinstance(p[3], int) and isinstance(p[5], int):
-        p[0] = pow(p[3], p[5])
+        p[0] = mathlib.pow_(p[3], p[5])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -502,9 +542,9 @@ def p_term_log(p):
     '''term : LOG LPAREN factor RPAREN
                             | LOG LPAREN factor COMMA factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.log(p[3])
+        p[0] = mathlib.log_(p[3])
     elif isinstance(p[3], int) and isinstance(p[5], int):
-        p[0] = math.log(p[3], p[5])
+        p[0] = mathlib.log_(p[3], p[5])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -512,7 +552,7 @@ def p_term_log(p):
 def p_term_log10(p):
     '''term : LOG10 LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.log10(p[3])
+        p[0] = mathlib.log_10(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -528,7 +568,7 @@ def p_term_log1p(p):
 def p_term_exp(p):
     '''term : EXP LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.exp(p[3])
+        p[0] = mathlib.exp_(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -536,7 +576,7 @@ def p_term_exp(p):
 def p_term_sqrt(p):
     '''term : SQRT LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.sqrt(p[3])
+        p[0] = mathlib.sqrt_(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -544,7 +584,7 @@ def p_term_sqrt(p):
 def p_term_cos(p):
     '''term : COS LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.sqrt(p[3])
+        p[0] = mathlib.cos_(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -552,7 +592,7 @@ def p_term_cos(p):
 def p_term_sin(p):
     '''term : SIN LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.sqrt(p[3])
+        p[0] = mathlib.sin_(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -560,7 +600,7 @@ def p_term_sin(p):
 def p_term_tan(p):
     '''term : TAN LPAREN factor RPAREN'''
     if isinstance(p[3], int):
-        p[0] = math.tan(p[3])
+        p[0] = mathlib.tan_(p[3])
     else:
         print(colored("Error: Type does not fit", 'red'))
 
@@ -609,9 +649,9 @@ def p_term_Let(p):
 
 # print function
 def p_term_print(p):
-    '''term : PRINT term
+    '''expression : PRINT expression
                 | PRINT ID
-                | PRINT LPAREN term COMMA term RPAREN'''
+                | PRINT LPAREN expression COMMA expression RPAREN'''
     if value is not None:
         p[0] = value
     else:
@@ -620,6 +660,82 @@ def p_term_print(p):
     # print several values and remove square brackets
     if len(p) > 4:
         p[0] = str([p[3], p[5]])[1:-1]
+
+# LAMBDA
+def p_term_lambda(p):
+    '''expression : ID EQUALS LPAREN LAMBDA ID DOT expression RPAREN'''
+    global value
+    value = p[7]
+    p[0] = p[1] = p[7]
+    # a = list()
+    # a.append(p[5])
+    # p[0] = a
+    #p[0].append(list(p[5]))
+
+def p_term_createnodelist(p):
+    '''expression : LIST DOT CREATENODE LPAREN expression RPAREN'''
+    global my_list
+    my_list.createnode(p[5])
+    p[0] = my_list
+
+# LIST
+def p_term_listadd(p):
+    '''expression : LIST DOT ADD LPAREN expression RPAREN'''
+    global my_list
+    my_list.insert_start(p[5])
+    p[0] = my_list
+
+# LIST print
+def p_term_listprint(p):
+    '''expression : LIST DOT PRINT LPAREN RPAREN'''
+    global my_list
+    #if p[1] is List.List():
+    my_list.display()
+
+#dictionary
+def p_term_dictionary(p):
+    '''expression : DICTIONARY LPAREN expression COMMA expression RPAREN'''
+    if type(p[3]) == int and type(p[5]) == int:
+        dict_t = Dictionary.dictint(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == str and type(p[5]) == str:
+        dict_t = Dictionary.dictstr(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == float and type(p[5]) == float:
+        dict_t = Dictionary.dictflo(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == int and type(p[5]) == str:
+        dict_t = Dictionary.dictintstr(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == int and type(p[5]) == float:
+        dict_t = Dictionary.dictintflo(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == str and type(p[5]) == float:
+        dict_t = Dictionary.dictstrflo(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == str and type(p[5]) == int:
+        dict_t = Dictionary.dictstrint(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == float and type(p[5]) == int:
+        dict_t = Dictionary.dictfloint(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+    elif type(p[3]) == float and type(p[5]) == str:
+        dict_t = Dictionary.dictflostr(p[3])
+        dict_t.set(p[3], p[5])
+        p[0] = dict_t.get()
+
+#unittest
+def p_term_unittest(p):
+    '''expression : ASSERTEQUALS LPAREN expression COMMA expression RPAREN'''
+    p[0] = unittesting.test_equal(p[3], p[5])
 
 # output smth
 def p_term_factor(p):
@@ -698,11 +814,11 @@ def copyright(**kwargs):
 parser = yacc.yacc()
 #print(sys.argv, len(sys.argv))
 if len(sys.argv) < 2:
-    print("Whale 0.0.1 (created in 2018) " + str(datetime.now()))
+    print("Kujira 0.0.1 (created in 2018) " + str(datetime.now()))
     print("Type 'help' to now how to use it 'copyright' or '.exit' just for quit from REPL")
     while True:
         try:
-            s = input('whale> ')
+            s = input('kujira> ')
         except EOFError:
             break
         if not s: continue

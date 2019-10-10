@@ -15,3 +15,5 @@
 3) then this command: ```g++ -g -ggdb -c -std=c++0x -I/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/include/python3.7m sortinglib.cpp sortinglib_wrap.cxx```
 4) after ```gcc -dynamiclib -o _sortinglib.so *.o -L/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/ -lpython3.7 -flat_namespace```
 5) and then you can run it -> ```python3 test.py```
+
+**Maybe using 3.7.4 python**
