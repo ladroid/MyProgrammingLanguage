@@ -1,6 +1,11 @@
 from lark import Lark, Transformer, Visitor, Tree, v_args, UnexpectedInput
-from lib.proglang import List
-from lib.proglang import mathlib
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from repl.lib.proglang.List import List
+from repl.lib.proglang.Dictionary import Dictionary
+from repl.lib.proglang.Set import Set
+from repl.lib.mathlib import mathlib
+from repl.lib.sortinglib import sortinglib
 grammar = '''
 ?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_
 
@@ -9,13 +14,15 @@ grammar = '''
 
 ?atom: NUMBER -> number | "-" atom -> neg | NAME -> var | "("calc")"
 
-?value: array | SIGNED_NUMBER -> number | string
+?value: array | SIGNED_NUMBER -> number | string | sorting | sets
 
 ?printval: "print" value
 
 ?func: "func" "(" [NAME ":" value ("," NAME ":" value)*] ")" "{" printval "}"
 
 ?array: "[" [value ("," value)*] "]"
+
+?sets: "{" [value ("," value)*] "}"
 
 ?pow_ : "pow" "(" NUMBER "," NUMBER ")"
 ?ceil_ : "ceil" "(" NUMBER ")"
@@ -31,6 +38,8 @@ grammar = '''
 ?sqrt_ : "sqrt" "(" NUMBER ")"
 ?log_ : "log" "(" NUMBER ")"
 ?log10_ : "log10" "(" NUMBER ")"
+
+?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
 
 string : ESCAPED_STRING
 
@@ -60,6 +69,11 @@ class LanguageTransformer(Transformer):
         for arg in elements:
             l.insert_start(int(arg))
         l.display()
+    def sets(self, *elements):
+        s = Set.Set()
+        for arg in elements:
+            s.put(int(arg))
+        s.display()
     def pow_(self, elem, elem2):
         return mathlib.pow_(int(elem), int(elem2))
     def ceil_(self, elem):
@@ -88,7 +102,13 @@ class LanguageTransformer(Transformer):
         return mathlib.log_(int(elem))
     def log10_(self, elem):
         return mathlib.log_10(int(elem))
+    def sorting(self, *elem):
+        a = []
+        for arg in elem:
+            a.append(int(arg))
+        a = tuple(a)
+        return sortinglib.arr(a)
 
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse("pow(2,3)"))
+print(l.parse("sort([10,5,2,1,8,7,6,3,4,9])"))
