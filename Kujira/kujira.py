@@ -6,8 +6,9 @@ from repl.lib.proglang.Dictionary import Dictionary
 from repl.lib.proglang.Set import Set
 from repl.lib.mathlib import mathlib
 from repl.lib.sortinglib import sortinglib
+import importlib
 grammar = '''
-?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_
+?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile
 
 ?calc: prod | calc "+" prod -> add | calc "-" prod -> sub
 ?prod: atom | prod "*" atom -> mul | prod "/" atom -> div
@@ -40,6 +41,8 @@ grammar = '''
 ?log10_ : "log10" "(" NUMBER ")"
 
 ?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
+
+importingfile: "import" NAME
 
 string : ESCAPED_STRING
 
@@ -108,7 +111,19 @@ class LanguageTransformer(Transformer):
             a.append(int(arg))
         a = tuple(a)
         return sortinglib.arr(a)
+    def importingfile(self, args):
+        sys.path.insert(0, '/Users/lado/Documents/MyProgrammingLanguage/ProgLanguageBetaTest/MyLanguageLark/module1.py')
+        with open(args, 'r') as file:
+            for line in file:
+                line = line.strip()
+                if not line or line[0] == '#':
+                    continue
+                parts = line.split()
+                print(parts)
+                mod = importlib.import_module(parts[0])
+                print(mod)
+                getattr(mod, parts[1])(parts[2], parts[3])
 
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse("sort([10,5,2,1,8,7,6,3,4,9])"))
+print(l.parse('''import src'''))
