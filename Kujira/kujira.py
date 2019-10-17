@@ -7,6 +7,7 @@ from repl.lib.proglang.Set import Set
 from repl.lib.mathlib import mathlib
 from repl.lib.sortinglib import sortinglib
 import importlib
+import importfile
 grammar = '''
 ?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile
 
@@ -42,7 +43,7 @@ grammar = '''
 
 ?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
 
-importingfile: "import" NAME
+importingfile: "import" NAME NAME  NUMBER "," NUMBER 
 
 string : ESCAPED_STRING
 
@@ -111,19 +112,8 @@ class LanguageTransformer(Transformer):
             a.append(int(arg))
         a = tuple(a)
         return sortinglib.arr(a)
-    def importingfile(self, args):
-        sys.path.insert(0, '/Users/lado/Documents/MyProgrammingLanguage/ProgLanguageBetaTest/MyLanguageLark/module1.py')
-        with open(args, 'r') as file:
-            for line in file:
-                line = line.strip()
-                if not line or line[0] == '#':
-                    continue
-                parts = line.split()
-                print(parts)
-                mod = importlib.import_module(parts[0])
-                print(mod)
-                getattr(mod, parts[1])(parts[2], parts[3])
-
+    def importingfile(self, arg, arg2, arg3, arg4):
+        importfile.imports(str(arg), str(arg2), str(arg3), str(arg4))
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse('''import src'''))
+print(l.parse('''import module1 add 12, 2'''))
