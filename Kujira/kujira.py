@@ -9,7 +9,7 @@ from repl.lib.sortinglib import sortinglib
 import importlib
 import importfile
 grammar = '''
-?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile
+?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importt
 
 ?calc: prod | calc "+" prod -> add | calc "-" prod -> sub
 ?prod: atom | prod "*" atom -> mul | prod "/" atom -> div
@@ -43,7 +43,11 @@ grammar = '''
 
 ?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
 
-importingfile: "import" NAME NAME  NUMBER "," NUMBER 
+importt: importingfile | importtingfile
+
+importingfile: "import" NAME NAME NUMBER "," NUMBER
+
+importtingfile: "import" NAME NAME NUMBER
 
 string : ESCAPED_STRING
 
@@ -113,7 +117,9 @@ class LanguageTransformer(Transformer):
         a = tuple(a)
         return sortinglib.arr(a)
     def importingfile(self, arg, arg2, arg3, arg4):
-        importfile.imports(str(arg), str(arg2), str(arg3), str(arg4))
+        importfile.imports(str(arg), str(arg2), float(arg3), float(arg4))
+    def importtingfile(self, arg, arg2, arg3):
+        importfile.imports(str(arg), str(arg2), float(arg3), arg4=0)
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse('''import module1 add 12, 2'''))
+print(l.parse('''import mathlib cos_ 12'''))
