@@ -9,7 +9,7 @@ from repl.lib.sortinglib import sortinglib
 import importlib
 import importfile
 grammar = '''
-?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importt
+?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importt | condition
 
 ?calc: prod | calc "+" prod -> add | calc "-" prod -> sub
 ?prod: atom | prod "*" atom -> mul | prod "/" atom -> div
@@ -42,6 +42,14 @@ grammar = '''
 ?log10_ : "log10" "(" NUMBER ")"
 
 ?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
+
+condition: "if" statement "then" result
+statement: expression
+result: string | condition
+expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
+VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
+?action_operator: ACTION_OPERATOR
+ACTION_OPERATOR: "<"|">"|"="|"=="|">="|"<="|"!="|"in"
 
 importt: importingfile | importtingfile
 
@@ -122,4 +130,4 @@ class LanguageTransformer(Transformer):
         importfile.imports(str(arg), str(arg2), float(arg3), arg4=0)
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse('''import mathlib cos_ 12'''))
+print(l.parse('''if 12 < 3 then "true"'''))
