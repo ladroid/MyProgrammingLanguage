@@ -9,7 +9,7 @@ from repl.lib.sortinglib import sortinglib
 import importlib
 import importfile
 grammar = '''
-?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importt | condition
+?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile | NEWLINE | condition
 
 ?calc: prod | calc "+" prod -> add | calc "-" prod -> sub
 ?prod: atom | prod "*" atom -> mul | prod "/" atom -> div
@@ -25,6 +25,14 @@ grammar = '''
 ?array: "[" [value ("," value)*] "]"
 
 ?sets: "{" [value ("," value)*] "}"
+
+condition: "if" [statement "then" result ("elseif" statement ":" result)*]
+statement: expression
+result: string | condition
+expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
+VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
+?action_operator: ACTION_OPERATOR
+ACTION_OPERATOR: "<"|">"|"="|"=="|">="|"<="|"!="|"in"
 
 ?pow_ : "pow" "(" NUMBER "," NUMBER ")"
 ?ceil_ : "ceil" "(" NUMBER ")"
@@ -43,29 +51,21 @@ grammar = '''
 
 ?sorting : "sort" "(" "[" [value ("," value)*] "]" ")"
 
-condition: "if" statement "then" result
-statement: expression
-result: string | condition
-expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
-VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
-?action_operator: ACTION_OPERATOR
-ACTION_OPERATOR: "<"|">"|"="|"=="|">="|"<="|"!="|"in"
-
-importt: importingfile | importtingfile
-
-importingfile: "import" NAME NAME NUMBER "," NUMBER
-
-importtingfile: "import" NAME NAME NUMBER
+importingfile: "import" NAME NAME  NUMBER "," NUMBER 
 
 string : ESCAPED_STRING
+
+COMMENT: "//" /(.|\\n|\\r)*/
 
 %import common.NUMBER
 %import common.SIGNED_NUMBER
 %import common.ESCAPED_STRING
 %import common.CNAME -> NAME
 %import common.WS_INLINE
+%import common.NEWLINE
 %ignore " "
 %ignore WS_INLINE
+%ignore COMMENT
 '''
 
 @v_args(inline=True)
