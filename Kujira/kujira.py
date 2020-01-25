@@ -26,9 +26,13 @@ grammar = '''
 
 ?sets: "{" [value ("," value)*] "}"
 
-condition: "if" [statement "then" result ("elseif" statement ":" result)*]
+condition: "if" [statement "then" result ("elseif" statement ":" result)*] | "if" [statement "then" result ("elseif" statement ":" result)*] "else" result
+if: "if"
+then: "then"
+elseif: "elseif"
+else: "else"
 statement: expression
-result: string | condition
+result: printval | condition
 expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
 VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
 ?action_operator: ACTION_OPERATOR
@@ -125,9 +129,23 @@ class LanguageTransformer(Transformer):
         a = tuple(a)
         return sortinglib.arr(a)
     def importingfile(self, arg, arg2, arg3, arg4):
-        importfile.imports(str(arg), str(arg2), float(arg3), float(arg4))
-    def importtingfile(self, arg, arg2, arg3):
-        importfile.imports(str(arg), str(arg2), float(arg3), arg4=0)
+        importfile.imports(str(arg), str(arg2), str(arg3), str(arg4))
+    def condition(self, *expr):
+        num1 = None
+        num2 = None
+        true_ = ""
+        false_ = ""
+        for expp in expr[1].children:
+            true_ = expp.children[0].value
+        for expp in expr[2].children:
+            false_ = expp.children[0].value
+        for expr_val in expr[0].children:
+            num1 = int(expr_val.children[0].value)
+            num2 = int(expr_val.children[2].value)
+        if num1 < num2:
+            return true_
+        else:
+            return false_
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse('''if 12 < 3 then "true"'''))
+print(l.parse('''if 12 < 3 then print "true" else print "false"'''))
