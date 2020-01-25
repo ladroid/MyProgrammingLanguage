@@ -135,15 +135,50 @@ class LanguageTransformer(Transformer):
         num2 = None
         true_ = ""
         false_ = ""
+        sign = ""
         for expp in expr[1].children:
             true_ = expp.children[0].value
         for expp in expr[2].children:
             false_ = expp.children[0].value
         for expr_val in expr[0].children:
             num1 = int(expr_val.children[0].value)
+            sign = expr_val.children[1].value
             num2 = int(expr_val.children[2].value)
-        if num1 < num2:
-            return true_
+        if sign == '<':
+            if num1 < num2:
+                return true_
+            else:
+                return false_
+        elif sign == '>':
+            if num1 > num2:
+                return true_
+            else:
+                return false_
+        elif sign == 'is':
+            if num1 is num2:
+                return true_
+            else:
+                return false_
+        elif sign == 'equals':
+            if num1 == num2:
+                return true_
+            else:
+                return false_
+        elif sign == '!=':
+            if num1 != num2:
+                return true_
+            else:
+                return false_
+        elif sign == '>=':
+            if num1 >= num2:
+                return true_
+            else:
+                return false_
+        elif sign == '<=':
+            if num1 <= num2:
+                return true_
+            else:
+                return false_
         else:
             return false_
 
