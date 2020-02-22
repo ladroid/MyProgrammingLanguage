@@ -13,6 +13,6 @@ class BigInt {
         string multiply(string num1, string num2);
         string addition(string num1, string num2);
         string substraction(string num1, string num2);
-        string division(string num1, string num2);
+        //string division(string num1, string num2);
         ~BigInt() {}
 };
