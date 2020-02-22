@@ -9,12 +9,12 @@ if _swig_python_version_info >= (2, 7, 0):
     def swig_import_helper():
         import importlib
         pkg = __name__.rpartition('.')[0]
-        mname = '.'.join((pkg, '_BigInt')).lstrip('.')
+        mname = '.'.join((pkg, '_bigint')).lstrip('.')
         try:
             return importlib.import_module(mname)
         except ImportError:
-            return importlib.import_module('_BigInt')
-    _BigInt = swig_import_helper()
+            return importlib.import_module('_bigint')
+    _bigint = swig_import_helper()
     del swig_import_helper
 elif _swig_python_version_info >= (2, 6, 0):
     def swig_import_helper():
@@ -22,20 +22,20 @@ elif _swig_python_version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_BigInt', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_bigint', [dirname(__file__)])
         except ImportError:
-            import _BigInt
-            return _BigInt
+            import _bigint
+            return _bigint
         try:
-            _mod = imp.load_module('_BigInt', fp, pathname, description)
+            _mod = imp.load_module('_bigint', fp, pathname, description)
         finally:
             if fp is not None:
                 fp.close()
         return _mod
-    _BigInt = swig_import_helper()
+    _bigint = swig_import_helper()
     del swig_import_helper
 else:
-    import _BigInt
+    import _bigint
 del _swig_python_version_info
 
 try:
@@ -104,59 +104,59 @@ class SwigPyIterator(_object):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    __swig_destroy__ = _BigInt.delete_SwigPyIterator
+    __swig_destroy__ = _bigint.delete_SwigPyIterator
     __del__ = lambda self: None
 
     def value(self) -> "PyObject *":
-        return _BigInt.SwigPyIterator_value(self)
+        return _bigint.SwigPyIterator_value(self)
 
     def incr(self, n: 'size_t'=1) -> "swig::SwigPyIterator *":
-        return _BigInt.SwigPyIterator_incr(self, n)
+        return _bigint.SwigPyIterator_incr(self, n)
 
     def decr(self, n: 'size_t'=1) -> "swig::SwigPyIterator *":
-        return _BigInt.SwigPyIterator_decr(self, n)
+        return _bigint.SwigPyIterator_decr(self, n)
 
     def distance(self, x: 'SwigPyIterator') -> "ptrdiff_t":
-        return _BigInt.SwigPyIterator_distance(self, x)
+        return _bigint.SwigPyIterator_distance(self, x)
 
     def equal(self, x: 'SwigPyIterator') -> "bool":
-        return _BigInt.SwigPyIterator_equal(self, x)
+        return _bigint.SwigPyIterator_equal(self, x)
 
     def copy(self) -> "swig::SwigPyIterator *":
-        return _BigInt.SwigPyIterator_copy(self)
+        return _bigint.SwigPyIterator_copy(self)
 
     def next(self) -> "PyObject *":
-        return _BigInt.SwigPyIterator_next(self)
+        return _bigint.SwigPyIterator_next(self)
 
     def __next__(self) -> "PyObject *":
-        return _BigInt.SwigPyIterator___next__(self)
+        return _bigint.SwigPyIterator___next__(self)
 
     def previous(self) -> "PyObject *":
-        return _BigInt.SwigPyIterator_previous(self)
+        return _bigint.SwigPyIterator_previous(self)
 
     def advance(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator *":
-        return _BigInt.SwigPyIterator_advance(self, n)
+        return _bigint.SwigPyIterator_advance(self, n)
 
     def __eq__(self, x: 'SwigPyIterator') -> "bool":
-        return _BigInt.SwigPyIterator___eq__(self, x)
+        return _bigint.SwigPyIterator___eq__(self, x)
 
     def __ne__(self, x: 'SwigPyIterator') -> "bool":
-        return _BigInt.SwigPyIterator___ne__(self, x)
+        return _bigint.SwigPyIterator___ne__(self, x)
 
     def __iadd__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator &":
-        return _BigInt.SwigPyIterator___iadd__(self, n)
+        return _bigint.SwigPyIterator___iadd__(self, n)
 
     def __isub__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator &":
-        return _BigInt.SwigPyIterator___isub__(self, n)
+        return _bigint.SwigPyIterator___isub__(self, n)
 
     def __add__(self, n: 'ptrdiff_t') -> "swig::SwigPyIterator *":
-        return _BigInt.SwigPyIterator___add__(self, n)
+        return _bigint.SwigPyIterator___add__(self, n)
 
     def __sub__(self, *args) -> "ptrdiff_t":
-        return _BigInt.SwigPyIterator___sub__(self, *args)
+        return _bigint.SwigPyIterator___sub__(self, *args)
     def __iter__(self):
         return self
-SwigPyIterator_swigregister = _BigInt.SwigPyIterator_swigregister
+SwigPyIterator_swigregister = _bigint.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
 class BigInt(_object):
@@ -167,23 +167,23 @@ class BigInt(_object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        this = _BigInt.new_BigInt(*args)
+        this = _bigint.new_BigInt(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
 
     def multiply(self, num1: 'std::string', num2: 'std::string') -> "std::string":
-        return _BigInt.BigInt_multiply(self, num1, num2)
+        return _bigint.BigInt_multiply(self, num1, num2)
 
     def addition(self, num1: 'std::string', num2: 'std::string') -> "std::string":
-        return _BigInt.BigInt_addition(self, num1, num2)
+        return _bigint.BigInt_addition(self, num1, num2)
 
     def substraction(self, num1: 'std::string', num2: 'std::string') -> "std::string":
-        return _BigInt.BigInt_substraction(self, num1, num2)
-    __swig_destroy__ = _BigInt.delete_BigInt
+        return _bigint.BigInt_substraction(self, num1, num2)
+    __swig_destroy__ = _bigint.delete_BigInt
     __del__ = lambda self: None
-BigInt_swigregister = _BigInt.BigInt_swigregister
+BigInt_swigregister = _bigint.BigInt_swigregister
 BigInt_swigregister(BigInt)
 
 # This file is compatible with both classic and new-style classes.

@@ -1,4 +1,4 @@
-%module BigInt
+%module bigint
 %{
     #include "bigint.h"
 %}

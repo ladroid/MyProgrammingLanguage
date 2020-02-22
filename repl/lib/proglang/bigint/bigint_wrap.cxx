@@ -3024,16 +3024,16 @@ static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #endif
 
 /*-----------------------------------------------
-              @(target):= _BigInt.so
+              @(target):= _bigint.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__BigInt
+#  define SWIG_init    PyInit__bigint
 
 #else
-#  define SWIG_init    init_BigInt
+#  define SWIG_init    init_bigint
 
 #endif
-#define SWIG_name    "_BigInt"
+#define SWIG_name    "_bigint"
 
 #define SWIGVERSION 0x030012 
 #define SWIG_VERSION SWIGVERSION
