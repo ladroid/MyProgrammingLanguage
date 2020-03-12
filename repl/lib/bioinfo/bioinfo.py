@@ -116,3 +116,49 @@ def count_non_dna_bases_seq(seq, allowed_bases=['A','T','G','C']):
 def dna_concat(dna1, dna2):
     return dna1 + dna2
 
+# dna sequence alignment
+def sequence_alignment(score, seq1, seq2):
+    alphabet = ['A', 'C', 'G', 'T']
+    D = []
+    for i in range(len(seq1)+1):
+        D.append([0] * (len(seq2)+1))
+    for i in range(1, len(seq1)+1):
+        D[i][0] = D[i-1][0] + score[alphabet.index(seq1[i-1])][i-1]
+    for i in range(1, len(seq2)+1):
+        D[0][i] = D[0][i-1] + score[-1][alphabet.index(seq2[i-1])]
+    for i in range(1, len(seq1) + 1):
+        for j in range(1, len(seq2) + 1):
+            distHor = D[i][j-1] + score[-1][alphabet.index(seq2[j-1])]
+            distVer = D[i][j] + score[alphabet.index(seq1[i-1])][-1]
+            if seq1[i-1] == seq2[j-1]:
+                distDiag = D[i-1][j-1]
+            else:
+                distDiag = D[i-1][j-1] + score[alphabet.index(seq1[i-1])][alphabet.index(seq2[j-1])]
+            D[i][j] = min(distHor, distVer, distDiag)
+    return D[-1][-1]
+
+# find motif in dna sequence
+def motif(s, t):
+    result = []
+    len1 = len(s)
+    len2 = len(t)
+    for i in range(0, len1 - len2 + 1): 
+        if s[i:i+len2] == t:
+            result.append(i+1)
+    return result
+
+# protein mass calculator
+def protein_mass(pmass):
+    mass_table = {
+        'A':   71.03711,  'C':   103.00919,  'D':   115.02694,
+        'E':   129.04259, 'F':   147.06841,  'G':   57.02146,
+        'H':   137.05891, 'I':   113.08406,  'K':   128.09496,
+        'L':   113.08406, 'M':   131.04049,  'N':   114.04293,
+        'P':   97.05276,  'Q':   128.05858,  'R':   156.10111,
+        'S':   87.03203,  'T':   101.04768,  'V':   99.06841,
+        'W':   186.07931, 'Y':   163.06333,
+    }
+    n = 0
+    for i in pmass:
+        n += mass_table[i]
+    return n
