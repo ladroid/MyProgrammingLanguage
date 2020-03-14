@@ -184,3 +184,51 @@ class LanguageTransformer(Transformer):
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
 print(l.parse('''if 12 < 3 then print "true" else print "false"'''))
+
+class KujiraSyntaxError(SyntaxError):
+    def __init__(self, label, line, column):
+        self.label = label
+        self.line = line
+        self.column = column
+    def __str__(self):
+        #context, line, column = self.args
+        return '%s at line %s, column %s.' % (self.label, self.line, self.column)
+
+class KujiraMissingValue(KujiraSyntaxError):
+    label = 'Missing Value'
+
+class KujiraMissingOpening(KujiraSyntaxError):
+    label = 'Missing Opening'
+
+class KujiraMissingClosing(KujiraSyntaxError):
+    label = 'Missing Closing'
+
+class KujiraMissingComma(KujiraSyntaxError):
+    label = 'Missing Comma'
+
+class KujiraTrailingComma(KujiraSyntaxError):
+    label = 'Trailing Comma'
+
+def parss(text):
+    try:
+        j = l.parse(text)
+    except UnexpectedInput as i:
+        xc_class = i.match_examples(l.parse, {
+            KujiraMissingClosing : ['[1,2,3,4', '[1,2,3,4,'],
+            KujiraMissingOpening : ['1,2,3,4]', '1,2,3,4,]'],
+            KujiraMissingComma   : ['[1 2 3 4]'],
+        })
+        if not xc_class:
+            raise
+        raise xc_class(i.get_context(text), i.line, i.column)
+
+def test():
+    try:
+        parss('[1, 2, 3, 4,')
+    except KujiraMissingClosing as e:
+        print(e)
+    except KujiraMissingOpening as e:
+        print(e)
+    except KujiraMissingComma as e:
+        print(e)
+test()    
