@@ -1,15 +1,24 @@
-from lark import Lark, Transformer, Visitor, Tree, v_args, UnexpectedInput
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from repl.lib.proglang.List import List
-from repl.lib.proglang.Dictionary import Dictionary
-from repl.lib.proglang.Set import Set
-from repl.lib.mathlib import mathlib
-from repl.lib.sortinglib import sortinglib
+from lark import Lark, Transformer, Visitor, Tree, v_args, UnexpectedInput, Token
+from lib.proglang.List import List
+from lib.proglang.Dictionary import Dictionary
+from lib.proglang.Set import Set
+from lib.mathlib import mathlib
+from lib.sortinglib import sortinglib
+from lib.bioinfo import bioinfo
+from lib.filereader import filereader
+from lib.filewriter import filewriter
+from lib.proglang.bigint import bigint
+import sys
 import importlib
 import importfile
+import re
+import ast
 grammar = '''
-?start: calc | NAME "=" calc -> assign | value | printval | func | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile | NEWLINE | condition
+?start: main 
+
+?main: calc | NAME "=" calc -> assign | value | printval | functype | funcnontype | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile | NEWLINE | condition | diction | writeio | bignumsum | bignumsub | bignummul | bignumpow | bioinfo | forloop | returning
+
+?codetype: calc | NAME "=" calc -> assign | value | printval | functype | funcnontype | pow_ | ceil_ | acos_ | asin_ | atan_ | cos_ | exp_ | fabs_ | floor_ | sin_ | tan_ | sqrt_ | log_ | log10_ | importingfile | NEWLINE | condition | diction | writeio | bignumsum | bignumsub | bignummul | bignumpow | bioinfo | forloop | returning
 
 ?calc: prod | calc "+" prod -> add | calc "-" prod -> sub
 ?prod: atom | prod "*" atom -> mul | prod "/" atom -> div
@@ -18,13 +27,46 @@ grammar = '''
 
 ?value: array | SIGNED_NUMBER -> number | string | sorting | sets
 
-?printval: "print" value
+?printval: "print" value | "print" NAME
 
-?func: "func" "(" [NAME ":" value ("," NAME ":" value)*] ")" "{" printval "}"
+?functype: "func" NAME "(" ")" "{" [codetype (";" codetype)*] ";" returning codetype "}" -> functypeassign | functypeatom
+?type: "Int" | "String" | "Float" | "Decimal"
+?functypeatom: "typed" NAME "(" ")" -> functypevar
+?returning: "return"
+
+?funcnontype: "void" NAME "(" ")" "{" [codetype (";" codetype)*] "}" -> funcassign | funcatom
+?funcatom: NAME "(" ")" -> funcvar
 
 ?array: "[" [value ("," value)*] "]"
 
 ?sets: "{" [value ("," value)*] "}"
+
+?diction: "dict" "." "dictint" "(" value ")" "." ["set" "(" value "," value ")"*] "." "get" "(" ")"
+
+?writeio: "writeio" "." "open" "(" value "," value ")"
+
+?readio: "readio" "." "open" "(" value ")"
+
+?bignumsum: "bigint" "." "sum" "(" value "," value ")" 
+?bignumsub: "bigint" "." "sub" "(" value "," value ")" 
+?bignummul: "bigint" "." "mul" "(" value "," value ")"
+?bignumpow: "bigint" "." "pow" "(" value "," value ")"
+
+?bioinfo: count_dna | generate_dna_sequence | dna_frequency_map | read_dnafile | translate_to_protein | mutate | reverse_complement | count_non_dna_bases_seq | dna_concat | sequence_alignment | motif | protein_mass | dna_to_rna | count_mut
+?count_dna: "count_dna" "(" value "," value ")"
+?generate_dna_sequence: "generate_dna_sequence" "(" value ")"
+?dna_frequency_map: "dna_frequency_map" "(" value "," value ")"
+?read_dnafile: "read_dnafile" "(" value ")"
+?translate_to_protein: "translate_to_protein" "(" value ")"
+?mutate: "mutate" "(" value "," value "," value ")"
+?reverse_complement: "reverse_complement" "(" value ")"
+?count_non_dna_bases_seq: "count_non_dna_bases_seq" "(" value "," value ")"
+?dna_concat: "dna_concat" "(" value "," value ")"
+?sequence_alignment: "sequence_alignment" "(" value "," value "," value ")"
+?motif: "motif" "(" value "," value ")"
+?protein_mass: "protein_mass" "(" value ")"
+?dna_to_rna: "dna_to_rna" "(" value ")"
+?count_mut: "count_mut" "(" value "," value ")"
 
 condition: "if" [statement "then" result ("elseif" statement ":" result)*] | "if" [statement "then" result ("elseif" statement ":" result)*] "else" result
 if: "if"
@@ -36,7 +78,9 @@ result: printval | condition
 expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
 VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
 ?action_operator: ACTION_OPERATOR
-ACTION_OPERATOR: "<"|">"|"="|"=="|">="|"<="|"!="|"in"
+ACTION_OPERATOR: "<"|">"|"="|"is"|">="|"<="|"!="|"in"|"equals"
+
+?forloop: "for" NAME "in" value ".." value ":"  [codetype (";" codetype)*]
 
 ?pow_ : "pow" "(" NUMBER "," NUMBER ")"
 ?ceil_ : "ceil" "(" NUMBER ")"
@@ -78,9 +122,23 @@ class LanguageTransformer(Transformer):
     number = float
     def __init__(self):
         self.vars = {}
+        self.funcvars = {}
+        self.functypevars = {}
     def assign(self, name, args):
         self.vars[name] = args
         return args
+    def functypeassign(self, name, *args):
+        for i in args:
+            self.functypevars[name] = args
+        return args
+    def functypevar(self, name):
+        return self.functypevars[name]
+    def funcassign(self, name, *args):
+        for i in args:
+            self.funcvars[name] = args
+        return args
+    def funcvar(self, name):
+        return self.funcvars[name]
     def var(self, name):
         return self.vars[name]
     def array(self, *elements):
@@ -181,9 +239,211 @@ class LanguageTransformer(Transformer):
                 return false_
         else:
             return false_
+    def diction(self, *elements):
+        d = Dictionary.dictint(int(elements[0]))
+        for arg in elements:
+            d.set(int(arg), int(arg))
+        d.get()
+    def writeio(self, *ele,elements):
+        filewriter.write_file(elements[0], elements[1])
+    def readio(self, elem):
+        print("->",elem)
+        a = None
+        for a in elem:
+            a = elem
+        print("bn", a)
+        filereader.read_file(a)
+    def bignumsum(self, *elem):
+        num1 = None
+        num2 = None
+        for i in elem[0].children:
+            num1 = i.value
+        for i in elem[1].children:
+            num2 = i.value
+        num1 = num1.replace('"', '')
+        num2 = num2.replace('"', '')
+        print("->", bigint.BigInt().addition(num1, num2))
+    def bignumsub(self, *elem):
+        num1 = None
+        num2 = None
+        for i in elem[0].children:
+            num1 = i.value
+        for i in elem[1].children:
+            num2 = i.value
+        num1 = num1.replace('"', '')
+        num2 = num2.replace('"', '')
+        print("-_->", bigint.BigInt().substraction(num1, num2))
+    def bignummul(self, *elem):
+        num1 = None
+        num2 = None
+        for i in elem[0].children:
+            num1 = i.value
+        for i in elem[1].children:
+            num2 = i.value
+        num1 = num1.replace('"', '')
+        num2 = num2.replace('"', '')
+        print('-->', bigint.BigInt().multiply(num1, num2))
+    def bignumpow(self, *elem):
+        num1 = None
+        num2 = None
+        for i in elem[0].children:
+            num1 = i.value
+        for i in elem[1].children:
+            num2 = i.value
+        num1 = num1.replace('"', '')
+        num2 = num2.replace('"', '')
+        bigint.BigInt().pow(int(num1), int(num2))
+    def count_dna(self, *elem):
+        dna = None
+        base = None
+        for i in elem[0].children:
+            dna = i.value
+        for i in elem[1].children:
+            base = i.value
+        dna = dna.replace('"', '')
+        base = base.replace('"', '')
+        bioinfo.count_dna(dna, base)
+    def generate_dna_sequence(self, *elem):
+        length = None
+        for i in elem[0].children:
+            length = i.value
+        length = length.replace('"', '')
+        bioinfo.generate_dna_sequence(int(length))
+    def dna_frequency_map(self, *elem):
+        dna = None
+        k = None
+        for i in elem[0].children:
+            dna = i.value
+        for i in elem[1].children:
+            k = i.value
+        dna = dna.replace('"', '')
+        k = k.replace('"', '')
+        bioinfo.dna_frequency_map(dna, int(k))
+    def read_dnafile(self, *elem):
+        filename = None
+        for i in elem[0].children:
+            filename = i.value
+        filename = filename.replace('"', '')
+        bioinfo.read_dnafile(filename)
+    def translate_to_protein(self, *elem):
+        filename = None
+        for i in elem[0].children:
+            filename = i.value
+        filename = filename.replace('"', '')
+        bioinfo.translate_to_protein(filename)
+    def mutate(self, *elem):
+        dna = None
+        mutation = None
+        threshold = None
+        for i in elem[0].children:
+            dna = i.value
+        for i in elem[1].children:
+            mutation = i.value
+        for i in elem[2].children:
+            threshold = i.value
+        dna = dna.replace('"', '')
+        mutation = mutation.replace('"', '')
+        threshold = threshold.replace('"', '')
+        mutation = ast.literal_eval(mutation)
+        bioinfo.mutate(dna, mutation, threshold)
+    def reverse_complement(self, *elem):
+        seq = None
+        for i in elem[0].children:
+            seq = i.value
+        seq = seq.replace('"', '')
+        bioinfo.reverse_complement(seq)
+    def count_non_dna_bases_seq(self, *elem):
+        seq = None
+        allowed_bases = None
+        for i in elem[0].children:
+            seq = i.value
+        for i in elem[1].children:
+            allowed_bases = i.value
+        seq = seq.replace('"', '')
+        allowed_bases = list(allowed_bases.replace('"', ''))
+        bioinfo.count_non_dna_bases_seq(seq, allowed_bases=allowed_bases)
+    def dna_concat(self, *elem):
+        dna1 = None
+        dna2 = None
+        for i in elem[0].children:
+            dna1 = i.value
+        for i in elem[1].children:
+            dna2 = i.value
+        dna1 = dna1.replace('"', '')
+        dna2 = dna2.replace('"', '')
+        bioinfo.dna_concat(dna1, dna2)
+    def sequence_alignment(self, *elem):
+        pass
+    def motif(self, *elem):
+        s = None
+        t = None
+        for i in elem[0].children:
+            s = i.value
+        for i in elem[1].children:
+            t = i.value
+        s = s.replace('"', '')
+        t = t.replace('"', '')
+        bioinfo.motif(s, t)
+    def protein_mass(self, *elem):
+        pass
+    def dna_to_rna(self, *elem):
+        dna = None
+        for i in elem[0].children:
+            dna = i.value
+        dna = dna.replace('"', '')
+        bioinfo.dna_to_rna(dna)
+    def count_mut(self, *elem):
+        s = None
+        t = None
+        for i in elem[0].children:
+            s = i.value
+        for i in elem[1].children:
+            t = i.value
+        s = s.replace('"', '')
+        t = t.replace('"', '')
+        bioinfo.count_mut(s, t)
+    def forloop(self, *elem): 
+        obj1 = int(elem[1])
+        obj2 = int(elem[2])
+        obj3 = None
+        lis = []
+        #id_obj = {}
+        print(elem)
+        if elem[0].type == 'NAME' and type(elem[3]) == Token:
+            for i in range(obj1, obj2):
+                lis.append(i)
+        else:
+            print(elem[3])
+            print(elem[3].data)
+            print(elem[3].children)
+            for i in elem[3].children:
+                print(i)
+                obj3 = i.value
+            obj3 = obj3.replace('"', '')
+            for i in range(obj1, obj2):
+                lis.append(obj3)
+        return lis
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
-print(l.parse('''if 12 < 3 then print "true" else print "false"'''))
+#print(l.parse('''if 12 equals 12 then print "true" else print "false"'''))
+
+#print(l.parse('''bigint.sum("2", "2")'''))
+
+#print(l.parse('''sum = 2+2'''))
+#print(l.parse('''void ex() { print "Hello"; c=2+2 }'''))
+#print(l.parse('''ex()'''))
+
+#print(l.parse('''sum = 2+2'''))
+#print(l.parse('''print sum'''))
+
+#print(l.parse('''for i in 1 .. 5: print i'''))
+
+#print(l.parse('''func ex() { print "Hello"; c=2+2; return c }'''))
+#print(l.parse('''typed ex()'''))
+
+#print(l.parse('''void ex() { for i in 1 .. 5: print i }'''))
+#print(l.parse('''ex()'''))
+
 
 class KujiraSyntaxError(SyntaxError):
     def __init__(self, label, line, column):
@@ -206,17 +466,36 @@ class KujiraMissingClosing(KujiraSyntaxError):
 class KujiraMissingComma(KujiraSyntaxError):
     label = 'Missing Comma'
 
-class KujiraTrailingComma(KujiraSyntaxError):
-    label = 'Trailing Comma'
+class KujiraMissingScope(KujiraSyntaxError):
+    label = 'Missing Scope'
+
+class KujiraMissingPaws(KujiraSyntaxError):
+    label = 'Missing Paws'
+
+class KujiraWrongCalculation(KujiraSyntaxError):
+    label = 'Wrong Calculation'
+
+class KujiraObjNotDefined(KujiraSyntaxError):
+    label = 'Object Not Defined'
+
+class KujiraInnerFunctonError(KujiraSyntaxError):
+    label = 'Inner Functon Error'
 
 def parss(text):
     try:
         j = l.parse(text)
+        print(j)
     except UnexpectedInput as i:
         xc_class = i.match_examples(l.parse, {
             KujiraMissingClosing : ['[1,2,3,4', '[1,2,3,4,'],
             KujiraMissingOpening : ['1,2,3,4]', '1,2,3,4,]'],
             KujiraMissingComma   : ['[1 2 3 4]'],
+            KujiraMissingValue   : ['a = ', 'a= '],
+            KujiraMissingScope   : ['func (', 'sort(', 'func )'],
+            KujiraMissingPaws    : ["print 'Hello'"],
+            KujiraWrongCalculation : ["'2' + 2", "cd = '2' + 34"],
+            KujiraObjNotDefined  : ['acd'],
+            KujiraInnerFunctonError : ['void a() { void printH() { print "Hello" } } printH()']
         })
         if not xc_class:
             raise
@@ -224,11 +503,22 @@ def parss(text):
 
 def test():
     try:
-        parss('[1, 2, 3, 4,')
+        parss("afg=")
     except KujiraMissingClosing as e:
         print(e)
     except KujiraMissingOpening as e:
         print(e)
     except KujiraMissingComma as e:
         print(e)
+    except KujiraMissingValue as e:
+        print(e)
+    except KujiraMissingScope as e:
+        print(e)
+    except KujiraMissingPaws as e:
+        print(e)
+    except KujiraWrongCalculation as e:
+        print(e)
+    except KujiraInnerFunctonError as e:
+        print(e)
+    
 test()    
