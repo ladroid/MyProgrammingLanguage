@@ -2,8 +2,8 @@
 
 ## First journal - Intro
 
-page 49
+page 171
 
 ## Second journal - Architecture of programming language Kujira
 
-page 171
+page 49
