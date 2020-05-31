@@ -16,3 +16,7 @@ __pycache__
 */lib/proglang/Set/__pycache__
 */lib/thread/a.out
 */lib/logger/header
+
+.DS_Store
+__pycache__/
+*.so

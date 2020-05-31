@@ -1,25 +1,15 @@
 #include <iostream>
 #include <string>
+#include "Fraction.h"
 
 using namespace std;
 
-class Fraction {
-    private:
-        int num, den;
-    public:
-        Fraction(){}
-        Fraction(int num=0, int den=1) {
-            this->num = num;
-            this->den = den;
-        }
-        int getNumerator();
-        int getDenominator();
-        Fraction operator+(Fraction otherFrac);
-        Fraction operator-(Fraction otherFrac);
-        Fraction operator*(Fraction otherFrac);
-        Fraction operator/(Fraction otherFrac);
-        string toString();
-};
+Fraction::Fraction() {}
+
+Fraction::Fraction(int num, int den) {
+    this->num = num;
+    this->den = den;
+}
 
 int Fraction::getNumerator() {
     return num;
@@ -54,5 +44,5 @@ Fraction Fraction::operator/(Fraction otherFrac) {
 }
 
 string Fraction::toString() {
-    return num + "/" + den;
+    return to_string(num) + "/" + to_string(den);
 }
