@@ -27,7 +27,7 @@ grammar = '''
 
 ?value: array | SIGNED_NUMBER -> number | string | sorting | sets
 
-?printval: "print" value | "print" NAME
+?printval: "print" codetype | "print" NAME_VAL
 
 ?functype: "func" NAME "(" ")" "{" [codetype (";" codetype)*] ";" returning codetype "}" -> functypeassign | functypeatom
 ?type: "Int" | "String" | "Float" | "Decimal"
@@ -75,7 +75,7 @@ elseif: "elseif"
 else: "else"
 statement: expression
 result: printval | condition
-expression: VARIABLE action_operator (VARIABLE | SIGNED_NUMBER)
+expression: (VARIABLE | SIGNED_NUMBER) action_operator (VARIABLE | SIGNED_NUMBER)
 VARIABLE: /[a-zA-Zа-яА-Я0-9_.-]+/
 ?action_operator: ACTION_OPERATOR
 ACTION_OPERATOR: "<"|">"|"="|"is"|">="|"<="|"!="|"in"|"equals"
@@ -102,6 +102,8 @@ ACTION_OPERATOR: "<"|">"|"="|"is"|">="|"<="|"!="|"in"|"equals"
 importingfile: "import" NAME NAME  NUMBER "," NUMBER 
 
 string : ESCAPED_STRING
+
+NAME_VAL: NAME
 
 COMMENT: "//" /(.|\\n|\\r)*/
 
@@ -199,9 +201,15 @@ class LanguageTransformer(Transformer):
         for expp in expr[2].children:
             false_ = expp.children[0].value
         for expr_val in expr[0].children:
-            num1 = int(expr_val.children[0].value)
+            if expr_val.children[0].type == 'VARIABLE':
+                num1 = int(self.var(str(expr_val.children[0].value)))
+            else:
+                num1 = int(expr_val.children[0].value)
             sign = expr_val.children[1].value
-            num2 = int(expr_val.children[2].value)
+            if expr_val.children[2].type == 'VARIABLE':
+                num2 = int(self.var(str(expr_val.children[2].value)))
+            else:
+                num2 = int(expr_val.children[2].value)
         if sign == '<':
             if num1 < num2:
                 return true_
@@ -408,23 +416,34 @@ class LanguageTransformer(Transformer):
         obj3 = None
         lis = []
         #id_obj = {}
-        print(elem)
-        if elem[0].type == 'NAME' and type(elem[3]) == Token:
-            for i in range(obj1, obj2):
-                lis.append(i)
-        else:
-            print(elem[3])
-            print(elem[3].data)
-            print(elem[3].children)
+        #print(elem)
+        if elem[0].type == 'NAME' and type(elem[3]) == Tree:
             for i in elem[3].children:
-                print(i)
                 obj3 = i.value
             obj3 = obj3.replace('"', '')
             for i in range(obj1, obj2):
                 lis.append(obj3)
+        else:
+            #obj3 = int(elem[3])
+            # print(elem[3])
+            # print(elem[3].data)
+            # print(elem[3].children)
+            # for i in elem[3].children:
+            #     print(i)
+            #     obj3 = i.value
+            # obj3 = obj3.replace('"', '')
+            for i in range(obj1, obj2):
+                lis.append(i)
         return lis
 
 l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
+#print(l.parse('''sum = 2+2'''))
+#print(l.parse('''a = 5'''))
+#print(l.parse('''if sum equals a then print "true" else print "false"'''))
+
+#print(l.parse('''a = 5'''))
+#print(l.parse('''if a > 12 then print "true" else print "false"'''))
+
 #print(l.parse('''if 12 equals 12 then print "true" else print "false"'''))
 
 #print(l.parse('''bigint.sum("2", "2")'''))
@@ -436,11 +455,13 @@ l = Lark(grammar, parser='lalr', transformer=LanguageTransformer())
 #print(l.parse('''sum = 2+2'''))
 #print(l.parse('''print sum'''))
 
+#print(l.parse('''i = 0'''))
 #print(l.parse('''for i in 1 .. 5: print i'''))
 
 #print(l.parse('''func ex() { print "Hello"; c=2+2; return c }'''))
 #print(l.parse('''typed ex()'''))
 
+#print(l.parse('''i = 0'''))
 #print(l.parse('''void ex() { for i in 1 .. 5: print i }'''))
 #print(l.parse('''ex()'''))
 
@@ -504,6 +525,7 @@ def parss(text):
 def test():
     try:
         parss("afg=")
+        #parss('''print "Hello world"''')
     except KujiraMissingClosing as e:
         print(e)
     except KujiraMissingOpening as e:
@@ -519,6 +541,8 @@ def test():
     except KujiraWrongCalculation as e:
         print(e)
     except KujiraInnerFunctonError as e:
+        print(e)
+    except KujiraObjNotDefined as e:
         print(e)
     
 test()    
