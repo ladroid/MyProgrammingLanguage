@@ -7,3 +7,7 @@ page 171
 ## Second journal - Architecture of programming language Kujira
 
 page 49
+
+## Third journal
+
+page 19
